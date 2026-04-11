@@ -14,9 +14,37 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
-      <config projectName="proj1" targetName="GNUmakefile" />
-      <config projectName="proj1" targetName="makefile" />
-      <config projectName="proj1" targetName="Makefile" />
+      <config projectName="proj1" targetName="interactive-snake" />
+      <config projectName="proj1" targetName="valgrind-test-free-state" />
+      <config projectName="proj1" targetName="09-everything" />
+      <config projectName="proj1" targetName="all" />
+      <config projectName="proj1" targetName="run-integration-tests" />
+      <config projectName="proj1" targetName="14-orochi" />
+      <config projectName="proj1" targetName="05-wall" />
+      <config projectName="proj1" targetName="15-hydra" />
+      <config projectName="proj1" targetName="19-101-127" />
+      <config projectName="proj1" targetName="13-sus" />
+      <config projectName="proj1" targetName="03-tail" />
+      <config projectName="proj1" targetName="11-manyclose" />
+      <config projectName="proj1" targetName="08-multisnake" />
+      <config projectName="proj1" targetName="18-tall" />
+      <config projectName="proj1" targetName="21-bigL" />
+      <config projectName="proj1" targetName="custom-tests" />
+      <config projectName="proj1" targetName="01-simple" />
+      <config projectName="proj1" targetName="02-direction" />
+      <config projectName="proj1" targetName="07-medium" />
+      <config projectName="proj1" targetName="04-food" />
+      <config projectName="proj1" targetName="help" />
+      <config projectName="proj1" targetName="12-corner" />
+      <config projectName="proj1" targetName="run-nonexistent-input-file-test" />
+      <config projectName="proj1" targetName="10-filled" />
+      <config projectName="proj1" targetName="unit-tests" />
+      <config projectName="proj1" targetName="16-huge" />
+      <config projectName="proj1" targetName="17-wide" />
+      <config projectName="proj1" targetName="06-small" />
+      <config projectName="proj1" targetName="check-hashes" />
+      <config projectName="proj1" targetName="snake" />
+      <config projectName="proj1" targetName="20-long-line" />
     </generated>
   </component>
   <component name="ChangeListManager">
@@ -138,17 +166,157 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GNUmakefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="GNUmakefile" CONFIG_NAME="GNUmakefile" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="GNUmakefile">
+    <configuration name="01-simple" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="01-simple" CONFIG_NAME="01-simple" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="01-simple">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="Makefile" CONFIG_NAME="Makefile" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="Makefile">
+    <configuration name="02-direction" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="02-direction" CONFIG_NAME="02-direction" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="02-direction">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="makefile" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="makefile" CONFIG_NAME="makefile" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="makefile">
+    <configuration name="03-tail" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="03-tail" CONFIG_NAME="03-tail" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="03-tail">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="04-food" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="04-food" CONFIG_NAME="04-food" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="04-food">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="05-wall" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="05-wall" CONFIG_NAME="05-wall" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="05-wall">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="06-small" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="06-small" CONFIG_NAME="06-small" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="06-small">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="07-medium" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="07-medium" CONFIG_NAME="07-medium" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="07-medium">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="08-multisnake" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="08-multisnake" CONFIG_NAME="08-multisnake" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="08-multisnake">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="09-everything" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="09-everything" CONFIG_NAME="09-everything" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="09-everything">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="10-filled" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="10-filled" CONFIG_NAME="10-filled" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="10-filled">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="11-manyclose" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="11-manyclose" CONFIG_NAME="11-manyclose" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="11-manyclose">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="12-corner" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="12-corner" CONFIG_NAME="12-corner" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="12-corner">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="13-sus" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="13-sus" CONFIG_NAME="13-sus" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="13-sus">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="14-orochi" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="14-orochi" CONFIG_NAME="14-orochi" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="14-orochi">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="15-hydra" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="15-hydra" CONFIG_NAME="15-hydra" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="15-hydra">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="16-huge" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="16-huge" CONFIG_NAME="16-huge" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="16-huge">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="17-wide" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="17-wide" CONFIG_NAME="17-wide" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="17-wide">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="18-tall" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="18-tall" CONFIG_NAME="18-tall" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="18-tall">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="19-101-127" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="19-101-127" CONFIG_NAME="19-101-127" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="19-101-127">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="20-long-line" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="20-long-line" CONFIG_NAME="20-long-line" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="20-long-line">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="21-bigL" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="21-bigL" CONFIG_NAME="21-bigL" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="21-bigL">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="all">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="check-hashes" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="check-hashes" CONFIG_NAME="check-hashes" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="check-hashes">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="custom-tests" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="custom-tests" CONFIG_NAME="custom-tests" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="custom-tests">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="help" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="help" CONFIG_NAME="help" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="help">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="interactive-snake" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="interactive-snake" CONFIG_NAME="interactive-snake" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="interactive-snake">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="run-integration-tests" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="run-integration-tests" CONFIG_NAME="run-integration-tests" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="run-integration-tests">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="run-nonexistent-input-file-test" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="run-nonexistent-input-file-test" CONFIG_NAME="run-nonexistent-input-file-test" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="run-nonexistent-input-file-test">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="snake" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="snake" CONFIG_NAME="snake" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="snake">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="unit-tests" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="unit-tests" CONFIG_NAME="unit-tests" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="unit-tests">
+      <method v="2">
+        <option name="CLION.COMPOUND.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="valgrind-test-free-state" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="valgrind-test-free-state" CONFIG_NAME="valgrind-test-free-state" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="valgrind-test-free-state">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -168,9 +336,37 @@
     <list>
       <item itemvalue="C/C++ 文件.test.c" />
       <item itemvalue="C/C++ 文件.unit_tests.c" />
-      <item itemvalue="原生应用程序.GNUmakefile" />
-      <item itemvalue="原生应用程序.Makefile" />
-      <item itemvalue="原生应用程序.makefile" />
+      <item itemvalue="原生应用程序.01-simple" />
+      <item itemvalue="原生应用程序.02-direction" />
+      <item itemvalue="原生应用程序.03-tail" />
+      <item itemvalue="原生应用程序.04-food" />
+      <item itemvalue="原生应用程序.05-wall" />
+      <item itemvalue="原生应用程序.06-small" />
+      <item itemvalue="原生应用程序.07-medium" />
+      <item itemvalue="原生应用程序.08-multisnake" />
+      <item itemvalue="原生应用程序.09-everything" />
+      <item itemvalue="原生应用程序.10-filled" />
+      <item itemvalue="原生应用程序.11-manyclose" />
+      <item itemvalue="原生应用程序.12-corner" />
+      <item itemvalue="原生应用程序.13-sus" />
+      <item itemvalue="原生应用程序.14-orochi" />
+      <item itemvalue="原生应用程序.15-hydra" />
+      <item itemvalue="原生应用程序.16-huge" />
+      <item itemvalue="原生应用程序.17-wide" />
+      <item itemvalue="原生应用程序.18-tall" />
+      <item itemvalue="原生应用程序.19-101-127" />
+      <item itemvalue="原生应用程序.20-long-line" />
+      <item itemvalue="原生应用程序.21-bigL" />
+      <item itemvalue="原生应用程序.all" />
+      <item itemvalue="原生应用程序.check-hashes" />
+      <item itemvalue="原生应用程序.run-integration-tests" />
+      <item itemvalue="原生应用程序.run-nonexistent-input-file-test" />
+      <item itemvalue="原生应用程序.valgrind-test-free-state" />
+      <item itemvalue="原生应用程序.custom-tests" />
+      <item itemvalue="原生应用程序.help" />
+      <item itemvalue="原生应用程序.interactive-snake" />
+      <item itemvalue="原生应用程序.snake" />
+      <item itemvalue="原生应用程序.unit-tests" />
     </list>
     <recent_temporary>
       <list>
@@ -194,7 +390,7 @@
       <workItem from="1775727168562" duration="1905000" />
       <workItem from="1775797835124" duration="14055000" />
       <workItem from="1775824411819" duration="4629000" />
-      <workItem from="1775876007116" duration="4001000" />
+      <workItem from="1775876007116" duration="4076000" />
     </task>
     <servers />
   </component>
