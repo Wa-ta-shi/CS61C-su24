@@ -66,7 +66,7 @@
     </projectState>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupGrunt">
@@ -80,22 +80,6 @@
     <option name="toolchainName" value="WSL" />
     <option name="availableProjects">
       <map>
-        <entry>
-          <key>
-            <ExternalProjectPojo>
-              <option name="name" value="proj1" />
-              <option name="path" value="$PROJECT_DIR$/.." />
-            </ExternalProjectPojo>
-          </key>
-          <value>
-            <list>
-              <ExternalProjectPojo>
-                <option name="name" value="proj1" />
-                <option name="path" value="$PROJECT_DIR$/.." />
-              </ExternalProjectPojo>
-            </list>
-          </value>
-        </entry>
         <entry>
           <key>
             <ExternalProjectPojo>
@@ -149,23 +133,24 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "D:/Code/CS61C/CS61C-su24/proj1",
+    "last_opened_file_path": "D:/Code/CS61C/CS61C-su24/proj1/src",
     "nodejs_package_manager_path": "npm",
     "org.rust.first.attach.projects": "true",
     "project.structure.last.edited": "项目",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "CPPToolchains",
     "vue.rearranger.settings.migration": "true",
     "原生应用程序.01-simple.executor": "Run"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code\CS61C\CS61C-su24\proj1\src" />
+    </key>
+  </component>
   <component name="RunManager" selected="C/C++ 文件.test.c">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="01-simple" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="proj1" TARGET_NAME="01-simple" CONFIG_NAME="01-simple" version="1" RUN_TARGET_PROJECT_NAME="proj1" RUN_TARGET_NAME="01-simple">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -390,7 +375,9 @@
       <workItem from="1775727168562" duration="1905000" />
       <workItem from="1775797835124" duration="14055000" />
       <workItem from="1775824411819" duration="4629000" />
-      <workItem from="1775876007116" duration="4076000" />
+      <workItem from="1775876007116" duration="4169000" />
+      <workItem from="1775887081704" duration="12493000" />
+      <workItem from="1775957431734" duration="7016000" />
     </task>
     <servers />
   </component>

@@ -20,7 +20,7 @@ static void find_head(game_state_t *state, unsigned int snum);
 static char next_square(game_state_t *state, unsigned int snum);
 static void update_tail(game_state_t *state, unsigned int snum);
 static void update_head(game_state_t *state, unsigned int snum);
-#define MAX_LINE 100
+#define MAX_LINE 256
 
 static void malloc_fail() {
   printf("malloc fail");
@@ -31,6 +31,7 @@ static void free_game_state_t(game_state_t *state) {
   for (unsigned int i = 0; i < state->num_rows; i++) {
     free(state->board[i]);
   }
+  free(state->snakes);
   free(state->board);
   free(state);
 }
@@ -376,25 +377,42 @@ void update_state(game_state_t *state, int (*add_food)(game_state_t *state)) {
 }
 
 /* Task 5.1 */
-// char *read_line(FILE *fp) {
-//   char result[MAX_LINE];
-//   if (fgets(result, MAX_LINE,fp) != NULL) {
-//     return strdup(result);
-//   }
-//   return NULL;
-// }
 char *read_line(FILE *fp) {
-  char buffer[MAX_LINE];
-  if (fgets(buffer, MAX_LINE, fp) != NULL) {
-    // 去除换行符
-    size_t len = strlen(buffer);
-    if (len > 0 && buffer[len-1] == '\n') {
-      buffer[len-1] = '\0';
-    }
-    // 复制字符串
-    return strdup(buffer);
+  if (fp == NULL) return NULL;
+
+  size_t current_size = MAX_LINE;
+  char *buffer = malloc(MAX_LINE * sizeof(char));
+
+  if (buffer == NULL) {
+    free(buffer);
+    return NULL;
   }
-  return NULL;
+
+  size_t pos = 0;
+
+  int c;
+  while ((c = fgetc(fp)) != EOF) {
+    if (pos + 1 >= current_size) {
+      current_size *= 2;
+      buffer = realloc(buffer, current_size * sizeof(char));
+
+      if (buffer == NULL) {
+        free(buffer);
+        return NULL;
+      }
+    }
+
+    buffer[pos++] = (char)c;
+
+    if (c == '\n') {
+      buffer[pos++] = '\0';
+      return buffer;
+    }
+  }
+  if (pos == 0) {
+    buffer[0] = '\0';
+  }
+  return buffer;
 }
 
 /* Task 5.2 */
@@ -408,7 +426,7 @@ game_state_t *load_board(FILE *fp) {
   result->board = NULL;
 
   char *read_line_result = read_line(fp);
-    while (read_line_result != NULL) {
+    while (read_line_result != NULL && read_line_result[0] != '\0') {
       result->num_rows++;
 
       char **new_board = realloc(result->board,
@@ -424,6 +442,10 @@ game_state_t *load_board(FILE *fp) {
       result->board[result->num_rows - 1] = read_line_result;
       read_line_result = read_line(fp);
   }
+  if (result->board == NULL) {
+    free_game_state_t(result);
+    return NULL;
+  }
   return result;
 }
 
@@ -436,12 +458,41 @@ game_state_t *load_board(FILE *fp) {
   fill in the head row and col in the struct.
 */
 static void find_head(game_state_t *state, unsigned int snum) {
-  // TODO: Implement this function.
-  return;
+  unsigned int tail_row = state->snakes[snum].tail_row;
+  unsigned int tail_col = state->snakes[snum].tail_col;
+  char current_char = get_board_at(state, tail_row, tail_col);
+
+  while (!is_head(current_char)) {
+    tail_row = get_next_row(tail_row, current_char);
+    tail_col = get_next_col(tail_col, current_char);
+    current_char = get_board_at(state, tail_row, tail_col);
+  }
+  state->snakes[snum].head_row = tail_row;
+  state->snakes[snum].head_col = tail_col;
 }
 
 /* Task 6.2 */
 game_state_t *initialize_snakes(game_state_t *state) {
-  // TODO: Implement this function.
-  return NULL;
+  if (state == NULL) return NULL;
+
+  for (unsigned int row = 0; row < state->num_rows; row++) {
+    for (unsigned int col = 0; ;col++) {
+      char current_char = get_board_at(state, row, col);
+      if (current_char == '\n') break;
+
+      if (is_tail(current_char)) {
+        state->snakes = realloc(state->snakes, (state->num_snakes + 1) * sizeof(snake_t));
+        if (!state->snakes) {
+          free_game_state_t(state);
+          return NULL;
+        }
+        state->snakes[state->num_snakes].tail_row = row;
+        state->snakes[state->num_snakes].tail_col = col;
+        find_head(state, state->num_snakes);
+        state->snakes[state->num_snakes].live = true;
+        state->num_snakes++;
+      }
+    }
+  }
+  return state;
 }
