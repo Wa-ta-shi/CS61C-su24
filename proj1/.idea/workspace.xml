@@ -119,32 +119,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "C/C++ 文件.test.c.executor": "Debug",
-    "C/C++ 文件.unit_tests.c.executor": "Debug",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.RadMigrateCodeStyle": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "D:/Code/CS61C/CS61C-su24/proj1/src",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.first.attach.projects": "true",
-    "project.structure.last.edited": "项目",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "CPPToolchains",
-    "vue.rearranger.settings.migration": "true",
-    "原生应用程序.01-simple.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;C/C++ 文件.test.c.executor&quot;: &quot;Debug&quot;,
+    &quot;C/C++ 文件.unit_tests.c.executor&quot;: &quot;Debug&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code/CS61C/CS61C-su24/proj1/src&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CPPToolchains&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
+    &quot;原生应用程序.01-simple.executor&quot;: &quot;Run&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code\CS61C\CS61C-su24\proj1\src" />
@@ -319,8 +319,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="C/C++ 文件.test.c" />
-      <item itemvalue="C/C++ 文件.unit_tests.c" />
       <item itemvalue="原生应用程序.01-simple" />
       <item itemvalue="原生应用程序.02-direction" />
       <item itemvalue="原生应用程序.03-tail" />
@@ -344,14 +342,16 @@
       <item itemvalue="原生应用程序.21-bigL" />
       <item itemvalue="原生应用程序.all" />
       <item itemvalue="原生应用程序.check-hashes" />
-      <item itemvalue="原生应用程序.run-integration-tests" />
-      <item itemvalue="原生应用程序.run-nonexistent-input-file-test" />
-      <item itemvalue="原生应用程序.valgrind-test-free-state" />
       <item itemvalue="原生应用程序.custom-tests" />
       <item itemvalue="原生应用程序.help" />
       <item itemvalue="原生应用程序.interactive-snake" />
+      <item itemvalue="原生应用程序.run-integration-tests" />
+      <item itemvalue="原生应用程序.run-nonexistent-input-file-test" />
       <item itemvalue="原生应用程序.snake" />
       <item itemvalue="原生应用程序.unit-tests" />
+      <item itemvalue="原生应用程序.valgrind-test-free-state" />
+      <item itemvalue="C/C++ 文件.test.c" />
+      <item itemvalue="C/C++ 文件.unit_tests.c" />
     </list>
     <recent_temporary>
       <list>
@@ -377,7 +377,9 @@
       <workItem from="1775824411819" duration="4629000" />
       <workItem from="1775876007116" duration="4169000" />
       <workItem from="1775887081704" duration="12493000" />
-      <workItem from="1775957431734" duration="7016000" />
+      <workItem from="1775957431734" duration="8678000" />
+      <workItem from="1776056885684" duration="235000" />
+      <workItem from="1776078762925" duration="109000" />
     </task>
     <servers />
   </component>
