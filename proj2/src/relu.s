@@ -1,3 +1,4 @@
+# .import utils.s
 .globl relu
 
 .text
@@ -14,25 +15,29 @@
 # ==============================================================================
 relu:
     # Prologue
+    li t0 1 # length temp 1
+    blt a1 t0 error # judge length bigger than 1
 
+    mv t0 a0 # store pointer
+    li t2 0 # current index
 
 loop_start:
+    bge t2 a1 loop_end
+    
+    lw t3 0(t0) # current num
+    bge t3 zero skip # if current num smaller than 0
+    
+    sw zero 0(t0)
 
-
-
-
-
-
-
-
-loop_continue:
-
-
-
+skip:
+    addi t0 t0 4 # increase pointer
+    addi t2 t2 1 # increase index
+    j loop_start
+    
 loop_end:
-
-
     # Epilogue
-
-
     jr ra
+    
+error:
+    li a0 36
+    j exit
