@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdio.h>
 
 int dot(int *input1, int *input2,int numOfElement, int stride1, int stride2) {
@@ -20,18 +21,45 @@ int dot(int *input1, int *input2,int numOfElement, int stride1, int stride2) {
     return answer;
 }
 
-int main() {
-    int input1[] = {-3, 4, 4};
-    int input2[] = {-3, 4, 4};
-    int pt = dot(input1, input2, 3, 1, 1);
-    printf("%d\n", pt);
-
-    int result = 0;
-    int temp[] = {2, 40, 429, 11, 10, 12, 2, 106, 7};
-    for (int i = 0; i < 9; i++) {
-        result += temp[i] * temp[i];
+int *matmul(int *arr0, int R_arr0, int C_arr0, int *arr1, int R_arr1,
+            int C_arr1, int *answer) {
+    int num = R_arr0;
+    int index = 0;
+    for (int i = 0; i < num; i ++) {
+        for (int j = 0; j < num; j++) {
+            answer[index] = dot(arr0 + i * C_arr0, arr1 + j,
+                C_arr0, 1, num);
+            index++;
+        }
     }
-    printf("%d", result);
+    return answer;
+}
+
+int main() {
+    int input1[10];
+    int input2[10];
+    int output[10];
+
+    int current = 1;
+    for (int i = 0; i < 10; i++) {
+        input1[i] = current;
+        input2[i] = current;
+        current++;
+    }
+
+    matmul(input1, 2, 5,
+        input2, 5, 2, output);
+    for (int i = 0; i < 4; i++) {
+        printf("%d ", output[i]);
+    }
+
+    // input1[0] = 4;
+    // input2[0] = 5;
+    // matmul(input1, 1, 1,
+    // input2, 1, 1, output);
+    // for (int i = 0; i < 1; i++) {
+    //     printf("%d ", output[i]);
+    // }
 
     return 0;
 }
