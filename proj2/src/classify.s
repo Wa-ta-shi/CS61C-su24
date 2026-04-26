@@ -23,156 +23,177 @@
 #
 # Usage:
 #   main.s <M0_PATH> <M1_PATH> <INPUT_PATH> <OUTPUT_PATH>
-.globl classify
-
-.text
 classify:
-    # Prologue
-    addi sp sp -72
+    addi sp sp -36
     sw ra 0(sp)
-    sw s0 4(sp)
-    sw s1 8(sp)
-    sw s2 12(sp)
-    sw s3 16(sp)
-    sw s4 20(sp)
-    sw s5 24(sp)
-    sw s6 28(sp)
+    sw s0 4(sp) # save the a1 arr
+    sw s1 8(sp) # m0
+    sw s2 12(sp) # m1
+    sw s3 16(sp) # input
+    sw s4 20(sp) # h
+    sw s5 24(sp) # o
+    sw s6 28(sp) # whether printable
     sw s7 32(sp)
 
-    # Check argc == 5
     li t0 5
-    bne a0 t0 error_args
+    bne a0 t0 num_err
 
-    # Save arguments
-    mv s0 a0        # argc
-    mv s1 a1        # argv
-    mv s2 a2        # silent mode
-
+    mv s0 a1
+    mv s6 a2
     # Read pretrained m0
-    lw a0 4(s1)     # argv[1] - m0 path
-    addi a1 sp 36   # m0.rows
-    addi a2 sp 40   # m0.cols
-    call read_matrix
-    mv s3 a0        # m0 pointer
+    lw t0 4(s0) # the file path of m0
+    mv a0 t0
 
-    # Read pretrained m1
-    lw a0 8(s1)     # argv[2] - m1 path
-    addi a1 sp 44   # m1.rows
-    addi a2 sp 48   # m1.cols
+    addi sp sp -40 # to store row and col
+
+    addi a1 sp 0 # m0.row
+    addi a2 sp 4 # m0.col
+
     call read_matrix
-    mv s4 a0        # m1 pointer
+
+    mv s1 a0
+    ebreak
+    # Read pretrained m1
+    lw t0 8(s0) # the file path of m1
+    mv a0 t0
+
+    addi a1 sp 8 # m1.row
+    addi a2 sp 12 # m1.col
+
+    call read_matrix
+
+    mv s2 a0
+    ebreak
+
 
     # Read input matrix
-    lw a0 12(s1)    # argv[3] - input path
-    addi a1 sp 52   # input.rows
-    addi a2 sp 56   # input.cols
-    call read_matrix
-    mv s5 a0        # input pointer
+    lw t0 12(s0) # the file path of input
+    mv a0 t0
 
-    # Allocate memory for h = matmul(m0, input)
-    lw t0 36(sp)    # m0.rows
-    lw t1 56(sp)    # input.cols
-    sw t0 60(sp)    # h.rows = m0.rows
-    sw t1 64(sp)    # h.cols = input.cols
-    mul a0 t0 t1
-    slli a0 a0 2    # bytes = elements * 4
-    call malloc
-    beq a0 zero error_malloc
-    mv s6 a0        # h pointer
+    addi a1 sp 16 # input.row
+    addi a2 sp 20 # input.col
+
+    call read_matrix
+
+    mv s3 a0
+    ebreak
+
 
     # Compute h = matmul(m0, input)
-    mv a0 s3        # m0
-    lw a1 36(sp)    # m0.rows
-    lw a2 40(sp)    # m0.cols
-    mv a3 s5        # input
-    lw a4 52(sp)    # input.rows
-    lw a5 56(sp)    # input.cols
-    mv a6 s6        # h
+    lw t0 0(sp) # t0 = m0.row
+    lw t1 20(sp) # t1 = input.col
+    sw t0 24(sp) # h.row
+    sw t1 28(sp) # h.col
+
+    mul t0 t0 t1
+    slli t0 t0 2
+    mv a0 t0
+
+    call malloc
+
+    beq a0 x0 malloc_err
+    mv s4 a0 # pointer to h !!! need free !!!
+
+    mv a0 s1
+    mv a3 s3
+    lw a1 0(sp)
+    lw a2 4(sp)
+    lw a4 16(sp)
+    lw a5 20(sp)
+    mv a6 s4
+
     call matmul
 
     # Compute h = relu(h)
-    mv a0 s6        # h
-    lw t0 60(sp)    # h.rows
-    lw t1 64(sp)    # h.cols
-    mul a1 t0 t1    # total elements
+    mv a0 s4
+    lw t0 24(sp)
+    lw t1 28(sp)
+    mul t0 t0 t1
+    mv a1 t0
+
     call relu
 
-    # Allocate memory for o = matmul(m1, h)
-    lw t0 44(sp)    # m1.rows
-    lw t1 64(sp)    # h.cols
-    sw t0 68(sp)    # o.rows = m1.rows
-    sw t1 72(sp)    # o.cols = h.cols
-    mul a0 t0 t1
-    slli a0 a0 2    # bytes = elements * 4
-    call malloc
-    beq a0 zero error_malloc
-    mv s7 a0        # o pointer
-
     # Compute o = matmul(m1, h)
-    mv a0 s4        # m1
-    lw a1 44(sp)    # m1.rows
-    lw a2 48(sp)    # m1.cols
-    mv a3 s6        # h
-    lw a4 60(sp)    # h.rows
-    lw a5 64(sp)    # h.cols
-    mv a6 s7        # o
+    lw t0 8(sp)
+    lw t1 28(sp)
+    sw t0 32(sp) # o.row
+    sw t1 36(sp) # o.col
+    ebreak
+    mul t0 t0 t1
+    slli t0 t0 2
+    mv a0 t0
+
+    call malloc
+
+    beq a0 x0 malloc_err
+    mv s5 a0 # pointer to o !!! need free !!!
+
+    mv a0 s2
+    mv a3 s4
+    lw a1 8(sp)
+    lw a2 12(sp)
+    lw a4 24(sp)
+    lw a5 28(sp)
+    mv a6 s5
+
     call matmul
 
     # Write output matrix o
-    lw a0 16(s1)    # argv[4] - output path
-    mv a1 s7        # o
-    lw a2 68(sp)    # o.rows
-    lw a3 72(sp)    # o.cols
+
+    lw a0 16(s0)
+    mv a1 s5
+    lw a2 32(sp)
+    lw a3 36(sp)
+
     call write_matrix
 
     # Compute and return argmax(o)
-    mv a0 s7        # o
-    lw t0 68(sp)    # o.rows
-    lw t1 72(sp)    # o.cols
-    mul a1 t0 t1    # total elements
-    call argmax
-    mv s0 a0        # save result
 
-    # Print result if not silent
-    bne s2 zero skip_print
-    mv a0 s0
+    mv a0 s5
+    lw t0 32(sp)
+    lw t1 36(sp)
+    addi sp sp 40
+    mul t0 t0 t1
+    mv a1 t0
+
+    call argmax
+
+    mv s7 a0
+    ebreak
+
+    # If enabled, print argmax(o) and newline
+    bne s6 x0 not_print
     call print_int
     li a0 '\n'
     call print_char
 
-skip_print:
-    # Free allocated memory
-    mv a0 s3
-    call free
+not_print:
+
+    # free
     mv a0 s4
     call free
     mv a0 s5
     call free
-    mv a0 s6
-    call free
+
     mv a0 s7
-    call free
-
-    # Return result
-    mv a0 s0
-
-    # Epilogue
-    lw ra 0(sp)
-    lw s0 4(sp)
-    lw s1 8(sp)
-    lw s2 12(sp)
-    lw s3 16(sp)
-    lw s4 20(sp)
-    lw s5 24(sp)
-    lw s6 28(sp)
+    #e
     lw s7 32(sp)
-    addi sp sp 72
+    lw s6 28(sp)
+    lw s5 24(sp)
+    lw s4 20(sp)
+    lw s3 16(sp)
+    lw s2 12(sp)
+    lw s1 8(sp)
+    lw s0 4(sp)
+    lw ra 0(sp)
+    addi sp sp 36
+
     jr ra
 
-error_args:
-    li a0 31
+malloc_err:
+    li a0 26
     j exit
 
-error_malloc:
-    li a0 26
+num_err:
+    li a0 31
     j exit

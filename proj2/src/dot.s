@@ -18,36 +18,46 @@
 #     this function terminates the program with error code 37
 # =======================================================
 dot:
-    li t4 1 # temp 1
-    blt a2 t4 error1 # judge length bigger than 1
-    blt a3 t4 error2
-    blt a4 t4 error2
-    
-    li t4 4 # temp 4
-    mul t0 t4 a3 # arr0 increase pointer num
-    mul t1 t4 a4 # arr1
-    li t2 0 # i = 0
-    li t3 0 # answer = 0
 
+    # Prologue
+    addi t0 x0 1
+    blt a2 t0 err_num
+    blt a3 t0 err_stride
+    blt a4 t0 err_stride
+
+    # beacause the first elem(index 0) always be selected, so we need use the length minus 1 to get the rest of length which can be actually used
+    li t4 0
+    # the smaller value between t1 and t2 is assigned to t1 as a counter
+    addi t1 a2 -1
+    slli a3 a3 2 # each step of arr0
+    slli a4 a4 2 # each step unit of arr1
+    lw t5 0(a0)
+    lw t6 0(a1)
+    mul t4 t5 t6
 loop_start:
-    bge t2 a2 loop_end # judge i and length
-    lw t4 0(a0) # current num
-    lw t5 0(a1) # current num
-    mul t6 t4 t5 # current * current
-    add t3 t3 t6 # add to answer
-    
-    add a0 a0 t0 # increase pointer
-    add a1 a1 t1
-    addi t2 t2 1 # i++
+    addi t1 t1 -1
+    blt t1 zero loop_end
+    add a0 a0 a3 # offset of arr0
+    add a1 a1 a4 # offset of arr1
+    lw t5 0(a0)
+    lw t6 0(a1)
+    mul t2 t5 t6
+    add t4 t4 t2
+    j loop_start
 
 loop_end:
-    mv a0 t3 # mv answer
+
+
+    # Epilogue
+    mv a0 t4
+
     jr ra
 
-error1:
-    li a0 36
+
+err_num:
+    addi a0 x0 36
     j exit
 
-error2:
-    li a0 37
+err_stride:
+    addi a0 x0 37
     j exit
