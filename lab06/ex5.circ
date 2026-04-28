@@ -80,8 +80,8 @@
     <a name="simulationFrequency" val="1.0"/>
     <comp lib="0" loc="(170,300)" name="Pin">
       <a name="appearance" val="classic"/>
-      <a name="locked" val="true"/>
       <a name="label" val="clk"/>
+      <a name="locked" val="true"/>
     </comp>
     <comp lib="0" loc="(170,400)" name="Tunnel">
       <a name="facing" val="east"/>
@@ -101,9 +101,9 @@
     <comp lib="0" loc="(180,270)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="label" val="num"/>
+      <a name="locked" val="true"/>
       <a name="radix" val="16"/>
       <a name="width" val="32"/>
-      <a name="locked" val="true"/>
     </comp>
     <comp lib="0" loc="(210,400)" name="Splitter">
       <a name="appear" val="center"/>
@@ -242,10 +242,10 @@
       <a name="label" val="bits_ten"/>
       <a name="width" val="2"/>
     </comp>
-    <comp lib="0" loc="(540,300)" name="Constant">
+    <comp lib="0" loc="(540,300)" name="Constant"/>
+    <comp lib="0" loc="(540,370)" name="Constant">
       <a name="value" val="0x0"/>
     </comp>
-    <comp lib="0" loc="(540,370)" name="Constant"/>
     <comp lib="0" loc="(540,450)" name="Constant">
       <a name="value" val="0x0"/>
       <a name="width" val="32"/>
@@ -285,12 +285,12 @@
     </comp>
     <comp lib="0" loc="(550,500)" name="Tunnel">
       <a name="facing" val="east"/>
-      <a name="label" val="bits_15"/>
-      <a name="width" val="28"/>
+      <a name="label" val="num"/>
+      <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(550,540)" name="Constant">
-      <a name="value" val="0x0"/>
-      <a name="width" val="28"/>
+      <a name="value" val="0xf"/>
+      <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(550,660)" name="Constant">
       <a name="value" val="0x7"/>
@@ -336,6 +336,24 @@
       <a name="locked" val="true"/>
       <a name="output" val="true"/>
     </comp>
+    <comp lib="0" loc="(830,570)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="num"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(830,600)" name="Constant">
+      <a name="value" val="0x5"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(830,630)" name="Tunnel">
+      <a name="facing" val="east"/>
+      <a name="label" val="num"/>
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(830,660)" name="Constant">
+      <a name="value" val="0xa"/>
+      <a name="width" val="32"/>
+    </comp>
     <comp lib="0" loc="(840,760)" name="Pin">
       <a name="appearance" val="NewPins"/>
       <a name="facing" val="west"/>
@@ -343,6 +361,7 @@
       <a name="locked" val="true"/>
       <a name="output" val="true"/>
     </comp>
+    <comp lib="1" loc="(1000,600)" name="OR Gate"/>
     <comp lib="1" loc="(720,680)" name="AND Gate"/>
     <comp lib="1" loc="(720,840)" name="AND Gate"/>
     <comp lib="1" loc="(820,760)" name="OR Gate"/>
@@ -356,7 +375,7 @@
       <a name="width" val="32"/>
     </comp>
     <comp lib="3" loc="(620,510)" name="Comparator">
-      <a name="width" val="28"/>
+      <a name="width" val="32"/>
     </comp>
     <comp lib="3" loc="(620,640)" name="Comparator">
       <a name="width" val="3"/>
@@ -370,6 +389,14 @@
     <comp lib="3" loc="(620,880)" name="Comparator">
       <a name="width" val="30"/>
     </comp>
+    <comp lib="3" loc="(900,580)" name="Comparator">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="3" loc="(900,640)" name="Comparator">
+      <a name="width" val="32"/>
+    </comp>
+    <wire from="(1000,600)" to="(1020,600)"/>
+    <wire from="(1020,600)" to="(1020,730)"/>
     <wire from="(170,300)" to="(290,300)"/>
     <wire from="(170,400)" to="(210,400)"/>
     <wire from="(170,500)" to="(210,500)"/>
@@ -416,7 +443,7 @@
     <wire from="(620,280)" to="(670,280)"/>
     <wire from="(620,350)" to="(670,350)"/>
     <wire from="(620,420)" to="(670,420)"/>
-    <wire from="(620,520)" to="(670,520)"/>
+    <wire from="(620,500)" to="(670,500)"/>
     <wire from="(620,640)" to="(650,640)"/>
     <wire from="(620,720)" to="(650,720)"/>
     <wire from="(620,800)" to="(650,800)"/>
@@ -429,12 +456,24 @@
     <wire from="(650,820)" to="(670,820)"/>
     <wire from="(650,860)" to="(650,880)"/>
     <wire from="(650,860)" to="(670,860)"/>
+    <wire from="(670,500)" to="(670,520)"/>
     <wire from="(720,680)" to="(740,680)"/>
     <wire from="(720,840)" to="(740,840)"/>
     <wire from="(740,680)" to="(740,740)"/>
     <wire from="(740,740)" to="(770,740)"/>
     <wire from="(740,780)" to="(740,840)"/>
     <wire from="(740,780)" to="(770,780)"/>
-    <wire from="(820,760)" to="(840,760)"/>
+    <wire from="(830,570)" to="(860,570)"/>
+    <wire from="(830,600)" to="(860,600)"/>
+    <wire from="(830,630)" to="(860,630)"/>
+    <wire from="(830,660)" to="(860,660)"/>
+    <wire from="(830,730)" to="(1020,730)"/>
+    <wire from="(830,730)" to="(830,760)"/>
+    <wire from="(830,760)" to="(840,760)"/>
+    <wire from="(860,590)" to="(860,600)"/>
+    <wire from="(860,650)" to="(860,660)"/>
+    <wire from="(900,580)" to="(950,580)"/>
+    <wire from="(900,640)" to="(950,640)"/>
+    <wire from="(950,620)" to="(950,640)"/>
   </circuit>
 </project>
