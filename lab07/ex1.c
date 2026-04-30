@@ -45,16 +45,70 @@ long long int sum_unrolled(int vals[NUM_ELEMS]) {
     return sum;
 }
 
+void reference() {
+    int arr[8] = {3, 1, 4, 1, 5, 9, 2, 6};
+    // Initialize sum vector to {0, 0, 0, 0}
+    __m128i sum_vec = _mm_setzero_si128();
+
+    // Load array elements 0-3 into a temporary vector register
+    __m128i tmp = _mm_loadu_si128((__m128i *) arr);
+    // Add to existing sum vector
+    sum_vec = _mm_add_epi32(sum_vec, tmp);
+    // sum_vec = {3, 1, 4, 1}
+
+    // Load array elements 4-7 into a temporary vector register
+    tmp = _mm_loadu_si128((__m128i *) (arr + 4));
+    // Add to existing sum vector
+    sum_vec = _mm_add_epi32(sum_vec, tmp);
+    // sum_vec = {3 + 5, 1 + 9, 4 + 2, 1 + 6}
+
+    // Create temporary array to hold values from sum_vec
+    // We must store the vector into an array in order to access the individual values (as seen below)
+    int tmp_arr[4];
+    _mm_storeu_si128((__m128i *) tmp_arr, sum_vec);
+    // Collect values from sum_vec in a single integer
+    int sum = tmp_arr[0] + tmp_arr[1] + tmp_arr[2] + tmp_arr[3];
+}
+
 long long int sum_simd(int vals[NUM_ELEMS]) {
     clock_t start = clock();
-    __m128i _127 = _mm_set1_epi32(127); // This is a vector with 127s in it... Why might you need this?
-    long long int result = 0; // This is where you should put your final result!
+    __m128i _127 = _mm_set1_epi32(127); // 向量：127, 127, 127, 127
+    long long int result = 0; // 最终结果
     /* DO NOT MODIFY ANYTHING ABOVE THIS LINE (in this function) */
 
     for(unsigned int w = 0; w < OUTER_ITERATIONS; w++) {
         /* YOUR CODE GOES HERE */
+        __m128i sum_vec = _mm_setzero_si128(); // 每个外层循环重新初始化向量累加器
 
-        /* Hint: you'll need a tail case. */
+        // 主循环：每次处理4个int
+        unsigned int i;
+        for(i = 0; i <= NUM_ELEMS - 4; i += 4) {
+            // 加载4个整数
+            __m128i data = _mm_loadu_si128((__m128i*)(vals + i));
+
+            // 比较：data > 127 等价于 data >= 128
+            __m128i mask = _mm_cmpgt_epi32(data, _127);
+
+            // 用掩码选择数据：只有≥128的元素被保留，其他变成0
+            __m128i selected = _mm_and_si128(data, mask);
+
+            // 累加到结果向量
+            sum_vec = _mm_add_epi32(sum_vec, selected);
+        }
+
+        // 提取向量结果，累加到最终结果
+        int tmp_arr[4];
+        _mm_storeu_si128((__m128i*)tmp_arr, sum_vec);
+        for(int k = 0; k < 4; k++) {
+            result += tmp_arr[k];
+        }
+
+        // 处理尾部元素（如果有的话）
+        for(; i < NUM_ELEMS; i++) {
+            if(vals[i] >= 128) {
+                result += vals[i];
+            }
+        }
     }
 
     /* DO NOT MODIFY ANYTHING BELOW THIS LINE (in this function) */
@@ -70,10 +124,66 @@ long long int sum_simd_unrolled(int vals[NUM_ELEMS]) {
     /* DO NOT MODIFY ANYTHING ABOVE THIS LINE (in this function) */
 
     for(unsigned int w = 0; w < OUTER_ITERATIONS; w++) {
-        /* YOUR CODE GOES HERE */
-        /* Copy your sum_simd() implementation here, and unroll it */
+        /* 展开4次的SIMD版本 */
+        __m128i sum_vec1 = _mm_setzero_si128();
+        __m128i sum_vec2 = _mm_setzero_si128();
+        __m128i sum_vec3 = _mm_setzero_si128();
+        __m128i sum_vec4 = _mm_setzero_si128();
 
-        /* Hint: you'll need 1 or maybe 2 tail cases here. */
+        unsigned int i;
+        // 展开循环：每次处理16个int
+        for(i = 0; i <= NUM_ELEMS - 16; i += 16) {
+            // 加载4组数据
+            __m128i data1 = _mm_loadu_si128((__m128i*)(vals + i));
+            __m128i data2 = _mm_loadu_si128((__m128i*)(vals + i + 4));
+            __m128i data3 = _mm_loadu_si128((__m128i*)(vals + i + 8));
+            __m128i data4 = _mm_loadu_si128((__m128i*)(vals + i + 12));
+
+            // 比较并掩码
+            __m128i mask1 = _mm_cmpgt_epi32(data1, _127);
+            __m128i mask2 = _mm_cmpgt_epi32(data2, _127);
+            __m128i mask3 = _mm_cmpgt_epi32(data3, _127);
+            __m128i mask4 = _mm_cmpgt_epi32(data4, _127);
+
+            // 选择有效数据
+            __m128i selected1 = _mm_and_si128(data1, mask1);
+            __m128i selected2 = _mm_and_si128(data2, mask2);
+            __m128i selected3 = _mm_and_si128(data3, mask3);
+            __m128i selected4 = _mm_and_si128(data4, mask4);
+
+            // 分别累加到4个向量
+            sum_vec1 = _mm_add_epi32(sum_vec1, selected1);
+            sum_vec2 = _mm_add_epi32(sum_vec2, selected2);
+            sum_vec3 = _mm_add_epi32(sum_vec3, selected3);
+            sum_vec4 = _mm_add_epi32(sum_vec4, selected4);
+        }
+
+        // 合并4个向量的结果
+        __m128i sum_vec = _mm_add_epi32(sum_vec1, sum_vec2);
+        sum_vec = _mm_add_epi32(sum_vec, sum_vec3);
+        sum_vec = _mm_add_epi32(sum_vec, sum_vec4);
+
+        // 处理剩余不足16个的元素
+        for(; i <= NUM_ELEMS - 4; i += 4) {
+            __m128i data = _mm_loadu_si128((__m128i*)(vals + i));
+            __m128i mask = _mm_cmpgt_epi32(data, _127);
+            __m128i selected = _mm_and_si128(data, mask);
+            sum_vec = _mm_add_epi32(sum_vec, selected);
+        }
+
+        // 提取向量结果
+        int tmp_arr[4];
+        _mm_storeu_si128((__m128i*)tmp_arr, sum_vec);
+        for(int k = 0; k < 4; k++) {
+            result += tmp_arr[k];
+        }
+
+        // 处理最后的尾部元素（不足4个）
+        for(; i < NUM_ELEMS; i++) {
+            if(vals[i] >= 128) {
+                result += vals[i];
+            }
+        }
     }
 
     /* DO NOT MODIFY ANYTHING BELOW THIS LINE (in this function) */
