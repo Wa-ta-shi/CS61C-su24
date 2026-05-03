@@ -4,8 +4,39 @@
 int convolve(matrix_t *a_matrix, matrix_t *b_matrix, matrix_t **output_matrix) {
   // TODO: convolve matrix a and matrix b, and store the resulting matrix in
   // output_matrix
+  int32_t b_rows = b_matrix->rows;
+  int32_t b_cols = b_matrix->cols;
+  for (int i = 0; i < b_rows / 2; i++) {
+    for (int j = 0; j < b_cols / 2; j++) {
+      uint32_t temp = b_matrix->data[i * b_cols + j];
+      b_matrix->data[i * b_cols + j] = b_matrix->data[(b_rows - i) * b_cols + (b_cols - j)];
+      b_matrix->data[(b_rows - i) * b_cols + (b_cols - j)] = temp;
+    }
+  }
 
-  return -1;
+  int32_t a_rows = a_matrix->rows;
+  int32_t a_cols = a_matrix->cols;
+
+  matrix_t *answer = malloc(sizeof(matrix_t));
+  output_matrix = &answer;
+  if (!answer) return -1;
+
+  answer->data = malloc((a_rows - b_rows) * (a_cols - b_cols) * sizeof(int32_t));
+
+  for (int i = 0; i < a_rows - b_rows; i++) {
+    for (int j = 0; j < a_cols - b_cols; j++) {
+      uint32_t temp = 0;
+      for (int k = 0; k < b_rows; k++) {
+        for (int l = 0 ; l < b_cols; l++) {
+          temp += b_matrix->data[k * b_cols + l] *
+            a_matrix->data[(i + k) * a_cols + j + l];
+        }
+      }
+      answer->data[i * a_cols + j] = temp;
+    }
+  }
+
+  return 0;
 }
 
 // Executes a task
