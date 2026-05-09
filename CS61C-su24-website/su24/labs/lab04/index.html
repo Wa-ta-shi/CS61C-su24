@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Lab 4 | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup">Setup</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#starter">Starter</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#venus">Venus</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#calling-convention">Calling Convention</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#example-putting-it-into-practice">Example: Putting It Into Practice</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#example-converting-from-c-to-risc-v-with-calling-convention">Example: Converting from C to RISC-V with Calling Convention</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-calling-convention-checker">Exercise 1: Calling Convention Checker</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-1-examine-the-code">Exercise 1.1: Examine the Code</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-2-callee-function">Exercise 1.2: Callee Function</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-3-caller-and-callee-function">Exercise 1.3: Caller and Callee Function</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-2-fixing-cc-errors-s-edition">Exercise 2: Fixing CC Errors: s Edition</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-3-fixing-cc-errors-t-edition">Exercise 3: Fixing CC Errors: t Edition</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-4-reflection-and-feedback-form">Exercise 4: Reflection and Feedback Form</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submission">Submission</a>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Lab 4: RISC-V Calling Convention</h1>
+<p class="subtitle">Deadline: Tuesday, July 9, 11:59:59 PM PT</p>
+<p><a href="https://docs.google.com/presentation/d/1xInbL0OQW_ylQNGHc6KXhsTMRc3Kin2YzPBJ0-IwZVc/view#slide=id.g2122c1dfc1a_0_7">Lab Slides</a></p>
+<h2 id="setup">Setup</h2>
+<h3 id="starter">Starter</h3>
+<div class="alert alert-warning">
+<p>You must complete this lab on your <strong>local</strong> machine. See <a href="../lab00/index.html">Lab 0</a> if you need to set up your local machine again.</p>
+</div>
+<p>In your <code>labs</code> directory on your local machine, pull any changes you may have made in past labs:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull origin main</span>
+</span></code></pre>
+<p>Still in your <code>labs</code> directory on your local machine, pull the files for this lab with:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+<p>If you get an error like the following:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">fatal: &#39;starter&#39; does not appear to be a git repository
+fatal: Could not read from remote repository.
+</span></code></pre>
+<p>make sure to set the starter remote as follows:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> remote add starter https://github.com/61c-teach/su24-lab-starter.git</span>
+</span></code></pre>
+<p>and run the original command again.</p>
+<p>Still in your <code>labs</code> directory, run the following command to download the newest version of some tools we may need:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">bash</span></span><span class="z-meta z-function-call z-arguments z-shell"> tools/download_tools.sh</span>
+</span></code></pre>
+<p>If you run into any <code>git</code> errors, please check out the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<h3 id="venus">Venus</h3>
+<p>Like lab 3, we will be using the <a href="https://venus.cs61c.org/">Venus RISC-V simulator</a>. Also, please refer to the <a href="../../resources/venus-reference/index.html">Venus reference</a> on our course website when you need a refresher on any of the Venus features.</p>
+<p>Mount the lab 4 files as you did with <a href="../lab03/index.html#exercise-1-venus-basics">Lab 3</a>.</p>
+<hr/>
+<h2 id="calling-convention">Calling Convention</h2>
+<p>Here is an <a href="../../projects/proj2/calling-convention.1.html">appendix on calling convention</a>. We recommend reading over it if you are not feeling comfortable, since correct calling convention is crucial for RISC-V programming.</p>
+<p>Other great resources that we recommend getting familiar with are lab slides and <a href="../../lectures/lec07/index.html">calling convention lecture</a> in order to understand the motivation behind calling convention.</p>
+<p>We have provided two practical walkthroughs of calling convention (CC) below. We understand that these examples are long, but they will help you get an idea of how to follow calling convention when writing RISC-V, and make this lab much easier to solve.</p>
+<h3 id="example-putting-it-into-practice">Example: Putting It Into Practice</h3>
+<p>Let's say we have the following assembly code structure for a function named <code>func1</code>. Let's say <code>func1</code> is a function being called by another function (let's say the <code>main</code> function). From the code, you will also see that <code>func1</code> will also call another function named <code>func2</code>. When <code>func1</code> was called by the <code>main</code> function, <code>func1</code> was the callee. However, when <code>func1</code> calls <code>func2</code>, <code>func1</code> becomes the caller. Therefore, <code>func1</code> will have to assume the responsibilities of being a callee and a caller when following the calling convention.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">func1: # modifies a0, t0, and s0. ra points to the `main` function.
+    # Checkpoint 1: What do you need to do before you start modifying registers?
+
+    # Some block of code using a0, t0, and s0
+    # Checkpoint 2: What do you need to do before you call another function?
+
+    # input argument at a0, return value at a0
+    jal ra, func2  # call func2
+    # Checkpoint 3: What do you need to do after a function call?
+
+    # Some block of code using a0, t0, and s0
+    # Checkpoint 4: What do you need to do before this function returns?
+
+    jr ra   # function return
+</span></code></pre>
+<p>Saving values into the stack is done using the <code>sw</code> instruction to the appropriate stack pointer (<code>sp</code>). Retrieving values from the stack is done using the <code>lw</code> instruction on the corresponding stack pointer. Whenever you want to save values into the stack, you need to adjust the stack pointer (by decreasing the stack pointer). Whenever you want to retrieve values from the stack, you need to adjust the stack pointer back in reverse (by increasing the stack pointer). Doing these procedures will ensure that the stack pointer will end up being the same at the start and end of the function call. That is how functions utilize the stack memory as temporary storage.</p>
+<p>Let's try to fill in the code for every checkpoint in the code.</p>
+<p>For Checkpoint 1, since <code>func1</code> is the callee (called my <code>main</code>), it has to save the callee saved registers that it will be modifying. The code says that we will be modifying <code>s0</code> which is a saved register. Moreover, since this <code>func1</code> will also be calling another function <code>func2</code>, it will also need to save the return address (<code>ra</code>). While the <code>ra</code> register is labelled as a caller saved register, saving <code>ra</code> into the stack is typically done at this step. Since we will be saving 2 registers, we will have to adjust the <code>sp</code> register by 2 words (8 bytes). Accordingly, we have the following code:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">    # Checkpoint 1: What do you need to do before you start modifying registers?
+    addi sp sp -8   # Push the stack pointer down by 2 words (8 bytes)
+    sw ra 0(sp)     # Save the return address register (ra)
+    sw s0 4(sp)     # Save the saved register (s0)
+</span></code></pre>
+<p>For Checkpoint 2, we see that <code>a0</code>, <code>t0</code>, <code>s0</code> have been modified before, and we are now about to call <code>func2</code> (<code>func1</code> now becomes the caller). We see that <code>func2</code> takes in the input argument at <code>a0</code> and sets the return value also at the same register. Moreover, we see that later on in the code (after Checkpoint 3), we will be using <code>t0</code> and <code>s0</code> registers again. Thus, in the perspective of <code>func1</code>, both of these registers should be unchanged before and after the function call to <code>func2</code>. We know that if <code>func2</code> is following the calling convention, it should be saving the <code>s0</code> register into the stack and retrieving it back to the original value before it returns. That is something that we want. However, <code>t0</code> is not saved by <code>func2</code> and will have the freedom to change it within the function. Thus, as the caller to <code>func2</code>, <code>func1</code> is now responsible in saving <code>t0</code> into the stack as well. Accordingly, we have the following code:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">    # Checkpoint 2: What do you need to do before you call another function?
+    addi sp sp -4   # Push the stack pointer down by 1 word (4 bytes)
+    sw t0 0(sp)     # Save the temporary register (t0)
+</span></code></pre>
+<p>For Checkpoint 3, <code>func2</code> has now returned with the return value stored at <code>a0</code>. <code>func1</code> is now about to do some operations using this return value (<code>a0</code>) and the <code>t0</code> and <code>s0</code> registers. Again, if <code>func2</code> followed the calling convention, the value of <code>s0</code> register should've been unchanged in the perspective of <code>func1</code>. However, <code>t0</code> might have been modified. Good thing is that we have already saved it in the stack before calling <code>func2</code>. We just have to retrieve it now. Accordingly, we have the following code:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">    # Checkpoint 3: What do you need to do after a function call?
+    lw t0 0(sp)     # Retrieve the saved temporary register from the stack
+    addi sp sp 4    # Return the stack pointer up by 1 word (4 bytes)
+</span></code></pre>
+<p>For Checkpoint 4, we are now at the point where <code>func1</code> has finished doing its operations and will be returning back to <code>main</code>. However, before it returns, it has to make sure it has accomplished its callee responsibilities as well. Earlier in Checkpoint 1, we saved the <code>ra</code> and <code>s0</code> registers into the stack. It is now time to retrieve them. During the operation of <code>func1</code>, it has modified the <code>s0</code> register and the <code>ra</code> register (due to the function call to <code>func2</code>). As the callee, it has the responsibility to bring them back to their original values such that in the perspective of the <code>main</code> function, these registers were unchanged. Accordingly, we have the following code:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">    # Checkpoint 4: What do you need to do before this function returns?
+    lw s0 4(sp)     # Retrieve the original saved register (s0)
+    lw ra 0(sp)     # Retrieve the original return address (ra). This points back to the main function.
+    addi sp sp 8    # Return the stack pointer up by 2 words (8 bytes)
+</span></code></pre>
+<p>And with this, we have now satisfied the RISC-V calling convention for <code>func1</code>. Here is the complete code:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">func1: # modifies a0, t0, and s0. ra points to the `main` function.
+    # Checkpoint 1: What do you need to do before you start modifying registers?
+    addi sp sp -8   # Push the stack pointer down by 2 words (8 bytes)
+    sw ra 0(sp)     # Save the return address register (ra)
+    sw s0 4(sp)     # Save the saved register (s0)
+
+    # Some block of code using a0, t0, and s0
+    # Checkpoint 2: What do you need to do before you call another function?
+    addi sp sp -4   # Push the stack pointer down by 1 word (4 bytes)
+    sw t0 0(sp)     # Save the temporary register (t0)
+
+    # input argument at a0, return value at a0
+    jal ra, func2  # call func2
+    # Checkpoint 3: What do you need to do after a function call?
+    lw t0 0(sp)     # Retrieve the saved temporary register from the stack
+    addi sp sp 4    # Return the stack pointer up by 1 word (4 bytes)
+
+    # Some block of code using a0, t0, and s0
+    # Checkpoint 4: What do you need to do before this function returns?
+    lw s0 4(sp)     # Retrieve the original saved register (s0)
+    lw ra 0(sp)     # Retrieve the original return address (ra). This points back to the main function.
+    addi sp sp 8    # Return the stack pointer up by 2 words (8 bytes)
+
+    jr ra   # function return
+</span></code></pre>
+<p>Let's say register <code>sp</code> starts at 0x7FFFFFF0 at the start of <code>func1</code> call.</p>
+<details>
+<summary>At what memory address is <code>s0</code> saved at?</summary>
+<p>The stack pointer was adjusted -8, but <code>s0</code> is stored at 4 + <code>sp</code>. Thus, 0x7FFFFFF0 - 8 + 4 = 0x7FFFFFEC</p>
+</details>
+<details>
+<summary>At what memory address is <code>t0</code> saved at?</summary>
+<p>The stack pointer was adjusted -8 earlier, then before saving t0, we adjust it again by -4. Thus, 0x7FFFFFF0 - 8 - 4 = 0x7FFFFFE4</p>
+</details>
+<details>
+<summary>At the end of <code>func1</code> (at the line jr ra), where is the stack pointer pointing to?</summary>
+<p>It should be back at the original value since we have retrieved the saved data and returned the stack pointer afterwards. Thus, 0x7FFFFFF0.</p>
+</details>
+<details>
+<summary>If we didn't implement the code in Checkpoint 2 and 3, what can go wrong?</summary>
+<p>After Checkpoint 3, it was described that <code>func1</code> will be using <code>t0</code> again. Since <code>t0</code> is a caller saved register, the callee (which is <code>func2</code>) has the freedom to change <code>t0</code> and does not need to return the original value back. If <code>t0</code> was indeed modified by <code>func2</code>, then the calculations done by <code>func1</code> will be wrong since the function call changed one of its temporary variables.</p>
+</details>
+<details>
+<summary>If we didn't save <code>ra</code> at all, what can go wrong?</summary>
+<p><code>ra</code> points to the address of the calling function. At the start of <code>func1</code>, it is pointing to somewhere in the <code>main</code> function. Whenever you run the <code>jal</code> instruction, it modifies <code>ra</code> such that it points to the next line after that instruction. This is done so that when <code>jr ra</code> is run, it will continue execution to where the <code>ra</code> is pointing at. <code>func1</code> has a function call to <code>func2</code>. This changes <code>ra</code> such that it will point to the instruction after that (<code>lw t0 0(sp)</code>). This is now pointing somewhere in <code>func1</code> itself. If <code>ra</code> was not saved at all, then when <code>func1</code> executes the <code>jr ra</code> instruction at the end, it will jump back to that instruction (<code>lw t0 0(sp)</code>), which is not the intended execution flow.</p>
+</details>
+<h3 id="example-converting-from-c-to-risc-v-with-calling-convention">Example: Converting from C to RISC-V with Calling Convention</h3>
+<p>In this exercise, you will be guided through how to translate the below C program into RISC-V. If you are looking for an additional challenge, you can translate the code first before looking at the solution.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">int</span> source<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span><span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span><span class="z-constant z-numeric z-integer z-decimal z-c">3</span><span class="z-punctuation z-separator z-c">,</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-separator z-c">,</span> <span class="z-constant z-numeric z-integer z-decimal z-c">4</span><span class="z-punctuation z-separator z-c">,</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-separator z-c">,</span> <span class="z-constant z-numeric z-integer z-decimal z-c">5</span><span class="z-punctuation z-separator z-c">,</span> <span class="z-constant z-numeric z-integer z-decimal z-c">9</span><span class="z-punctuation z-separator z-c">,</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-section z-block z-end z-c">}</span></span><span class="z-punctuation z-terminator z-c">;</span>
+<span class="z-storage z-type z-c">int</span> dest<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span><span class="z-constant z-numeric z-integer z-decimal z-c">10</span><span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-terminator z-c">;</span>
+
+<span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">fun</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c">x</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+	<span class="z-keyword z-control z-flow z-return z-c">return</span> <span class="z-keyword z-operator z-arithmetic z-c">-</span>x <span class="z-keyword z-operator z-c">*</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>x <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+
+<span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">main</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+    <span class="z-storage z-type z-c">int</span> k<span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-storage z-type z-c">int</span> sum <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-keyword z-control z-c">for</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>k <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span> source<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-comparison z-c">!=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span> k<span class="z-keyword z-operator z-arithmetic z-c">++</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+        dest<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-function-call z-c"><span class="z-variable z-function z-c">fun</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">source<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+        sum <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> dest<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-punctuation z-section z-block z-end z-c">}</span></span>
+    <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>sum: <span class="z-constant z-other z-placeholder z-c">%d</span><span class="z-constant z-character z-escape z-c">\n</span><span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-separator z-c">,</span> sum</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>Let's start with initializing the <code>source</code> and <code>dest</code> arrays. Just like we did in Lab 3, we need to declare our arrays in the <code>.data</code> section as seen below:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">.data
+source:
+    .word   3
+    .word   1
+    .word   4
+    .word   1
+    .word   5
+    .word   9
+    .word   0
+dest:
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+    .word   0
+</span></code></pre>
+<p>Next, let's write <code>fun</code>.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">fun</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c">x</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+	<span class="z-keyword z-control z-flow z-return z-c">return</span> <span class="z-keyword z-operator z-arithmetic z-c">-</span>x <span class="z-keyword z-operator z-c">*</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>x <span class="z-keyword z-operator z-arithmetic z-c">+</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>Calling convention states that</p>
+<ul>
+<li>We can find <code>x</code> in register <code>a0</code>.</li>
+<li>We must put our return value in register <code>a0</code></li>
+</ul>
+<p>The rest of the code is explained in the comments below.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">.text
+fun:
+    addi t0, a0, 1 # t0 = x + 1
+    sub t1, x0, a0 # t1 = -x
+    mul a0, t0, t1 # a0 = (x + 1) * (-x)
+    jr ra # return
+</span></code></pre>
+<details>
+<summary>Ask yourself: why did we not save <code>t1</code> before using it?</summary>
+<p><code>t1</code> is a caller saved register. Calling convention does not guarantee that caller saved registers will remain unchanged after a function call. Therefore, <code>fun</code> can change <code>t1</code> without saving its old value. If the function that called <code>fun</code> had a value stored in <code>t1</code> that it wants to use after <code>fun</code> returns, it would need to save <code>t1</code> before calling <code>fun</code>.</p>
+</details>
+<p>Let's move onto main. (We are going to ignore calling convention for a minute).</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">main</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+    <span class="z-storage z-type z-c">int</span> k<span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-storage z-type z-c">int</span> sum <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span>
+</span></span></span></code></pre>
+<p>The above code becomes the following:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">main:
+    addi t0, x0, 0 # t0 = k = 0
+    addi s0, x0, 0 # s0 = sum = 0
+</span></code></pre>
+<p>We have to initialize <code>k</code> to 0 because there is no way to declare a variable in RISC-V and not set it.</p>
+<p>Next, let's load in the address of the two arrays.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">    la s1, source
+    la s2, dest
+</span></code></pre>
+<p>Remember that <code>la</code> loads the address of a label. This is the only way that we can access the address of <code>source</code> and <code>dest</code>. <code>s1</code> is now a pointer to the source array and <code>s2</code> is now a pointer to the <code>dest</code> array.</p>
+<p>Let's move on to the loop.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-keyword z-control z-c">for</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>k <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span> source<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-comparison z-c">!=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span> k<span class="z-keyword z-operator z-arithmetic z-c">++</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+    dest<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-function-call z-c"><span class="z-variable z-function z-c">fun</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">source<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+    sum <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> dest<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>k<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-terminator z-c">;</span>
+<span class="z-punctuation z-section z-block z-end z-c">}</span></span>
+</span></code></pre>
+<p>First, we'll construct the outer body of the loop.</p>
+<pre class="z-code"><code><span class="z-text z-plain">loop:
+#1  slli s3, t0, 2
+#2  add t1, s1, s3
+#3  lw t2, 0(t1)
+#4  beq t2, x0, exit
+    ...
+#5  addi t0, t0, 1
+#6  jal x0, loop
+exit:
+</span></code></pre>
+<ol>
+<li>
+<p>Lines 1-3 are needed to access <code>source[k]</code>. First we want to compute the byte offset of the element. We are dealing with <code>int</code> arrays, so the size of each element is <code>4 bytes</code>. This means that we need to multiply <code>t0</code> (k) by 4 to compute the byte offset. To multiply a value by 4, we can just shift it left by 2.</p>
+</li>
+<li>
+<p>Next, we need to add the offset to the array pointer to compute the address of <code>source[k]</code>.</p>
+</li>
+<li>
+<p>Now that we have the address, we can load the value in from memory.</p>
+</li>
+<li>
+<p>Then, we check to see if <code>source[k]</code> is 0. If it is, we jump to the exit.</p>
+</li>
+<li>
+<p>At the end of the loop, we increment <code>k</code> by 1</p>
+</li>
+<li>
+<p>Finally, we loop back the to beginning</p>
+</li>
+</ol>
+<p>Now, Let's fill in the rest of the loop (ignoring calling convention at first)</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">loop:
+    slli s3, t0, 2
+    add t1, s1, s3
+    lw t2, 0(t1)
+    beq t2, x0, exit
+#1  add a0, x0, t2 # 1
+    ...
+#2  jal fun # 2
+    ...
+#3  add t3, s2, s3 # 4
+#4  sw a0, 0(t3) # 5
+#5  add s0, s0, a0 # 6
+    addi t0, t0, 1
+    jal x0, loop
+exit:
+</span></code></pre>
+<ol>
+<li>
+<p>Fun takes in the argument <code>x</code>. We must pass this argument through <code>a0</code> so that <code>fun</code> will know where to find it.</p>
+</li>
+<li>
+<p>Call <code>fun</code>. <code>jal</code> automatically saves the return address in <code>ra</code>.</p>
+</li>
+<li>
+<p>Next, we want so store this value in <code>dest</code>. First we need to compute the address of where we want to store the value in <code>dest</code>. Remember that we can reuse the <code>offset</code> that we computed earlier (this can be found in <code>s3</code>). <code>s2</code> is a pointer to the beginning of <code>dest</code>.</p>
+</li>
+<li>
+<p>Store value at <code>dest[k]</code>. Remember that <code>fun</code> placed the return value in <code>a0</code>.</p>
+</li>
+<li>
+<p>Increment <code>sum</code> by <code>dest[k]</code></p>
+</li>
+</ol>
+<p>Now, let's add in the proper calling convention around <code>jal fun</code>. Before scrolling down, ask yourself what code we need to add to meet calling convention.</p>
+<p>To meet calling convention (and therefore have our code behave as expected), we need to save any caller saved registers whose values we want to remain the same after calling <code>fun</code>. In this case, we can see that we use registers <code>t0</code>, <code>t1</code>, <code>t2</code>, and <code>t3</code> in <code>main</code>. </p>
+<details>
+<summary>Do we need to save and restore all of these registers?</summary>
+<p>No, we only need to save and restore <code>t0</code>. We use <code>t1</code> and <code>t2</code> before <code>fun</code>, but we don't reuse their after. We write to <code>t3</code> after <code>fun</code>, so we don't care what its old value was.</p>
+<p><code>t0</code> is the only caller saved register we have whose value must stay the same before and after <code>fun</code>.</p>
+</details>
+<p>Let's add the proper calling convention code around <code>jal fun</code>.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">addi sp, sp, -4
+sw t0, 0(sp)
+jal fun
+lw t0, 0(sp)
+addi sp, sp, 4
+</span></code></pre>
+<p>Next, let's move on to <code>exit</code> (excluding calling convention for the moment).</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">exit:
+    addi a0, x0, 1 # argument to ecall, 1 = execute print integer
+    addi a1, s0, 0 # argument to ecall, the value to be printed
+    ecall # print integer ecall
+    addi a0, x0, 10 # argument to ecall, 10 = terminate program
+    ecall # terminate program
+</span></code></pre>
+<p>The final sum is stored in <code>s0</code>. To print this value, we need to store it in <code>a1</code>, the argument to ecall that will get printed.</p>
+<p>Now we have completed the logic of our program. Next we need to finish up calling convention for <code>main</code>.</p>
+<details>
+<summary>Think to yourself, which piece of the calling convention is missing?</summary>
+<p>We are overwriting callee saved registers without saving them! Remember that it is the callee's job to ensure that callee saved registers have the same value at the start and end of the function.</p>
+</details>
+<details>
+<summary>Which callee saved registers do we need to save?</summary>
+<p>We need to save any callee saved registers that we used. We don't know which of these registers are being used by the function that called us, so we have to save all of the ones that we overwrite. In this case, that would be registers <code>s0-s3</code> and <code>ra</code>.</p>
+</details>
+<p>It might be tricky understanding why we need to save <code>ra</code>. Remember that another function called <code>main</code>. When that function called <code>main</code>, it stored a return address in <code>ra</code> so that <code>main</code> would know where to return to when it finished executing. When <code>main</code> calls <code>fun</code>, it needs to store a return address in <code>ra</code> so that <code>fun</code> knows where to return to when it finishes executing. Therefore, <code>main</code> must save <code>ra</code> before it overwrites it.</p>
+<p>Below, you can find the prologue and epilogue for <code>main</code>:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">main:
+    # BEGIN PROLOGUE
+    addi sp, sp, -20
+    sw s0, 0(sp)
+    sw s1, 4(sp)
+    sw s2, 8(sp)
+    sw s3, 12(sp)
+    sw ra, 16(sp)
+    # END PROLOGUE
+    ...
+    ...
+exit:
+    addi a0, x0, 1 # argument to ecall, 1 = execute print integer
+    addi a1, s0, 0 # argument to ecall, the value to be printed
+    ecall # print integer ecall
+    # BEGIN EPILOGUE
+    lw s0, 0(sp)
+    lw s1, 4(sp)
+    lw s2, 8(sp)
+    lw s3, 12(sp)
+    lw ra, 16(sp)
+    addi sp, sp, 20
+    # END EPILOGUE
+    addi a0, x0, 10 # argument to ecall, 10 = terminate program
+    ecall # terminate program
+</span></code></pre>
+<p>You can find the entire program in <code>example_c_to_riscv.s</code>.</p>
+<h2 id="exercise-1-calling-convention-checker">Exercise 1: Calling Convention Checker</h2>
+<div class="alert alert-warning">
+<p>Make sure you understand calling convention (the lab slides are a good resource!) before you attempt the following exercises.</p>
+</div>
+<p>Calling convention errors can cause bugs in your code that are difficult to find. The calling convention checker is used to detect calling convention violations in your code. However, it is <strong>not</strong> comprehensive. In this exercise, you will use the calling convention checker to fix some calling convention issues.</p>
+<p><strong>Note:</strong> Venus's calling convention checker will not report all calling convention bugs; it is intended to be used primarily as a basic check. Most importantly, <strong>it will only look for bugs in functions that are exported with the <code>.globl</code> directive</strong> - the meaning of <code>.globl</code> is explained in more detail in the <a href="../../resources/venus-reference/index.html#working-with-multiple-files">Venus reference</a>.</p>
+<ol>
+<li>To enable the calling convention checker, <strong>click</strong> on the Venus tab at the top of the page, and <strong>click</strong> &quot;Enable&quot; for the &quot;Calling Convention&quot; row under the &quot;Settings&quot; pane.
+<ul>
+<li>You can also run the calling convention checker in your command line using the <code>-cc</code> flag. For example, <code>java -jar tools/venus.jar -cc lab04/ex1.s</code>.</li>
+</ul>
+</li>
+<li><strong>Open</strong> <code>ex1.s</code> in the simulator tab.</li>
+<li><strong>Run</strong> the simulator, and you should see some errors similar to the errors below.</li>
+</ol>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">[CC Violation]: (PC=0x0000004C) Setting of a saved register (s0) which has not been saved! ex1.s:54 li s0, 1
+[CC Violation]: (PC=0x00000054) Setting of a saved register (s0) which has not been saved! ex1.s:57 mul s0, s0, a0
+[CC Violation]: (PC=0x00000054) Setting of a saved register (s0) which has not been saved! ex1.s:57 mul s0, s0, a0
+[CC Violation]: (PC=0x00000054) Setting of a saved register (s0) which has not been saved! ex1.s:57 mul s0, s0, a0
+[CC Violation]: (PC=0x00000054) Setting of a saved register (s0) which has not been saved! ex1.s:57 mul s0, s0, a0
+[CC Violation]: (PC=0x00000054) Setting of a saved register (s0) which has not been saved! ex1.s:57 mul s0, s0, a0
+[CC Violation]: (PC=0x00000054) Setting of a saved register (s0) which has not been saved! ex1.s:57 mul s0, s0, a0
+[CC Violation]: (PC=0x00000054) Setting of a saved register (s0) which has not been saved! ex1.s:57 mul s0, s0, a0
+[CC Violation]: (PC=0x00000064) Save register s0 not correctly restored before return! Expected 0x00000000, Actual 0x00000080. ex1.s:65 jr ra
+[CC Violation]: (PC=0x00000070) Setting of a saved register (s0) which has not been saved! ex1.s:79 mv s0, a0 # Copy start of array to saved register
+[CC Violation]: (PC=0x00000074) Setting of a saved register (s1) which has not been saved! ex1.s:80 mv s1, a1 # Copy length of array to saved register
+[CC Violation]: (PC=0x000000A4) Setting of a saved register (s0) which has not been saved! ex1.s:117 addi s0, t1, 1
+Found 12 warnings!
+--------------------
+[ERROR] An error has occurred!
+
+Error:
+`StoreError: You are attempting to edit the text of the program though the program is set to immutable at address 0x00000006!
+</span></code></pre>
+<p>More information about these errors can be found in the <a href="../../resources/venus-reference/index.html#calling-convention-checker">Venus reference</a>.</p>
+<h3 id="exercise-1-1-examine-the-code">Exercise 1.1: Examine the Code</h3>
+<p>Read through <code>ex1.s</code>. Make sure you have the answer to the following questions.</p>
+<details>
+<summary>Is <code>next_test</code> a function?</summary>
+<p>No, it's just a label that is used to skip over the call to <code>failure</code>. If a label is a function, we will jump and link to it because we always want our functions to return back to us. In this case, we just jumped to <code>next_test</code>.</p>
+</details>
+<details>
+<summary>Why wasn't the calling convention error in <code>helper_fn</code> reported by the CC checker? (Hint: it's mentioned above in the exercise instructions.)</summary>
+<p>It's not declared <code>.globl</code>. The calling convention checker will not test functions that are not declared <code>.globl</code>. Note: The bug in helper_fn will initially be reported by the checker, but when the bugs in the function that calls it are fixed, this one is no longer reported.</p>
+</details>
+<h3 id="exercise-1-2-callee-function">Exercise 1.2: Callee Function</h3>
+<p>Using the printed errors, <strong>fix</strong> <code>pow</code> and <code>helper_fn</code> functions' calling convention errors. </p>
+<p>The fixes for all of these errors (both the ones reported by the CC checker and the ones it can't find) should be added near the lines marked by the <code>FIXME</code> comments in the starter code.
+After you fix it, you should see less error messages reported by CC checker. Also, make sure you have the answer to the following questions.</p>
+<details>
+<summary>What caused the errors in <code>pow</code> that
+were reported by the Venus CC checker?</summary>
+<p>Missing epilogue and prologue.</p>
+</details>
+<details>
+<summary>In RISC-V, we call functions by jumping to them and storing the return address in the <code>ra</code> register. Does calling convention apply to the jumps to the <code>pow_loop</code> or <code>pow_end</code> labels?</summary>
+<p>No, since they're not functions, we don't need to return to the location the function was called.</p>
+</details>
+<h3 id="exercise-1-3-caller-and-callee-function">Exercise 1.3: Caller and Callee Function</h3>
+<p>Using the printed errors, <strong>fix</strong> <code>inc_arr</code> function's calling convention errors. </p>
+<p>The fixes for all of these errors (both the ones reported by the CC checker and the ones it can't find) should be added near the lines marked by the <code>FIXME</code> comments in the starter code.
+After you fix it, your output should look similar to:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">Tests passed.
+Found 0 warnings!
+</span></code></pre>
+<p>Before moving on to the next exercise, make sure you have answers to the questions below.</p>
+<details>
+<summary>What caused the errors in <code>inc_arr</code> that
+were reported by the Venus CC checker?</summary>
+<p><code>inc_arr</code>: Failure to save <code>s0</code>, <code>s1</code> in prologue/epilogue, and failure to save <code>t0</code> before calling <code>helper_fn</code>.</p>
+</details>
+<details>
+<summary>Why do we need to store <code>ra</code> in the prologue for <code>inc_arr</code>, but not in any other function?</summary>
+<p><code>inc_arr</code> itself calls another function - <code>ra</code> holds the address of the instruction to continue executing after returning, which is overwritten when we call another function since we need to be able to return to the body of <code>inc_arr</code>.</p>
+</details>
+<h2 id="exercise-2-fixing-cc-errors-s-edition">Exercise 2: Fixing CC Errors: <code>s</code> Edition</h2>
+<p>In this exercise, the starter code includes a recursive pow function that has one or more common calling convention errors that we have seen in past semesters. Your task is to fix these errors so that you will be able to avoid these errors when you are writing RISC-V.</p>
+<div class="alert alert-warning">
+<p><strong>Warning</strong>: You may only add lines to the starter code. Please do not modify or remove any existing lines.</p>
+</div>
+<ol>
+<li><strong>Open</strong> <code>ex2.s</code> and <strong>run</strong> it in Venus. Note that the program does not exit due to an infinite loop. </li>
+<li><strong>Read</strong> through the code and the comments. Make sure that you have read the comment that starts with <code>Note</code>. Think about why the program has an infinite loop, and look for calling convention violations.</li>
+<li><strong>Fix</strong> the calling convention errors. </li>
+</ol>
+<h2 id="exercise-3-fixing-cc-errors-t-edition">Exercise 3: Fixing CC Errors: <code>t</code> Edition</h2>
+<p>Similar to the last exercise, the starter code for this exercise includes a recursive pow function that has one or more common calling convention errors that we have seen in past semesters. Your task is to fix these errors so that you will be able to avoid these errors when you are writing RISC-V. Note that the pow function in this exercise is implemented a bit differently.</p>
+<div class="alert alert-warning">
+<p><strong>Warning</strong>: You may only add lines to the starter code. Please do not modify or remove any existing lines.</p>
+</div>
+<ol>
+<li><strong>Open</strong> <code>ex3.s</code> and <strong>run</strong> it in Venus. Note that the program never stops due to an infinite loop. </li>
+<li><strong>Read</strong> through the code and the comments. Make sure that you have read the two comments that start with <code>Note</code>. Think about why the program has an infinite loop, and look for calling convention violations. How does this pow function differ from the one from the previous exercise? </li>
+<li><strong>Fix</strong> the calling convention errors. </li>
+</ol>
+<h2 id="exercise-4-reflection-and-feedback-form">Exercise 4: Reflection and Feedback Form</h2>
+<p>We are working to improve the class every week - please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSfStRg3e6pZh9haaftPUhiIz9QjRxmatBOO0XY_kjM9nu2dgA/viewform?usp=sf_link">this survey</a> to tell us about your experience in discussion and lab so far!</p>
+<hr/>
+<h2 id="submission">Submission</h2>
+<p>Save, commit, and push your work, then submit to the <strong>Lab 4</strong> assignment on Gradescope.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Home | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="su24/img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="su24/css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="su24/js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="su24/js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="su24/img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="su24/calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="su24/staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="su24/exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="su24/policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="su24/resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="su24/pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<section class="mb-4">
+<h1>Great Ideas in Computer Architecture (Machine Structures)</h1>
+<h2 class="h3 text-secondary">CS 61C at UC Berkeley with Jedi Tsang, Eddy Byun, Nikhil Kandkur, Andrew Liu - Summer 2024</h2>
+<p>
+<b>Lecture</b>: Monday&#x2F;Tuesday&#x2F;Wednesday&#x2F;Thursday 2:00PM - 3:30PM PT, VLSB 2050 <br/>
+Recordings will be published to <a href="https:&#x2F;&#x2F;bcourses.berkeley.edu&#x2F;courses&#x2F;1535445&#x2F;external_tools&#x2F;90481">bCourses Media Gallery</a>
+</p>
+</section>
+<section class="table-responsive">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Week</th>
+<th>Date</th>
+<th>Lecture</th>
+<th>Discussion</th>
+<th>Lab</th>
+<th>HW</th>
+<th>Project</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">1</td>
+<td class="align-middle text-center">Mon 6&#x2F;17</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec01/index.html">Lecture 1: Intro, Number Representation</a>
+<div>
+<span>Readings: </span>
+<a class=" " href="su24/policies/index.html">Course Policies</a><span>, </span><span class="  disabled-link">P&H:2-4</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1ocWdHNwsI_NbY_48jGq2CWitB0msM_rT_opSroQLBIo/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1EIdiVs3oLE2gEZjGa7Dv4uBKEysiP4Wt?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5047229">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="3"></td>
+<td class="align-middle" rowspan="3">
+<a href="su24/labs/lab00/index.html">Lab 0: Intro, Setup</a>
+<span class="badge border border-faded">Due 6&#x2F;21</span>
+</td>
+<td class="align-middle" rowspan="1"></td>
+<td class="align-middle" rowspan="3"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 6&#x2F;18</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec02/index.html">Lecture 2: C Intro - Basics, Pointers, Arrays</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">K&R 1-6</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/garcia_c_reference_slides.pdf">C Reference Slides</a><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/HarveyNotesC1-3.pdf">Brian Harvey's Intro to C</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1aHkXfO_R_97xcpo7kUjg5WCH_FRCSWR4jKLeFzNkpFQ/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1ZQgVmUii7bWvzVAcIy-8k8rZHJc7DrtJ?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5049162">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="7">
+<a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425979">Homework 1: Number Rep, C</a>
+<span class="badge border border-faded">Due 6&#x2F;26</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 6&#x2F;19</td>
+<td class="align-middle">
+No Lecture: Holiday
+<br>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 6&#x2F;20</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec03/index.html">Lecture 3: C - Strings &amp; Memory</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">K&R 5-6, 7.8.5, 8.7</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1iqyFIHRJlaRv_QdHwUHqbD_Tq1ZfNbDWXswXRMNtlvU/edit?usp=drive_link">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1QFYHuVCRwVIceUC64Z6XVIscqSRcDBgK?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5052230">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc01/index.html">Discussion 1: C, Number Rep</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc01.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc01-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/playlist?list=PLnvUoC1Ghb7wq7iPJB47O-PttTdXKqInl">Videos</a>
+</div>
+</td>
+<td class="align-middle" rowspan="3"></td>
+<td class="align-middle" rowspan="8">
+<a href="su24/projects/proj1/index.html">Project 1: snek</a>
+<span class="badge border border-faded">Checkpoint: Due 6&#x2F;27</span>
+<span class="badge border border-faded">Due 7&#x2F;01</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 6&#x2F;21</td>
+<td></td>
+<td class="align-middle" rowspan="1"></td>
+</tr>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">2</td>
+<td class="align-middle text-center">Mon 6&#x2F;24</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec04/index.html">Lecture 4: C - Generics</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">K&R 5.11</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1g-Y6NqS94epvp4y4ZJ0VyVvMKXfI2HHIf--sV2rs_kg/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/11wGWmJwpDAd8wSMJZz-4JD7YozLGPbyT?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5059714">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc02/index.html">Discussion 2: C</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc02.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc02-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=FuwSb7j3Ck4">Videos</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 6&#x2F;25</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec05/index.html">Lecture 5: Floating Point</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">IEEE 754 Simulator</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1yD1E5TJXGAfUDCCYKhF93ZGswfo50eBTiA5rN0qWEUk/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1xniYAS_M-4o6szKsVzoXqS1g80FtImP4?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5061383">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab01/index.html">Lab 1: C</a>
+<span class="badge border border-faded">Due 6&#x2F;25</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 6&#x2F;26</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec06/index.html">Lecture 6: Intro to RISC-V</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 2.1-2.3, 2.9, 2.10</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/13yshzRZfune7gakCCAfE7n7cswq3_t2AIQHi2nQpN00/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1BQr3pE4GTiMpolGSBVomq1Z0RT9aJpeU?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5064354">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc03/index.html">Discussion 3: C, Floating Point</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc03.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc03-sols.pdf">Solutions</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 6&#x2F;27</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec07/index.html">Lecture 7: RISC-V Procedures</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 2.6-2.8, 3.2</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1PB-RN5g_x-QbPJcquiUqcRJNNghSnWaB9PbKru16nZc/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1F6cUkIf6sz1WR1mwwFw0Jsq-wuwXJnFL?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5065607">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="2"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab02/index.html">Lab 2: C Debugging</a>
+<span class="badge border border-faded">Due 6&#x2F;27</span>
+</td>
+<td class="align-middle" rowspan="5">
+<a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425983">Homework 2: C, Floating Point, RISC-V</a>
+<span class="badge border border-faded">Due 7&#x2F;03</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 6&#x2F;28</td>
+<td></td>
+<td class="align-middle" rowspan="2"></td>
+</tr>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">3</td>
+<td class="align-middle text-center">Mon 7&#x2F;1</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec08/index.html">Lecture 8: RISC-V Instruction Format</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 2.5, 2.10</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1KIXm21A0iM3SUa-WlcjUxSWAHTQKYdTPDNUIbYAdaiw/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1TuTLtKy3FjEL5o5aWCJbVyHygPZd1b38?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5073783">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc04/index.html">Discussion 4: RISC-V</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc04.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc04-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=KY94WTA0R58">Videos</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 7&#x2F;2</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec09/index.html">Lecture 9: Compiler, Assembler, Linker, Loader</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 2.12</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1hKaTgNtJ3wjNQoys0dKUMojyzihiNxhp5ERyko_aOFw/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/10CcbDKh2rrd4hCsgC6GID9odwItdGCSV?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5075013">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab03/index.html">Lab 3: RISC-V, Venus</a>
+<span class="badge border border-faded">Due 7&#x2F;02</span>
+</td>
+<td class="align-middle" rowspan="10">
+<a href="su24/projects/proj2/index.html">Project 2: CS61Classify</a>
+<span class="badge border border-faded">Checkpoint: Due 7&#x2F;08</span>
+<span class="badge border border-faded">Due 7&#x2F;15</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 7&#x2F;3</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec10/index.html">Lecture 10: Combinational Logic, FSM</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H A.2–A.3,</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/boolean.pdf">Logic Handout</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/15RkxyOcRO2llAIKx0zlSYtbn8i9P4J0UI4jFbQN1y3Q/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/u/0/folders/1OD0rCPcUHK19kDfFPzSKUzZrm7_-k71G">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5077723">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc05/index.html">Discussion 5: RISC-V Instruction Formats, CALL</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc05.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc05-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=PR4i7a5kM6w">Videos</a>
+</div>
+</td>
+<td class="align-middle" rowspan="4"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 7&#x2F;4</td>
+<td class="align-middle">
+No lecture: Holiday
+<br>
+</td>
+<td class="align-middle" rowspan="2"></td>
+<td class="align-middle" rowspan="5">
+<a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425984">Homework 3: RISC-V, Logic</a>
+<span class="badge border border-faded">Due 7&#x2F;10</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 7&#x2F;5</td>
+<td></td>
+</tr>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">4</td>
+<td class="align-middle text-center">Mon 7&#x2F;8</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec11/index.html">Lecture 11: SDS</a>
+<div>
+<span>Readings: </span>
+<a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/sds.pdf">SDS Handout</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1d4oZCZa9X5e8Xs1UhNCTwDrcq_WV9dvOIbIkM2BBr4Y">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5085840">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc06/index.html">Discussion 6: Combinational Logic, Finite State Machines, SDS</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc06.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc06-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=AiZCUk4aaiY">Videos</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 7&#x2F;9</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec12/index.html">Lecture 12: RISC-V Single Cycle Datapath</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 4.1, 4.3, 4.4</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1Zsi698AOB1N4YzX55WYJWqg56RtlktggflXtE4ZdwnU/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5089166">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="4"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab04/index.html">Lab 4: RISC-V Calling Convention</a>
+<span class="badge border border-faded">Due 7&#x2F;09</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 7&#x2F;10</td>
+<td class="align-middle">
+Midterm Review (Optional)
+<br>
+<div class="btn-group mt-1" role="group" aria-label="Extra links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1XW1Mew4i6-ABbfV3Pv0KL9fPagKGYSsUdt9w8hSuAHc/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1521qRaos-bXWEtQmb2uVbFBZtJdwEXvF?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5091136">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="4"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 7&#x2F;11</td>
+<td class="align-middle">
+No Lecture: Midterm 7–9 PM
+<br>
+</td>
+<td class="align-middle" rowspan="5">
+<a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425985">Homework 4: SDS, Datapath</a>
+<span class="badge border border-faded">Due 7&#x2F;17</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 7&#x2F;12</td>
+<td></td>
+</tr>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">5</td>
+<td class="align-middle text-center">Mon 7&#x2F;15</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec13/index.html">Lecture 13: RISC-V Single Cycle Datapath Controls</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 4.4, 4.5</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1ZNi4ltSufSHPt6ewlM7dWoTzWJ64alNP8b8GkJPyrN4/edit">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5100329">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc07/index.html">Discussion 7: Single Cycle Datapath</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc07.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc07-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=VuuxQamVYQk">Videos</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 7&#x2F;16</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec14/index.html">Lecture 14: RISC-V 5-Stage Pipelining</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 4.6, 4.7, 4.8</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/19Ytbx2gMM6ue81ux5pDxAXPtNmKz8im-kchuJujEamw/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1ZzOuodIlsFRumVol6oG3nkpFKSbMBLy4?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5103525">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab05/index.html">Lab 5: Logisim</a>
+<span class="badge border border-faded">Due 7&#x2F;18</span>
+</td>
+<td class="align-middle" rowspan="10">
+<a href="su24/projects/proj3/index.html">Project 3: CS61CPU</a>
+<span class="badge border border-faded">Checkpoint: Due 7&#x2F;22</span>
+<span class="badge border border-faded">Due 7&#x2F;29</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 7&#x2F;17</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec15/index.html">Lecture 15: RISC-V 5-Stage Pipelining - Hazards</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 4.8, 4.10</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/105ANuS2dIzKTLieqhV9wLqVv0zvSfqrcBMnUtPdzy5I/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1nAmViMVvwcMcp0ks7eFPT2z0_POp_Cp9?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5105359">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc08/index.html">Discussion 8: Pipelining</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc08.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc08-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=OGzJyeEQOSw">Videos</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 7&#x2F;18</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec16/index.html">Lecture 16: Parallelism I - Intro, Data Level Parallelism</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 1.7, 1.8, 2.11, 4.10, 4.11, 5.10, 6.1-6.3, 6.5, 6.7</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/OpenMP3.0-SummarySpec.pdf">OpenMP Summary Card</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1XwjOC9sI2bSU7yjphhRAtIN-aSUZ_HZvv3_337AeVQc/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/13PVpOVUkyVVgF8EMd8wxpoilr1kHryXV?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5108152">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="2"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab06/index.html">Lab 6: Logisim II</a>
+<span class="badge border border-faded">Due 7&#x2F;18</span>
+</td>
+<td class="align-middle" rowspan="5">
+<a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425986">Homework 5: Pipelining, Performance Programming</a>
+<span class="badge border border-faded">Due 7&#x2F;24</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 7&#x2F;19</td>
+<td></td>
+<td class="align-middle" rowspan="2"></td>
+</tr>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">6</td>
+<td class="align-middle text-center">Mon 7&#x2F;22</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec17/index.html">Lecture 17: Parallelism II - Thread-Level Parallelism</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 1.7, 1.8, 2.11, 4.10, 4.11, 5.10, 6.1-6.3, 6.5, 6.7</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/OpenMP3.0-SummarySpec.pdf">OpenMP Summary Card</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1q3AWcCm2oSLI9r0i5reA-g75MleSqr7oHcI4dyQRUKM/edit?usp=drive_link">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1k_0-DVqifA-84GNBk1Rer1CEifrjQrpL?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5116259">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc09/index.html">Discussion 9: Hazards, Data-Level Parallelism</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc09.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc09-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=ODhUqxGoRe8">Videos</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 7&#x2F;23</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec18/index.html">Lecture 18: Parallelism III - Process-Level Parallelism</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 1.7, 1.8, 2.11, 4.10, 4.11, 5.10, 6.1-6.3, 6.5, 6.7</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/OpenMP3.0-SummarySpec.pdf">OpenMP Summary Card</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1vHyVrFVro97Q2xQjpo-voJo00XS0jH34B0KxliPoBds/edit?usp=drive_link">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1KxKlfCSccnE9Jr1k5MSm6YLoBkgmax5p?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5118665">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab07/index.html">Lab 7: DLP</a>
+<span class="badge border border-faded">Due 7&#x2F;23</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 7&#x2F;24</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec19/index.html">Lecture 19: Caches I</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 5.1-5.4, 5.8, 5.9, 5.13</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/caches.pdf">Cache Flowchart</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1QiKHjQUy2q8mUH0p2FziHH7B03gjHRcatnSfP7kAvNU/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1PTFYtddfx5eolpj-4jd26MA-2qElhy3M?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5120687">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc10/index.html">Discussion 10: Thread-Level Parallelism, PLP</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc10.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc10-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=lB2nA0IE3us">Videos</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 7&#x2F;25</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec20/index.html">Lecture 20: Caches II</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 5.1-5.4, 5.8, 5.9, 5.13</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/caches.pdf">Cache Flowchart</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1lhs2gT9e2nIbNi3kEp_2wD8qSVzXnPbEn8xUZRs78yQ/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5122868">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="2"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab08/index.html">Lab 8: TLP</a>
+<span class="badge border border-faded">Due 7&#x2F;25</span>
+</td>
+<td class="align-middle" rowspan="5">
+<a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425987">Homework 6: PLP, Caches</a>
+<span class="badge border border-faded">Due 7&#x2F;31</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 7&#x2F;26</td>
+<td></td>
+<td class="align-middle" rowspan="2"></td>
+</tr>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">7</td>
+<td class="align-middle text-center">Mon 7&#x2F;29</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec21/index.html">Lecture 21: Caches III</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 5.1-5.4, 5.8, 5.9, 5.13</span><span>, </span><a class=" " href="https://inst.eecs.berkeley.edu/~cs61c/sp21/resources-pdfs/caches.pdf">Cache Flowchart</a>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1vX53LYXTQLRLphcAJAIBcWoWv4qKxBlqbgR4dWO1_ok/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1UWe1z1sl5ZUEcXo7thvw6g0QT9ZlJ4vG?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5130391">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc11/index.html">Discussion 11: Caches, AMAT</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc11.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc11-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=kwY_aV4NwZY">Videos</a>
+</div>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 7&#x2F;30</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec22/index.html">Lecture 22: Virtual Memory I</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 5.7, 5.8</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1gBwONBexBVvPmafeYnSQDXYD9d6eRCEaBas8m3c4gi8/edit?usp=drive_link">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1Ftfj3f-86ILITIsJtAWUJf43AneZhs3I?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5132524">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1"></td>
+<td class="align-middle" rowspan="1">
+<a href="su24/labs/lab09/index.html">Lab 9 (Optional): PLP</a>
+<span class="badge border border-faded">Due 7&#x2F;30</span>
+</td>
+<td class="align-middle" rowspan="9">
+<a href="su24/projects/proj4/index.html">Project 4: <span style="color:#f54b42">CS61</span>ka<span style="color:#f54b42">C</span>how</a>
+<span class="badge border border-faded">Checkpoint: Due 8&#x2F;02</span>
+<span class="badge border border-faded">Due 8&#x2F;09</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 7&#x2F;31</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec23/index.html">Lecture 23: Virtual Memory II</a>
+<div>
+<span>Readings: </span>
+<span class="  disabled-link">P&H 5.7, 5.8</span>
+</div>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1n-6rCXdFUx4jIwrRrFX5eMUl0DbITvy2FcT6Io-jKNM/edit?usp=drive_link">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://drive.google.com/drive/folders/1f5JStIb7Iqus_iMfYEeHiT0Jt3nzGuUB?usp=drive_link">Drive</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5134383">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/discussions/disc12/index.html">Discussion 12: Virtual Memory</a>
+<br>
+<div class="btn-group" role="group" aria-label="Discussion links">
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc12.pdf">Worksheet</a>
+<a class="btn btn-outline-primary btn-sm" href="su24/pdfs/discussions/disc12-sols.pdf">Solutions</a>
+<a class="btn btn-sm btn-outline-primary" href="https://www.youtube.com/watch?v=rGWSJCHTuo8">Videos</a>
+</div>
+</td>
+<td class="align-middle" rowspan="8"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 8&#x2F;1</td>
+<td class="align-middle" rowspan="1">
+<a href="su24/lectures/lec24/index.html">Lecture 24: Wrap-Up</a>
+<div class="btn-group mt-1" role="group" aria-label="Lecture links">
+<a class="btn btn-outline-primary btn-sm" href="https://docs.google.com/presentation/d/1UBJTALgvDX0D6ZtEgCLSQtp-gl_4VrHKXALpD8RqtOs/edit?usp=sharing">Slides</a>
+<a class="btn btn-outline-primary btn-sm" href="https://edstem.org/us/courses/59876/discussion/5136592">Ed Thread</a>
+</div>
+</td>
+<td class="align-middle" rowspan="7"></td>
+<td class="align-middle" rowspan="3">
+<a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425988">Homework 7: VM</a>
+<span class="badge border border-faded">Due 8&#x2F;05</span>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 8&#x2F;2</td>
+<td></td>
+</tr>
+<tr>
+<td class="align-middle text-center table-active" rowspan="5">8</td>
+<td class="align-middle text-center">Mon 8&#x2F;5</td>
+<td class="align-middle">
+No Lecture
+<br>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Tue 8&#x2F;6</td>
+<td class="align-middle">
+No Lecture
+<br>
+</td>
+<td class="align-middle" rowspan="4"></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Wed 8&#x2F;7</td>
+<td class="align-middle">
+Final: 3–6 PM
+<br>
+</td>
+</tr>
+<tr>
+<td class="align-middle text-center">Thu 8&#x2F;8</td>
+<td></td>
+</tr>
+<tr>
+<td class="align-middle text-center">Fri 8&#x2F;9</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

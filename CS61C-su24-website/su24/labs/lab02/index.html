@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Lab 2 | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup">Setup</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-compiler-warnings-and-errors">Exercise 1: Compiler Warnings and Errors</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#what-is-gdb">What is GDB?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-2-intro-to-gdb">Exercise 2: Intro to GDB</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-3-more-gdb">Exercise 3: More GDB</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-4-debug">Exercise 4: Debug</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-5-debugging-segfaults">Exercise 5: Debugging Segfaults</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#valgrind">Valgrind</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-6-using-valgrind-to-find-segfaults">Exercise 6: Using Valgrind to find segfaults</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-7-memory-management">Exercise 7: Memory Management</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-8-double-pointers">Exercise 8: Double Pointers</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submission">Submission</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#common-gdb-errors">Common GDB Errors</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#gdb-is-skipping-over-lines-of-code">GDB is skipping over lines of code</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#gdb-isn-t-loading-my-file">GDB isn&#x27;t loading my file</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#how-do-i-switch-between-the-code-window-and-the-console">How do I switch between the code window and the console?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#i-m-stuck-in-the-code-window">I&#x27;m stuck in the code window</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#the-text-ui-is-garbled">The text UI is garbled</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#other-useful-gdb-commands-recommended">Other Useful GDB Commands (Recommended)</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#command-info-locals">Command: info locals</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#command-command">Command: command</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Lab 2: C Debugging</h1>
+<p class="subtitle">Deadline: Thursday, June 27, 11:59:59 PM PT</p>
+<p>For this lab, please complete the exercises in the order listed. The exercises may depend on each other.</p>
+<p><a href="https://docs.google.com/presentation/d/1pKK40kOP94_TRrMMwGxJQs9WT_pilpcrz_z8OMSLaJk/edit?usp=sharing">Lab Slides</a></p>
+<hr/>
+<h2 id="setup">Setup</h2>
+<div class="alert alert-warning">
+<p>You must complete this lab on the hive machines. See <a href="../lab00/index.html">Lab 0</a> for a refresher on using them.</p>
+</div>
+<p>In your <code>labs</code> directory, pull the files for this lab with:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+<p>If you get an error like the following:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">fatal: &#39;starter&#39; does not appear to be a git repository
+fatal: Could not read from remote repository.
+</span></code></pre>
+<p>make sure to set the starter remote as follows:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> remote add starter https://github.com/61c-teach/su24-lab-starter.git</span>
+</span></code></pre>
+<p>and run the original command again.</p>
+<p>If you run into any <code>git</code> errors, please check out the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<hr/>
+<h2 id="exercise-1-compiler-warnings-and-errors">Exercise 1: Compiler Warnings and Errors</h2>
+<p>Compiler warnings are generated to help you find potential bugs in your code. Make sure that you fix all of your compiler warnings before you attempt to run your code. This will save you a lot of time debugging in the future because fixing the compiler warnings is much faster than trying to find the bug on your own.</p>
+<ol>
+<li>
+<p><strong>Read</strong> over the code in <code>ex1_compiler_warnings.c</code>.</p>
+</li>
+<li>
+<p><strong>Compile</strong> your program with <code>gcc -o ex1_compiler_warnings ex1_compiler_warnings.c</code>. You should see 3 warnings.</p>
+</li>
+<li>
+<p><strong>Read</strong> the first line of the first warning. The line begins with <code>ex1_compiler_warnings.c:13:22</code>, which tells you that the warning is caused by line 13 of <code>ex1_compiler_warnings.c</code>. The warning states that the program is trying to assign a <code>char</code> to a <code>char *</code>.</p>
+</li>
+<li>
+<p><strong>Open</strong> <code>ex1_compiler_warnings.c</code> and <strong>navigate</strong> to the line that's causing the warning. It is trying to assign a <code>char</code> to a <code>char *</code>. The compiler has pointed this out as a potential error because we should not be assigning a <code>char</code> to a <code>char *</code>.</p>
+</li>
+<li>
+<p><strong>Fix</strong> this compiler warning.</p>
+</li>
+<li>
+<p><strong>Recompile</strong> your code. You can now see that this warning does not appear anymore and there are 2 warnings left.</p>
+</li>
+<li>
+<p><strong>Fix</strong> the remaining compiler warnings in <code>ex1_compiler_warnings.c</code>.</p>
+</li>
+</ol>
+<h2 id="what-is-gdb">What is GDB?</h2>
+<p>Here is an excerpt from the <a href="https://www.gnu.org/software/gdb/">GDB website</a>:</p>
+<p>GDB, the GNU Project debugger, allows you to see what is going on 'inside' another program while it executes -- or what another program was doing at the moment it crashed.</p>
+<p>GDB can do four main kinds of things (plus other things in support of these) to help you catch bugs in the act:</p>
+<ul>
+<li>Start your program, specifying anything that might affect its behavior.</li>
+<li>Make your program stop on specified conditions.</li>
+<li>Examine what has happened, when your program has stopped.</li>
+<li>Change things in your program, so you can experiment with correcting the effects of one bug and go on to learn about another.</li>
+</ul>
+<p>In this class, we will be using <a href="https://cgdb.github.io/">CGDB</a> which provides a lightweight interface to gdb to make it easier to use. CGDB is already installed on the hive machines, so there is no installation required. The remainder of this class uses CGDB and GDB interchangeably.</p>
+<p>Here's a <a href="https://inst.eecs.berkeley.edu/%7Ecs61c/resources/gdb5-refcard.pdf">GDB reference card</a>.</p>
+<p>If you run into any issues with GDB, see <a href="index.html#common-gdb-errors">the Common GDB Errors section below</a></p>
+<h2 id="exercise-2-intro-to-gdb">Exercise 2: Intro to GDB</h2>
+<p>In this section, you will learn the GDB commands <code>start</code>, <code>step</code>, <code>next</code>, <code>finish</code>, <code>print</code>, and <code>quit</code>. This section will resolve bug(s) along the way. Make sure to fix the bug(s) in the code before moving on.</p>
+<p>The table below is a summary of the above commands</p>
+<table><thead><tr><th>Command</th><th>Abbreviation</th><th>Description</th></tr></thead><tbody>
+<tr><td>start</td><td>N/A</td><td>begin running the program and stop at line 1 in main</td></tr>
+<tr><td>step</td><td>s</td><td>execute the current line of code (this command will step into functions)</td></tr>
+<tr><td>next</td><td>n</td><td>execute the current line of code (this command will not step into functions)</td></tr>
+<tr><td>finish</td><td>fin</td><td>executes the remainder of the current function and returns to the calling function</td></tr>
+<tr><td>print [arg]</td><td>p</td><td>prints the value of the argument</td></tr>
+<tr><td>quit</td><td>q</td><td>exits gdb</td></tr>
+</tbody></table>
+<p>You should be filling in <code>ex2_commands.txt</code> with the corresponding commands. Please only use the commands from the table above. <strong>For correctness, we will be checking the output of your <code>ex2_commands.txt</code> against a desired output.</strong> We'd recommend opening two SSH windows so you can have the commands file and the <code>cgdb</code> session at the same time. Even though you are adding to <code>ex2_commands.txt</code>, please check your work by actually running these commands in <code>cgdb</code>.</p>
+<ol>
+<li>
+<p><strong>Compile</strong> your program with the <code>-g</code> flag. This will include additional debugging information in the executable that CGDB needs.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">gcc</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>g</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> pwd_checker test_pwd_checker.c pwd_checker.c</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Start</strong> <code>cgdb</code>. Note that you should be using the executable (<code>pwd_checker</code>) as the argument, not the source file (<code>pwd_checker.c</code>).</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cgdb</span></span><span class="z-meta z-function-call z-arguments z-shell"> pwd_checker</span>
+</span></code></pre>
+<p>You should now see CGDB open. The top window displays our code and the bottom window displays the console.</p>
+</li>
+</ol>
+<p>For each of the following steps, add the CGDB commands you execute to <code>ex2_commands.txt</code>. Each command should be on its own line. Each step below will require one or more CGDB commands.</p>
+<ol>
+<li>
+<p><strong>Start</strong> your program so that it's at the first line in <code>main</code>, using one command.</p>
+</li>
+<li>
+<p>The first line in <code>main</code> is a call to <code>printf</code>. We do not want to step into this function. <strong>Step over</strong> this line in the program.</p>
+</li>
+<li>
+<p><strong>Step until</strong> the program is on the <code>check_password</code> call. Note that the line with an arrow next to it is the line we're currently on, but has not been executed yet.</p>
+</li>
+<li>
+<p><strong>Step into</strong> <code>check_password</code>.</p>
+</li>
+<li>
+<p><strong>Step into</strong> <code>check_lower</code>.</p>
+</li>
+<li>
+<p><strong>Print</strong> the value of <code>password</code> (<code>password</code> is a string).</p>
+</li>
+<li>
+<p><strong>Step out</strong> of <code>check_lower</code> immediately. Do not step until the function returns.</p>
+</li>
+<li>
+<p><strong>Step into</strong> <code>check_length</code>.</p>
+</li>
+<li>
+<p><strong>Step to</strong> the last line of the function.</p>
+</li>
+<li>
+<p><strong>Print</strong> the return value of the function. The return value should be <code>false</code>.</p>
+</li>
+<li>
+<p><strong>Print</strong> the value of <code>length</code>. It looks like <code>length</code> was correct, so there must be some logic issue on line 24.</p>
+</li>
+<li>
+<p><strong>Quit</strong> CGDB. CGDB might ask you if you want to quit, type <code>y</code> (but do not add <code>y</code> to <code>ex2_commands.txt</code>).</p>
+</li>
+</ol>
+<p>At this point, your <code>ex2_commands.txt</code> should contain a list of commands from the steps above. You don't need to add anything from the steps below to your <code>ex2_commands.txt</code>.</p>
+<ol>
+<li>
+<p><strong>Fix</strong> the bug on line 24.</p>
+</li>
+<li>
+<p><strong>Compile</strong> and <strong>run</strong> your code.</p>
+</li>
+<li>
+<p>The program still fails. Open and step through <code>cgdb</code> again, you should see that <code>check_number</code> is now failing. We will address this in the next exercise.</p>
+</li>
+</ol>
+<h2 id="exercise-3-more-gdb">Exercise 3: More GDB</h2>
+<p>In this section, you will learn the gdb commands <code>break</code>, <code>conditional break</code>, <code>run</code>, and <code>continue</code>. This section will resolve bug(s) along the way. Make sure to fix the bug(s) in the code before moving on.</p>
+<p>The table below is a summary of the above commands</p>
+<table><thead><tr><th>Command</th><th>Abbreviation</th><th>Description</th></tr></thead><tbody>
+<tr><td>break [line num or function name]</td><td>b</td><td>set a breakpoint at the specified location, use <code>filename.c:linenum</code> to set a breakpoint in a specific file</td></tr>
+<tr><td>conditional break <br/> (ex: break 3 if n==4)</td><td>(ex: b 3 if n==4)</td><td>set a breakpoint at the specified location only if a given condition is met</td></tr>
+<tr><td>run</td><td>r</td><td>execute the program until termination or reaching a breakpoint</td></tr>
+<tr><td>continue</td><td>c</td><td>continues the execution of a program that was paused</td></tr>
+<tr><td>backtrace</td><td>bt</td><td>print one line per frame for frames in the stack</td></tr>
+</tbody></table>
+<p>You should be filling in <code>ex3_commands.txt</code> with the corresponding commands. Please only use the commands from the table above and the table for exercise 2. <strong>For correctness, we will be checking the output of your <code>ex3_commands.txt</code> against a desired output.</strong> We'd recommend opening two SSH windows so you can have the commands file and the <code>cgdb</code> session at the same time. Even though you are adding to <code>ex3_commands.txt</code>, please check your work by actually running these commands in <code>cgdb</code>.</p>
+<ol>
+<li>
+<p><strong>Recompile and run</strong> your code. You should see that the assertion <code>number</code> is failing</p>
+</li>
+<li>
+<p><strong>Start</strong> cgdb</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cgdb</span></span><span class="z-meta z-function-call z-arguments z-shell"> pwd_checker</span>
+</span></code></pre>
+</li>
+</ol>
+<p>For each of the following steps, add the CGDB commands you execute to <code>ex3_commands.txt</code>. Each command should be on its own line. Each step below will require one or more CGDB commands.</p>
+<ol>
+<li>
+<p><strong>Set a breakpoint</strong> in our code to jump straight into the function <code>check_number</code> using the function name (not the filename or line number). Your breakpoint should not be in <code>check_password</code>.</p>
+</li>
+<li>
+<p><strong>Run</strong> the program.
+Your code should run until it gets to the breakpoint that we just set.</p>
+</li>
+<li>
+<p><strong>Step into</strong> <code>check_range</code>.</p>
+</li>
+<li>
+<p>Let's take at look at how we get here. Display the <code>backtrace</code> of the program.</p>
+</li>
+<li>
+<p>Recall that the numbers do not appear until later in the password. Instead of stepping through all of the non-numerical characters at the beginning of password, we can jump straight to the point in the code where the numbers are being compared using a conditional breakpoint. A conditional breakpoint will only stop the program based on a given condition. The first number in the password <code>0</code>, so we can set the breakpoint when <code>letter</code> is <code>'0'</code>. <strong>Break on line 31 if the <code>letter</code> is <code>'0'</code></strong>.</p>
+<p>We are using the single quote because <code>0</code> is a char.</p>
+</li>
+<li>
+<p><strong>Continue executing</strong> your code after it stops at a breakpoint.</p>
+</li>
+<li>
+<p>The code has stopped at the conditional breakpoint. To verify this, <strong>print</strong> <code>letter</code>.</p>
+<p>It should print <code>48 '0'</code> which is a decimal number followed by it's corresponding ASCII representation. If you look at an <a href="https://www.cs.cmu.edu/%7Epattis/15-1XX/common/handouts/ascii.html">ASCII table</a>, you can see that <code>48</code> is the decimal representation of the character <code>0</code>.</p>
+</li>
+<li>
+<p>Let's take a look at the return value of <code>check_range</code>. <strong>Print</strong> <code>is_in_range</code>. The result is <code>false</code>. That's strange. <code>'0'</code> should be in the range.</p>
+</li>
+<li>
+<p>Let's look at the upper and lower bounds of the range. <strong>Print</strong> <code>lower</code>.</p>
+</li>
+<li>
+<p><strong>Print</strong> <code>upper</code>.</p>
+</li>
+<li>
+<p>Ahah! The ASCII representation of <code>lower</code> is <code>\000</code>(the null terminator) and the ASCII representation of <code>upper</code> is <code>\t</code>. It looks like we passed in the numbers <code>0</code> and <code>9</code> instead of the characters <code>'0'</code> and <code>'9'</code>!</p>
+</li>
+<li>
+<p><strong>Quit</strong> CGDB. CGDB might ask you if you want to quit, type <code>y</code> (but do not add <code>y</code> to <code>ex3_commands.txt</code>).</p>
+</li>
+</ol>
+<p>At this point, your <code>ex3_commands.txt</code> should contain a list of commands from the steps above. You don't need to add anything from the steps below to your <code>ex3_commands.txt</code>.</p>
+<ol>
+<li>
+<p><strong>Fix</strong> the bug.</p>
+</li>
+<li>
+<p><strong>Compile</strong> and <strong>run</strong> your code. There's one more error, which you will find in <a href="index.html#exercise-4-debug">exercise 4</a>.</p>
+</li>
+</ol>
+<h2 id="exercise-4-debug">Exercise 4: Debug</h2>
+<ol>
+<li>
+<p><strong>Debug</strong> <code>check_upper</code> on your own using the commands you just learned. The function appears to be returning <code>false</code> even though there's an uppercase letter. Hint: the bug itself may not be in <code>check_upper</code> itself.</p>
+</li>
+<li>
+<p><strong>Fix</strong> the bug.</p>
+</li>
+</ol>
+<h2 id="exercise-5-debugging-segfaults">Exercise 5: Debugging Segfaults</h2>
+<p>One very important thing that GDB can do is debug segfaults. While this exercise is possible to do without using these GDB tools, getting used to this will be very helpful for future problems in the lab as well as Project 1. Try your best to follow the instructions and use the GDB terminal to figure out the answers without looking at the source code.</p>
+<p>In this exercise, you should be filling in <code>ex5_answers.txt</code>.</p>
+<ol>
+<li>
+<p><strong>Compile</strong> <code>ex5_segfault.c</code>. Notice that there are no compiler errors or warnings, and we're using the <code>-g</code> flag in case we need to debug this program in the future.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">gcc</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>g</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> ex5_segfault ex5_segfault.c</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Run</strong> <code>ex5_segfault</code>. The program should crash with a segmentation fault.</p>
+</li>
+<li>
+<p><strong>Run</strong> <code>cgdb</code> on <code>ex5_segfault</code>, and <code>run</code> until you get to a segmentation fault, then display the <code>backtrace</code> of the program.</p>
+</li>
+<li>
+<p><strong>Read</strong> the output carefully, and answer the following questions in <code>ex5_answers.txt</code>. Please don't change the formatting of the file.</p>
+<ol>
+<li>What function did the segfault happen in? (The answer should the name of a function)</li>
+<li>What line number caused the segfault? (The answer should be a single number without any units)</li>
+</ol>
+</li>
+</ol>
+<h2 id="valgrind">Valgrind</h2>
+<p>Even with a debugger, we might not be able to catch all bugs. Some bugs are what we refer to as &quot;bohrbugs&quot;, meaning they manifest reliably under a well-defined, but possibly unknown, set of conditions. Other bugs are what we call &quot;heisenbugs&quot;, and instead of being determinant, they're known to disappear or alter their behavior when one attempts to study them. We can detect the first kind with debuggers, but the second kind may slip under our radar because they're (at least in C) often due to mis-managed memory. Remember that unlike other programming languages, C requires you (the programmer) to manually manage your memory.</p>
+<p>We can use a tool called Valgrind to help catch to help catch &quot;heisenbugs&quot; and &quot;bohrbugs&quot;. Valgrind is a program which emulates your CPU and tracks your memory accesses. This slows down the process you're running (which is why we don't, for example, always run all executables inside Valgrind) but also can expose bugs that may only display visible incorrect behavior under a unique set of circumstances.</p>
+<p>Let's take a look at the <code>bork</code> translation program! Bork is an ancient language that is very similar to English. To translate a word to Bork, you take the English word and add an 'f' after every vowel in the word.</p>
+<p>Let's see if we can understand some Bork. Compile and run <code>bork</code> using the following commands.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">gcc</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>g</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> bork bork.c</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">./bork</span></span><span class="z-meta z-function-call z-arguments z-shell"> hello</span>
+</span></code></pre>
+<p>An example output is provided below. Note that your output will probably look different.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">Input string: &quot;hello&quot;
+Length of translated string: 21
+Translate to Bork: &quot;hefl2?^?Ul2?^?Uof?^?U&quot;
+</span></code></pre>
+<p>Hmm, Bork is an old language, but there shouldn't be all of these strange characters. It seems that perhaps the ancients left some bugs in their program! Shall we embark on a journey to squash bugs and uncover the true beauty of Bork?</p>
+<p>If we take a brief glance at <code>main</code>, we can see that we are taking an input string (<code>src_str</code>) and translating it to Bork (<code>dest_str</code>). If we scroll to the top, we can see that we have a function (<code>alloc_str</code>) to allocate space for a string in the heap, a <code>Str</code> struct which contains a string and it's length, a <code>make_str</code> function which will create a <code>Str</code> struct and initialize its <code>data</code> and <code>len</code> field, and a function to free our struct's data. There is also a function to concate two strings together and another function to translate a letter to Bork. Now this is quite a long program to debug.</p>
+<p>Wouldn't it be nice if there were a tool that gave us a good first place to look?</p>
+<p>Well as it turns out, there are a couple and <code>valgrind</code> is one of them!</p>
+<p>Let's run <code>valgrind</code> on our program using the following command.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">valgrind</span></span><span class="z-meta z-function-call z-arguments z-shell"> ./bork hello</span>
+</span></code></pre>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Memcheck,</span></span><span class="z-meta z-function-call z-arguments z-shell"> a memory error detector</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Copyright</span></span><span class="z-meta z-function-call z-arguments z-shell"> (C</span><span class="z-meta z-function-call z-shell"></span>) <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">2002-2017,</span></span><span class="z-meta z-function-call z-arguments z-shell"> and GNU GPL<span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>d, by Julian Seward et al.
+==10170== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==10170== Command: ./bork hello
+==10170==
+==10170== Invalid read of size 1
+==10170==    at 0x4C34D04: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10170==    by 0x10879F: make_Str (bork.c:22)
+==10170==    by 0x108978: translate_to_bork (bork.c:56)
+==10170==    by 0x1089F2: main (bork.c:68)
+==10170==  Address 0x522f041 is 0 bytes after a block of size 1 alloc<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span>d</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">at</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x108781: alloc_str (bork.c:10</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x10895E: translate_to_bork (bork.c:54</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x1089F2: main (bork.c:68</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Invalid</span></span><span class="z-meta z-function-call z-arguments z-shell"> read of size 1</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">at</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x4C34D04: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x10879F: make_Str (bork.c:22</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x108952: translate_to_bork (bork.c:51</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x1089F2: main (bork.c:68</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>  <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Address</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x522f0e2 is 0 bytes after a block of size 2 alloc<span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>d
+==10170==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10170==    by 0x108781: alloc_str (bork.c:10)
+==10170==    by 0x10892D: translate_to_bork (bork.c:48)
+==10170==    by 0x1089F2: main (bork.c:68)
+==10170==
+Input string: &quot;hello&quot;
+Length of translated string: 7
+==10170== Invalid read of size 1
+==10170==    at 0x4C34D04: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10170==    by 0x4E9B4A2: vfprintf (vfprintf.c:1643)
+==10170==    by 0x4EA2EE5: printf (printf.c:33)
+==10170==    by 0x108A6F: main (bork.c:74)
+==10170==  Address 0x522f317 is 0 bytes after a block of size 7 alloc<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span>d</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">at</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x108781: alloc_str (bork.c:10</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x108833: concat (bork.c:32</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">by</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0x108A15: main (bork.c:69</span><span class="z-meta z-function-call z-shell"></span>)
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Translate</span></span><span class="z-meta z-function-call z-arguments z-shell"> to Bork: <span class="z-string z-quoted z-double z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&quot;</span>hefllof<span class="z-punctuation z-definition z-string z-end z-shell">&quot;</span></span></span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">HEAP</span></span><span class="z-meta z-function-call z-arguments z-shell"> SUMMARY:</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>     <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">in</span></span><span class="z-meta z-function-call z-arguments z-shell"> use at exit: 7 bytes in 1 blocks</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>   <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">total</span></span><span class="z-meta z-function-call z-arguments z-shell"> heap usage: 11 allocs, 10 frees, 1,051 bytes allocated</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">LEAK</span></span><span class="z-meta z-function-call z-arguments z-shell"> SUMMARY:</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">definitely</span></span><span class="z-meta z-function-call z-arguments z-shell"> lost: 7 bytes in 1 blocks</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">indirectly</span></span><span class="z-meta z-function-call z-arguments z-shell"> lost: 0 bytes in 0 blocks</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>      <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">possibly</span></span><span class="z-meta z-function-call z-arguments z-shell"> lost: 0 bytes in 0 blocks</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>    <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">still</span></span><span class="z-meta z-function-call z-arguments z-shell"> reachable: 0 bytes in 0 blocks</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>         <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">suppressed:</span></span><span class="z-meta z-function-call z-arguments z-shell"> 0 bytes in 0 blocks</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">Rerun</span></span><span class="z-meta z-function-call z-arguments z-shell"> with<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>leak-check</span><span class="z-keyword z-operator z-assignment z-option z-shell">=</span>full to see details of leaked memory</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">For</span></span><span class="z-meta z-function-call z-arguments z-shell"> counts of detected and suppressed errors, rerun with:<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>v</span></span>
+<span class="z-keyword z-operator z-assignment z-shell">=</span><span class="z-string z-unquoted z-shell">=10170==</span> <span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">ERROR</span></span><span class="z-meta z-function-call z-arguments z-shell"> SUMMARY: 6 errors from 3 contexts (suppressed: 0 from 0</span><span class="z-meta z-function-call z-shell"></span>)
+</span></code></pre>
+<p>(Interesting side note: when we look at the normal program output in this <code>valgrind</code> log, we see normal behavior (i.e. it prints &quot;hefllof&quot;). That's because the way <code>valgrind</code> runs our program is different than how our program runs &quot;naturally&quot; (aka &quot;bare metal&quot;). We're not going to get into that for now.)</p>
+<p>But back on debugging: A good general rule of thumb to follow when parsing big error logs is to only consider the first error message (and ignore the rest), so let's do that:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">==10170== Invalid read of size 1
+==10170==    at 0x4C34D04: strlen (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==10170==    by 0x10879F: make_Str (bork.c:22)
+==10170==    by 0x108978: translate_to_bork (bork.c:56)
+==10170==    by 0x1089F2: main (bork.c:68)
+</span></code></pre>
+<p>The error message states that we are doing an invalid read of size 1. What does this mean? An invalid read means that your program is reading memory at a place that it shouldn't be (this can cause a segfault, but not always). Size 1 means that we were attempting to read 1 byte.</p>
+<p>Because we're unfamiliar with this ancient codebase and we don't want to read all of it to find the bug, a good process to follow is to start at high-level details and work our way down (so basically work our way through the call stack that valgrind provides).</p>
+<p>Let's look at <code>bork.c</code> line 68 in <code>main</code> (the botton of the stack):</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c">Str bork_substr <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-function-call z-c"><span class="z-variable z-function z-c">translate_to_bork</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">src_str<span class="z-punctuation z-accessor z-c">.</span><span class="z-variable z-other z-member z-c">data</span><span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>Is something funky going on here? Looks like we are just passing a character to <code>translate_to_bork</code>. Seems ok so far.</p>
+<p>Let's go farther down the call stack and look at <code>bork.c</code> line 56 in <code>translate_to_bork</code>:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-keyword z-control z-flow z-return z-c">return</span> <span class="z-meta z-function-call z-c"><span class="z-variable z-function z-c">make_Str</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">res</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>We're just calling <code>make_Str</code> here. We should go deeper. Let's look at <code>bork.c</code> line 22.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-keyword z-control z-flow z-return z-c">return</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>Str<span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span><span class="z-punctuation z-accessor z-c">.</span><span class="z-variable z-other z-member z-c">data</span><span class="z-keyword z-operator z-assignment z-c">=</span>str<span class="z-punctuation z-separator z-c">,</span><span class="z-punctuation z-accessor z-c">.</span><span class="z-variable z-other z-member z-c">len</span><span class="z-keyword z-operator z-assignment z-c">=</span><span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">strlen</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">str</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-section z-block z-end z-c">}</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>Here we are making a new <code>Str</code> struct and setting its <code>data</code> and <code>len</code> parameters. That seems normal too!</p>
+<p>But <code>valgrind</code> says that <code>strlen</code> is doing an invalid read?</p>
+<p>Well, we're passing a string to it right? What does <code>strlen</code> do again? It determines the length of a string by iterating over each character until it gets to a null terminator. Maybe there is no null terminator so <code>strlen</code> keeps going past the end of the string (which would mean that it's going past the area that we allocated for the string).</p>
+<p>Let's make sure our string has a null terminator by checking where we created it.</p>
+<p>Earlier, we saw this on line 56 in <code>translate_to_bork</code>.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-keyword z-control z-flow z-return z-c">return</span> <span class="z-meta z-function-call z-c"><span class="z-variable z-function z-c">make_Str</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">res</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>If we look two lines up (line 54), we can see that we are allocating space for the string by calling <code>alloc_str</code>. Let's take a look at this function.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">char</span> <span class="z-keyword z-operator z-c">*</span><span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">alloc_str</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-storage z-type z-c">int</span> <span class="z-variable z-parameter z-c">len</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+    <span class="z-keyword z-control z-flow z-return z-c">return</span> <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">malloc</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">len<span class="z-keyword z-operator z-c">*</span><span class="z-keyword z-operator z-word z-c">sizeof</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span><span class="z-meta z-group z-c"><span class="z-storage z-type z-c">char</span></span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>Hmmm. It looks like <code>alloc_str</code> is giving us some memory that's only
+<code>len</code> big, which means when we write to the string in <code>translate_to_bork</code>, we don't
+have enough space for a null terminator!</p>
+<p>Let's make the following change to fix the problem:</p>
+<pre data-lang="diff" class="language-diff z-code"><code class="language-diff" data-lang="diff"><span class="z-source z-diff"><span class="z-meta z-diff z-range z-normal"><span class="z-meta z-range z-normal z-diff">10c10,12
+</span></span><span class="z-markup z-deleted z-diff"><span class="z-punctuation z-definition z-deleted z-diff">&lt;</span>     return malloc(len*sizeof(char));
+</span><span class="z-meta z-separator z-diff"><span class="z-punctuation z-definition z-separator z-diff">---</span>
+</span><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">&gt;</span>     char *data = malloc((len+1)*sizeof(char));
+</span><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">&gt;</span>     data[len] = &#39;\0&#39;;
+</span><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">&gt;</span>     return data;
+</span></span></code></pre>
+<p>Let's run our program to see if we fixed the problem</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">./bork</span></span><span class="z-meta z-function-call z-arguments z-shell"> hello</span>
+</span></code></pre>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">Input string: &quot;hello&quot;
+Length of translated string: 7
+Translate to Bork: &quot;hefllof&quot;
+</span></code></pre>
+<p>Everything looks like it's working properly. However, there could be hidden errors that we cannot see, so let's run our code through <code>valgrind</code> to make sure that there are no underlying issues.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">valgrind</span></span><span class="z-meta z-function-call z-arguments z-shell"> ./bork hello</span>
+</span></code></pre>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">==29797== Memcheck, a memory error detector
+==29797== Copyright (C) 2002-2017, and GNU GPL&#39;d, by Julian Seward et al.
+==29797== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==29797== Command: ./bork hello
+==29797==
+Input string: &quot;hello&quot;
+Length of translated string: 7
+Translate to Bork: &quot;hefllof&quot;
+==29797==
+==29797== HEAP SUMMARY:
+==29797==     in use at exit: 8 bytes in 1 blocks
+==29797==   total heap usage: 11 allocs, 10 frees, 1,061 bytes allocated
+==29797==
+==29797== LEAK SUMMARY:
+==29797==    definitely lost: 8 bytes in 1 blocks
+==29797==    indirectly lost: 0 bytes in 0 blocks
+==29797==      possibly lost: 0 bytes in 0 blocks
+==29797==    still reachable: 0 bytes in 0 blocks
+==29797==         suppressed: 0 bytes in 0 blocks
+==29797== Rerun with --leak-check=full to see details of leaked memory
+==29797==
+==29797== For counts of detected and suppressed errors, rerun with: -v
+==29797== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+</span></code></pre>
+<p>Let's take a look at the heap summary below. It tells us that we had 8 bytes in 1 block allocated at the time of exit. This means that the memory in the heap that was not free'd stems from one allocation call and that it is 8 bytes large.</p>
+<p>Next, we can see the heap summary which shows that we made 11 allocation calls and 10 frees over the lifetime of the program.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">==29797== HEAP SUMMARY:
+==29797==     in use at exit: 8 bytes in 1 blocks
+==29797==   total heap usage: 11 allocs, 10 frees, 1,061 bytes allocated
+</span></code></pre>
+<p>Now let's take a look at the leak summary below. This just states that we lost 8 bytes in 1 block.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">==29797== LEAK SUMMARY:
+==29797==    definitely lost: 8 bytes in 1 blocks
+==29797==    indirectly lost: 0 bytes in 0 blocks
+==29797==      possibly lost: 0 bytes in 0 blocks
+==29797==    still reachable: 0 bytes in 0 blocks
+==29797==         suppressed: 0 bytes in 0 blocks
+==29797== Rerun with --leak-check=full to see details of leaked memory
+</span></code></pre>
+<p>It tells us to &quot;Rerun with --leak-check=full to see details of leaked memory&quot;, so let's do that.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">valgrind</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>leak-check</span><span class="z-keyword z-operator z-assignment z-option z-shell">=</span>full ./bork hello</span>
+</span></code></pre>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">==32334== Memcheck, a memory error detector
+==32334== Copyright (C) 2002-2017, and GNU GPL&#39;d, by Julian Seward et al.
+==32334== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==32334== Command: ./bork hello
+==32334==
+Input string: &quot;hello&quot;
+Length of translated string: 7
+Translate to Bork: &quot;hefllof&quot;
+==32334==
+==32334== HEAP SUMMARY:
+==32334==     in use at exit: 8 bytes in 1 blocks
+==32334==   total heap usage: 11 allocs, 10 frees, 1,061 bytes allocated
+==32334==
+==32334== 8 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==32334==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32334==    by 0x108784: alloc_str (in /home/cc/cs61c/fa22/staff/cs61c-tac/bork)
+==32334==    by 0x10884E: concat (in /home/cc/cs61c/fa22/staff/cs61c-tac/bork)
+==32334==    by 0x108A30: main (in /home/cc/cs61c/fa22/staff/cs61c-tac/bork)
+==32334==
+==32334== LEAK SUMMARY:
+==32334==    definitely lost: 8 bytes in 1 blocks
+==32334==    indirectly lost: 0 bytes in 0 blocks
+==32334==      possibly lost: 0 bytes in 0 blocks
+==32334==    still reachable: 0 bytes in 0 blocks
+==32334==         suppressed: 0 bytes in 0 blocks
+==32334==
+==32334== For counts of detected and suppressed errors, rerun with: -v
+==32334== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+</span></code></pre>
+<p>Now Valgrind is telling us the location where the unfree'd block was initially allocated. Let's take a look at this below. If we follow the call stack, we can see that <code>malloc</code> was called by <code>alloc_str</code> which was called by <code>concat</code> in <code>main</code>.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">==32334== 8 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==32334==    at 0x4C31B0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==32334==    by 0x108784: alloc_str (in /home/cc/cs61c/fa22/staff/cs61c-tac/bork)
+==32334==    by 0x10884E: concat (in /home/cc/cs61c/fa22/staff/cs61c-tac/bork)
+==32334==    by 0x108A30: main (in /home/cc/cs61c/fa22/staff/cs61c-tac/bork)
+</span></code></pre>
+<p>If we look in <code>main</code>, we can see that we allocate the space for <code>dest_str</code> by calling <code>concat</code>, but we never free it. We need <code>dest_str</code> until the end of the program, so let's free it right before we return from <code>main</code>. This struct was allocated on the stack in main (<code>Str dest_str={};</code>), so we do not need to free the struct itself. However, the data that the struct points to was allocated in the heap. Therefore, we only need to free this portion of the struct. If you take a look near the top of the program, we have already provided a function <code>free_Str</code> to free the allocated portion of the struct. Let's call this function at the end of our program.</p>
+<pre data-lang="diff" class="language-diff z-code"><code class="language-diff" data-lang="diff"><span class="z-source z-diff"><span class="z-meta z-diff z-range z-normal"><span class="z-meta z-range z-normal z-diff">76a77
+</span></span><span class="z-markup z-inserted z-diff"><span class="z-punctuation z-definition z-inserted z-diff">&gt;</span>     free_Str(dest_str);
+</span></span></code></pre>
+<p>You might be wondering why we are not freeing <code>src_str</code>. If we take a look at where we constructed <code>src_str</code> (<code>Str src_str = make_Str(argv[1]);</code>), we can see that it was created using <code>make_str</code> which does not make any calls to allocate space on the heap. The string that we are using to make <code>src_str</code> comes from <code>argv[1]</code>. The program that calls main is responsible for setting up <code>argv[1]</code>, so we don't have to worry about it.</p>
+<p>Once we fix our error, the valgrind output should look like this. The heap summary shows that there are no blocks allocated at the time we exit. The error summary at the bottom shows us that there are no errors to report.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">valgrind</span></span><span class="z-meta z-function-call z-arguments z-shell"> ./bork hello</span>
+</span></code></pre>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">==10835== Memcheck, a memory error detector
+==10835== Copyright (C) 2002-2017, and GNU GPL&#39;d, by Julian Seward et al.
+==10835== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==10835== Command: ./bork hello
+==10835==
+Input string: &quot;hello&quot;
+Length of translated string: 7
+Translate to Bork: &quot;hefllof&quot;
+==10835==
+==10835== HEAP SUMMARY:
+==10835==     in use at exit: 0 bytes in 0 blocks
+==10835==   total heap usage: 11 allocs, 11 frees, 1,061 bytes allocated
+==10835==
+==10835== All heap blocks were freed -- no leaks are possible
+==10835==
+==10835== For counts of detected and suppressed errors, rerun with: -v
+==10835== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+</span></code></pre>
+<h2 id="exercise-6-using-valgrind-to-find-segfaults">Exercise 6: Using Valgrind to find segfaults</h2>
+<p>Above, we learned how to debug segfaults using GDB. Now, we're going to use valgrind to do something similar.</p>
+<p>There's a bug in <code>ex6_valgrind</code>, let's see how we can detect it with valgrind.</p>
+<ol>
+<li>
+<p><strong>Compile</strong> <code>ex6_valgrind.c</code>. Notice that there are no compiler errors or warnings, and we're using the <code>-g</code> flag in case we need to debug this program in the future.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">gcc</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>g</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> ex6_valgrind ex6_valgrind.c</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Run</strong> <code>ex6_valgrind</code>. Notice that the program doesn't throw any errors.</p>
+</li>
+<li>
+<p><strong>Run</strong> <code>valgrind</code> on <code>ex6_valgrind</code>. You should see that there are 2 errors.</p>
+</li>
+<li>
+<p><strong>Read</strong> the valgrind output carefully. In <code>ex6_answers.txt</code>, answer the following questions. Please don't change the formatting of the file. For question 1 through 7, we are referring to the first <code>valgrind</code> error (an invalid write error).</p>
+<ol>
+<li>How many bytes are the invalid write? (The answer should be a number without any units)</li>
+<li>Which function caused the invalid write? (The answer should be the name of the function)</li>
+<li>Which function called the answer to question 2? (The answer should be the name of a function)</li>
+<li>Which file did the call occur in? (The answer should be the name of a file)</li>
+<li>Which line did the call occur on? (The answer should be a number)</li>
+<li>How many bytes were actually allocated? (The answer should be a number without any units)</li>
+<li>How many bytes should have been allocated? Feel free to read the code. (The answer should be a number without any units)</li>
+<li>Are there any memory leaks? (The answer should be Yes or No)</li>
+<li>How many bytes were leaked? Write 0 if there are no memory leaks. (The answer should be a number without any units)</li>
+</ol>
+</li>
+</ol>
+<h2 id="exercise-7-memory-management">Exercise 7: Memory Management</h2>
+<p>This exercise uses <code>ex7_vector.h</code>, <code>ex7_test_vector.c</code>, and <code>ex7_vector.c</code>, where we provide you with a framework for implementing a variable-length array. This exercise is designed to help familiarize you with C structs and memory management in C.</p>
+<ol>
+<li>
+<p><strong>Try to explain</strong> why <code>bad_vector_new()</code> is bad. We have provided the reason here, so you can verify your understanding</p>
+<details>
+<summary>bad_vector_new()</summary>
+The vector is created on the stack, instead of the heap. All memory stored on the stack gets freed as soon as that function finishes running, so when the function returns, we lose the vector we constructed.
+</details>
+</li>
+<li>
+<p><strong>Fill in</strong> the functions <code>vector_new()</code>, <code>vector_get()</code>, <code>vector_delete()</code>, and <code>vector_set()</code> in <code>ex7_vector.c</code> so that our test code <code>ex6_test_vector.c</code> runs without any memory management errors.</p>
+<p>Comments in the code describe how the functions should work. Look at the functions we've filled in to see how the data structures should be used. For consistency, <em>it is assumed that all entries in the vector are 0 unless set by the user. Keep this in mind as <code>malloc()</code> does not zero out the memory it allocates.</em> <code>vector_set</code> should resize the array if the index passed in is larger than the size of the array.</p>
+</li>
+<li>
+<p><strong>Test</strong> your implementation of <code>vector_new()</code>, <code>vector_get()</code>, <code>vector_delete()</code>, and <code>vector_set()</code> for correctness.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">gcc</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>g</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> ex7_vector ex7_vector.c ex7_test_vector.c</span>
+</span><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">./ex7_vector</span></span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Test</strong> your implementation of <code>vector_new()</code>, <code>vector_get()</code>, <code>vector_delete()</code>, and <code>vector_set()</code> for memory management.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">valgrind</span></span><span class="z-meta z-function-call z-arguments z-shell"> ./ex7_vector</span>
+</span></code></pre>
+</li>
+</ol>
+<p>Any number of suppressed errors is fine; they do not affect us.</p>
+<p>Feel free to also use CGDB to debug your code.</p>
+<h2 id="exercise-8-double-pointers">Exercise 8: Double Pointers</h2>
+<p><strong>Edit</strong> <code>ex8_double_pointers.c</code> using your editor of choice and fill in the blanks.</p>
+<p><strong>Compile and run</strong> the program and <strong>check</strong> that the output matches what you expect.</p>
+<hr/>
+<h2 id="submission">Submission</h2>
+<p>Save, commit, and push your work, then submit to the <strong>Lab 2</strong> assignment on Gradescope.</p>
+<hr/>
+<h2 id="common-gdb-errors">Common GDB Errors</h2>
+<h3 id="gdb-is-skipping-over-lines-of-code">GDB is skipping over lines of code</h3>
+<p>This could mean that your source file is more recent than your executable. Exit GDB, recompile your code with the <code>-g</code> flag, and restart gdb.</p>
+<h3 id="gdb-isn-t-loading-my-file">GDB isn't loading my file</h3>
+<p>You might see an error like this &quot;not in executable format: file format not recognized&quot; or &quot;No symbol table loaded. Use the &quot;file&quot; command.&quot;</p>
+<p>This means that you called gdb on the source file (the one ending in <code>.c</code>) instead of the executable. Exit GDB and make sure that you call it with the executable.</p>
+<h3 id="how-do-i-switch-between-the-code-window-and-the-console">How do I switch between the code window and the console?</h3>
+<p>CGDB presents a vim-like navigation interface: Press <kbd>i</kbd> on your keyboard to switch from the code window to the console. Press <kbd>Esc</kbd> to switch from the console to the code window.</p>
+<p>GDB presents a readline/emacs-like navigation interface: Press <kbd>Ctrl</kbd> + <kbd>X</kbd> then <kbd>O</kbd> to switch between windows.</p>
+<h3 id="i-m-stuck-in-the-code-window">I'm stuck in the code window</h3>
+<p>Press <kbd>i</kbd> on your keyboard. This should get you back to the console.</p>
+<h3 id="the-text-ui-is-garbled">The text UI is garbled</h3>
+<p>Refresh the GDB text UI by pressing <kbd>Ctrl</kbd> + <kbd>l</kbd>.</p>
+<hr/>
+<h2 id="other-useful-gdb-commands-recommended">Other Useful GDB Commands (Recommended)</h2>
+<h3 id="command-info-locals">Command: <code>info locals</code></h3>
+<p>Prints the value of all of the local variables in the current stack frame</p>
+<h3 id="command-command">Command: <code>command</code></h3>
+<p>Executes a list of commands every time a break point is reached. For example:</p>
+<p>Set a breakpoint:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">b 73
+</span></code></pre>
+<p>Type <code>commands</code> followed by the breakpoint number:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">commands 1
+</span></code></pre>
+<p>Type the list of commands that you want to execute separated by a new line. After your list of commands, type <code>end</code> and hit <kbd>Enter</kbd>.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">p var1
+p var2
+end
+</span></code></pre>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>

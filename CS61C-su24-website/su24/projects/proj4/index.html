@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Project 4 | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#checkpoint">Checkpoint</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#introduction">Introduction</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup-git">Setup: Git</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup-testing">Setup: Testing</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#background">Background</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#convolutions">Convolutions</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#application-video-processing">Application: Video Processing</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#vectors">Vectors</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#matrices">Matrices</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#bin-files">bin files</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task">Task</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#testing-framework">Testing Framework</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#directory-structure">Directory Structure</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#testing">Testing</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#debugging">Debugging</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-1-naive-convolutions">Task 1: Naive Convolutions</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#conceptual-overview-2d-convolutions">Conceptual Overview: 2D Convolutions</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#implementation">Implementation</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#testing-and-debugging">Testing and Debugging</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-2-optimization">Task 2: Optimization</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-2-1-simd">Task 2.1: SIMD</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-2-2-openmp">Task 2.2: OpenMP</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-2-3-algorithmic-optimizations">Task 2.3: Algorithmic Optimizations</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-2-4-testing-and-debugging">Task 2.4: Testing and Debugging</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-3-open-mpi">Task 3: Open MPI</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#testing-and-debugging-1">Testing and Debugging</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-4-partner-feedback-form">Task 4: Partner&#x2F;Feedback Form</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#benchmarks">Benchmarks</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#speedup-requirements">Speedup Requirements</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#performance-score-calculation">Performance Score Calculation</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submission-and-grading">Submission and Grading</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#appendix-helper-functions-in-io-o">Appendix: Helper Functions in io.o</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#appendix-optional-video-processing">Appendix: (Optional) Video Processing</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#viewing-output">Viewing Output</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#appendix-optional-convolutions">Appendix: (Optional) Convolutions</a>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Project 4: <span style="color:#f54b42">CS61</span>ka<span style="color:#f54b42">C</span>how</h1>
+<p class="subtitle">Checkpoint: Friday, August 2, 11:59:59 PM PT</p>
+<p class="subtitle">Deadline: Friday, August 9, 11:59:59 PM PT</p>
+<p><a href="banner.jpg" target="_blank"><img src="banner.jpg"></a></p>
+<div class="alert alert-info">
+<p>Make sure you've finished the setup in Lab 0 before starting this project.</p>
+<p>Lab 7-9 are required for Project 4, and lectures 16-18, Discussions 9-10, and Homework 5-6 are highly recommended.</p>
+</div>
+<p>For this project, remember that the verb form of convolution is &quot;convolve&quot; not &quot;convolute&quot;. Convolute means to complicate things, but in case you forget, here's a helpful quote:</p>
+<blockquote>
+<p>&quot;Convolute is what I do on exams, convolve is what you do on exams.&quot;</p>
+<p>-Babak Ayazifar, EE120 Professor</p>
+</blockquote>
+<h2 id="checkpoint">Checkpoint</h2>
+<p>If you receive a score of 31/100 (excluding points from the feedback form) or above by Friday, August 2nd, 11:59 PM PT, we will award 0.5 extra credit points. This score is equivalent to finishing task 1. This checkpoint is all-or-nothing, and you cannot apply slip days to it.</p>
+<h2 id="introduction">Introduction</h2>
+<p>One of the major goals of this project is to explore how to speed up our programs. However, as with any real-world performance tests, there are many different factors that can affect the performance of any particular program.</p>
+<p>For this project, one of the greatest factors is the load on the hive machines. Heavy hive machine load may significantly affect execution time and speedup. In fact, it can drastically misrepresent the performance of your program, when in fact your code may be correct.</p>
+<p>As a result, we recommend the following in order to get the most consistent results from running your tests on the hive:</p>
+<ol>
+<li>Start working on the project early. Inevitably, more students will be working on the project closer to the deadline. As such, students who start early will have a higher chance of using the hive machines under lower amounts of load.</li>
+<li>Check <a href="https://hivemind.eecs.berkeley.edu/">Hivemind</a> to choose which hive machine to ssh into. You will want to select a hive machine that has a low overall load, CPU usage, and number of current users.</li>
+<li>Try working on the project during times that other students are not working. You will find that certain hours of the day have less average hive machine load; running your tests during this time will help you get more consistent performance results.</li>
+</ol>
+<h2 id="setup-git">Setup: Git</h2>
+<p>This assignment can be done alone or with a partner.</p>
+<div class="alert alert-warning">
+<p>You must complete this project on the hive machines (not your local machine). See <a href="../../labs/lab00/index.html">Lab 0</a> if you need to set up the hive machines again.</p>
+</div>
+<div class="alert alert-warning">
+<p><strong>Warning</strong>: Once you create a GitHub repo, you will <em>not</em> be able to change (add, remove, or swap) partners for this project, so please be sure of your partner before starting the project. You must add your partner on both <code>gradar</code> and to every Gradescope submission.</p>
+</div>
+<p>If there are extenuating circumstances that require a partner switch (e.g. your partner drops the class, your partner is unresponsive), please reach out to us privately.</p>
+<ol>
+<li>
+<p><strong>Visit</strong> <a href="https://gradar.cs61c.org/">Gradar</a>. <strong>Log in</strong> and <strong>register</strong> your Project 4 group (and <strong>add</strong> your partner, if you have one), then <strong>create</strong> a GitHub repo for you or your group. If you have a partner, one partner should create a group and invite the other partner to that repo. The other partner should accept the invite without creating their own group.</p>
+</li>
+<li>
+<p><strong>Clone</strong> the repository on a <strong>hive machine</strong>.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> clone git@github.com:61c-student/su24-proj4-USERNAME.git 61c-proj4</span>
+</span></code></pre>
+<p>(<strong>replace</strong> <code>username</code> with your GitHub username)</p>
+</li>
+<li>
+<p><strong>Navigate</strong> to your repository:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-cd z-shell">cd</span></span><span class="z-meta z-function-call z-arguments z-shell"> 61c-proj4</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Add</strong> the starter repository as a remote:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> remote add starter https://github.com/61c-teach/su24-proj4-starter.git</span>
+</span></code></pre>
+</li>
+</ol>
+<p>If you run into <code>git</code> issues, please check out the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<h2 id="setup-testing">Setup: Testing</h2>
+<p>The starter code does not come with any provided tests. To download the staff tests, run the following command:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">python3</span></span><span class="z-meta z-function-call z-arguments z-shell"> tools/create_tests.py</span>
+</span></code></pre>
+<h2 id="background">Background</h2>
+<p>This section is a bit long, so feel free to skip it for now, but please refer to them as needed since they provide helpful background information for the tasks in this project.</p>
+<h3 id="convolutions">Convolutions</h3>
+<p>For background information about what a convolution is and why it is useful, see <a href="index.html#appendix-optional-convolutions">Appendix: (Optional) Convolutions</a>.</p>
+<h3 id="application-video-processing">Application: Video Processing</h3>
+<p>For this project, we will be applying convolutions to a real world application: video processing. Convolutions can blur, sharpen, or apply other effects to videos. This is possible because individual frames in a video can be treated as matrices of red, blue, and green values constructing the color for a given pixel. For simplicity, we're only working with grayscale videos, so that there's only one value per pixel (as opposed to one value for red, one for green, one for blue). As such, we can perform any matrix operation on each video frame, one of them being convolution.</p>
+<p>When we convolve a matrix with an image, the matrix we use will have a major impact on the outcome ranging from sharpening to blurring an image. The matrices that we provide in this project will blur or sharpen your video frames. For each pixel, we compute a weighted average using the pixel itself and the pixels near it. By averaging many pixels together, this will smoothen any difference between their values, resulting in a blur. This is referred to as “Gaussian Blur” and is exactly how your phone blurs photos.</p>
+<h3 id="vectors">Vectors</h3>
+<p>In this project, a vector is represented as an array of <code>int32_t</code>s, or a <code>int32_t *</code>.</p>
+<h3 id="matrices">Matrices</h3>
+<p>In this project, we provide a type <code>matrix_t</code> defined as follows:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">typedef</span> <span class="z-storage z-type z-c">struct</span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+  <span class="z-support z-type z-stdint z-c">uint32_t</span> rows<span class="z-punctuation z-terminator z-c">;</span>
+  <span class="z-support z-type z-stdint z-c">uint32_t</span> cols<span class="z-punctuation z-terminator z-c">;</span>
+  <span class="z-support z-type z-stdint z-c">int32_t</span> <span class="z-keyword z-operator z-c">*</span>data<span class="z-punctuation z-terminator z-c">;</span>
+<span class="z-punctuation z-section z-block z-end z-c">}</span></span> <span class="z-entity z-name z-type z-typedef z-c">matrix_t</span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>In <code>matrix_t</code>, <code>rows</code> represents the number of rows in the matrix, <code>cols</code> represents the number of columns in the matrix, and <code>data</code> is a 1D array of the matrix stored in row-major format (similar to project 2). For example, the matrix <code>[[1, 2, 3], [4, 5, 6]]</code> would be stored as <code>[1, 2, 3, 4, 5, 6]</code>.</p>
+<h3 id="bin-files"><code>bin</code> files</h3>
+<p>Matrices are stored in <code>.bin</code> files as a consecutive sequence of 4-byte integers (identical to project 2). The first and second integers in the file indicate the number of rows and columns in the matrix, respectively. The rest of the integers store the elements in the matrix in row-major order.</p>
+<p>To view matrix files, you can run <code>xxd -e matrix_file.bin</code>, replacing <code>matrix_file.bin</code> with the matrix file you want to read. The output should look something like this:</p>
+<pre class="z-code"><code><span class="z-text z-plain">00000000: 00000003 00000003 00000001 00000002  ................
+00000010: 00000003 00000004 00000005 00000006  ................
+00000020: 00000007 00000008 00000009           ............
+</span></code></pre>
+<p>The left-most column indexes the bytes in the file (e.g. the third row starts at the <code>0x20</code>th byte of the file). The dots on the right display the bytes in the file as ASCII, but these bytes don't correspond to printable ASCII characters so only dot placeholders appear.</p>
+<p>The actual contents of the file are listed in 4-byte blocks, with 4 blocks displayed per row. The first row has the numbers 3 (row count), 3 (column count), 1 (first element), and 2 (second element). This is a 3x3 matrix with elements [1, 2, 3, 4, 5, 6, 7, 8, 9].</p>
+<h3 id="task">Task</h3>
+<p>In this project, we provide a type <code>task_t</code> defined as follows:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">typedef</span> <span class="z-storage z-type z-c">struct</span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+  <span class="z-storage z-type z-c">char</span> <span class="z-keyword z-operator z-c">*</span>path<span class="z-punctuation z-terminator z-c">;</span>
+<span class="z-punctuation z-section z-block z-end z-c">}</span></span> <span class="z-entity z-name z-type z-typedef z-c">task_t</span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>Each task represents a convolution operation (we'll go into what convolution is later), and is uniquely identified by its <code>path</code>. The <code>path</code> member of the <code>task_t</code> struct is the relative path to the folder containing the task.</p>
+<h3 id="testing-framework">Testing Framework</h3>
+<p>Tests in this project are located in the <code>tests</code> directory. The starter code does not contain any tests, but it contains a script <code>tools/create_tests.py</code> which will create the <code>tests</code> directory and generate tests. If you would like to make a custom test, please add it to <code>tools/custom_tests.py</code>. Feel free to use the tests we provide in <code>tools/staff_tests.py</code> as examples.</p>
+<p>Once you define a custom test in <code>custom_tests.py</code>, you can run the test using the <code>make</code> commands provided in the task that you're currently working on, and the test will be generated for you based on the parameters you specify.</p>
+<h3 id="directory-structure">Directory Structure</h3>
+<p>Here's what folder should look like after running the example above:</p>
+<pre class="z-code"><code><span class="z-text z-plain">61c-proj4/ # Your root project 4 folder
+├─src/     # Where your source files are located
+├─tests/   # Where your test files are located
+│ └─my_custom_test/ # Where a specific test is located
+│   ├─input.txt    # The input file to pass to your program, contains the number of tasks and task path
+│   ├─task0/        # The first task
+│   │ ├─a.bin         # Matrix A used in this task
+│   │ ├─b.bin         # Matrix B used in this task
+│   │ ├─ref.bin       # Reference output matrix generated by our script
+│   │ └─out.bin       # Output matrix generated by your program
+│   ├─task1/        # The second task, with the same folder structure
+│   ├─...
+│   └─task9/        # The tenth (last) task
+├─tools/   # Where some utility scripts are stored
+└─Makefile # Makefile for compilation and running the program.
+</span></code></pre>
+<p>The <code>path</code> member of the <code>task_t</code> struct for <code>task0</code> would be would be <code>tests/my_custom_test/task0</code>.</p>
+<h3 id="testing">Testing</h3>
+<p>This project uses a <code>Makefile</code> for running tests. The <code>Makefile</code> accepts one variable: <code>TEST</code>. <code>TEST</code> should be a path to a folder in <code>tests/</code> that contains an <code>input.txt</code>. We'll provide more guidance on this later in the project.</p>
+<p>For example, if you would like the run the test generated above and you're working on task 1, the command would be</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_1 TEST=tests/my_custom_test</span>
+</span></code></pre>
+<h3 id="debugging">Debugging</h3>
+<p>While <code>cgdb</code> and <code>valgrind</code> may not be as helpful as they are for project 1, they are still helpful for fixing any errors you may encounter. When you run a test through <code>make</code>, it prints out the actual command used to run the test. For example, the <code>make</code> command in the above section would print out the following:</p>
+<pre class="z-code"><code><span class="z-text z-plain">Command: ./convolve_naive_naive tests/my_custom_test/input.txt
+</span></code></pre>
+<p>If you would like to use <code>cgdb</code>, add <code>cgdb</code> before the command printed. Similarly, for <code>valgrind</code>, add <code>valgrind</code> before the command printed. For example, the commands would be</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">cgdb</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>args</span> ./convolve_naive_naive tests/my_custom_test/input.txt</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">valgrind</span></span><span class="z-meta z-function-call z-arguments z-shell"> ./convolve_naive_naive tests/my_custom_test/input.txt</span>
+</span></code></pre>
+<h2 id="task-1-naive-convolutions">Task 1: Naive Convolutions</h2>
+<p>In this project, you will implement and optimize 2D convolutions, which is a mathematical operation that has a wide range of applications. Don't worry if you've never seen convolutions before, it can be simplified to a series of dot products (more on this in task 1.3).</p>
+<h4 id="conceptual-overview-2d-convolutions">Conceptual Overview: 2D Convolutions</h4>
+<p>Note: For this project, we will only be covering discrete convolutions since the input vectors and matrices only have values at discrete indexes. This is in contrast to continuous convolutions where the input would have values for all real numbers. If you have seen convolutions in a different class or in some other context, the process we describe below may differ slightly from what you are used to.</p>
+<p>Convolution is a special way of multiplying two vectors or two matrices together in order to determine how well they overlap. This leads to many different applications that you'll explore in this project, but first, here are the mechanics for how convolution is done:</p>
+<p><a href="convolve-2d-label.png" target="_blank"><img src="convolve-2d-label.png"></a></p>
+<p>A convolution is when you want to convolve two vectors or matrices together, matrix A and matrix B. We will assume that matrix B is always smaller than matrix A.</p>
+<ol>
+<li>You begin by flipping matrix B in both dimensions. Note that flipping matrix B in both dimensions is <em>NOT</em> the same as transposing the matrix. Flipping an <code>MxN</code> matrix results in an <code>MxN</code> matrix. Transpose results in an <code>NxM</code> matrix.</li>
+</ol>
+<p><a href="flip-2d.png" target="_blank"><img src="flip-2d.png"></a></p>
+<ol start="2">
+<li>Once flipped horizontally and vertically, overlap matrix B in the top left corner of matrix A. Perform an element-wise multiplication of where the matrices overlap and then add all of the results together to get a single value. This is the top left entry in your resultant matrix.</li>
+<li>Slide matrix B to the right by 1 and repeat this process. This continues until any part of matrix B no longer overlaps with matrix A. When this happens, move matrix B to first column of matrix A and down by 1 row.</li>
+<li>Repeat the entire process until reaching the bottom right corner of matrix A. You have now convolved matrix A and B. (click the image for a larger version)</li>
+</ol>
+<p><a href="convolve-2d.svg" target="_blank"><img src="convolve-2d.svg" style="width:100%;"></a></p>
+<p>You can assume that the height and width of matrix B are less than or equal to the height and width of matrix A.</p>
+<p>Note: The output matrix has different dimensions from its input matrices. We'd recommend working out some examples to see how the dimensions of the output matrix is related to the input matrices.</p>
+<h4 id="implementation">Implementation</h4>
+<p>Helpful resources: <a href="index.html#matrices">Background: Matrices</a>, <a href="index.html#task">Background: Task</a></p>
+<p>Implement <code>convolve</code> in <code>compute_naive.c</code>. You may assume that <code>b_matrix</code> will smaller or equal to <code>a_matrix</code> (that is, if <code>a_matrix</code> is <code>m</code> by <code>n</code> and <code>b_matrix</code> is <code>k</code> by <code>l</code>, then <code>k &lt; m</code> and <code>l &lt; n</code>).</p>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>convolve</code></td>
+</tr>
+<tr>
+<td rowspan="3"><b>Arguments</b></td>
+<td><code>matrix_t* a_matrix</code></td>
+<td>Pointer to the first vector.</td>
+</tr>
+<tr>
+<td><code>matrix_t* b_matrix</code></td>
+<td>Pointer to the second vector.</td>
+</tr>
+<tr>
+<td><code>matrix_t** output_matrix</code></td>
+<td>Set <code>*output_matrix</code> to be a pointer to the resulting matrix. You must allocate memory for the resulting matrix in <code>convolve</code>.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>int</code></td>
+<td>0 if successful, -1 if there are any errors.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="testing-and-debugging">Testing and Debugging</h4>
+<p>Helpful resources: <a href="index.html#testing-framework">Background: Testing Framework</a>, <a href="index.html#directory-structure">Background: Directory Structure</a>, <a href="index.html#testing">Background: Testing</a>, <a href="index.html#debugging">Background: Debugging</a></p>
+<p>To run the staff provided tests for this task:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_1 TEST=tests/test_tiny</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_1 TEST=tests/test_small</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_1 TEST=tests/test_large</span>
+</span></code></pre>
+<p>If you don't have the tests, please pull the starter first!</p>
+<p>If you'd like to create additional tests, please refer to the <a href="index.html#testing-framework">testing framework section</a> for creating tests as well as the <a href="index.html#testing">testing</a> and <a href="index.html#debugging">debugging</a> sections for instructions on running tests.</p>
+<p>Make sure to create tests of different sizes and dimensions! The autograder will test a wide range of sizes for both correctness and speedup.</p>
+<h2 id="task-2-optimization">Task 2: Optimization</h2>
+<p>At this point, you should have a complete implementation in <code>compute_naive.c</code>. You will implement all optimizations in <code>compute_optimized.c</code>.</p>
+<div class="alert alert-warning">
+<p>We expect your submissions to follow the spirit of the project. If your submission does not follow the spirit of the question (e.g. hardcodes the correct output while not applying any of the concepts introduced in this course), we may manually grade your submission. If you feel like you may potentially be violating the spirit of the project, feel free to make a private question on Ed.</p>
+</div>
+<h3 id="task-2-1-simd">Task 2.1: SIMD</h3>
+<p>Helpful resources: <a href="../../labs/lab07/index.html">Lab 7</a>, <a href="../../discussions/disc09/index.html">Discussion 9</a>, <a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425986">Homework 5</a></p>
+<p>Optimize your naive solution using SIMD instructions in <code>compute_optimized.c</code>. Not all functions can be optimized using SIMD instructions. For this project, we're using 32-bit integers, so each 256 bit AVX vector can store 8 integers and perform 8 operations at once.</p>
+<p>As a reminder, you can use the <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html">Intel Intrinsics Guide</a> as a reference to look up the relevant instructions. You will have to use the <code>__m256i</code> type to hold 8 integers in a YMM register, and then use the <code>_mm256_*</code> intrinsics to operate on them. Make sure you use the <strong>unaligned</strong> versions of the intrinsic, unless your code aligns the memory to use the aligned versions.</p>
+<p>Note: if your implementation of <code>convolve</code> relies on any helper functions, you will want to also convert those to use SIMD instructions as well. Don't forget to implement any tail case(s)!</p>
+<p>Hint: You will want to check out the instructions in the AVX family of intrinsic functions, as it may help greatly with certain operations during the convolution process. We understand that there are a lot of functions, but it is a useful skill to be able to read documentation and find information relevant to your task.</p>
+<h3 id="task-2-2-openmp">Task 2.2: OpenMP</h3>
+<p>Helpful resources: <a href="../../labs/lab08/index.html">Lab 8</a>, <a href="../../discussions/disc10/index.html">Discussion 10</a>, <a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425986">Homework 5</a></p>
+<p>Optimize your solution from task 2.1 using OpenMP directives in <code>compute_optimized.c</code>. Not all functions can be optimized using OpenMP directives. You can find more information on OpenMP directives on the <a href="https://inst.eecs.berkeley.edu/%7Ecs61c/sp21/resources-pdfs/OpenMP3.0-SummarySpec.pdf">OpenMP summary card</a>.</p>
+<h3 id="task-2-3-algorithmic-optimizations">Task 2.3: Algorithmic Optimizations</h3>
+<p>If your solution from task 2.2 doesn't meet your desired speedups, there is probably room for algorithmic optimizations! This section is a bit more open-ended than the previous two subtasks, since the specific algorithmic optimizations depend on your existing solution and algorithm.</p>
+<h3 id="task-2-4-testing-and-debugging">Task 2.4: Testing and Debugging</h3>
+<p>Helpful resources: <a href="index.html#testing-framework">Background: Testing Framework</a>, <a href="index.html#directory-structure">Background: Directory Structure</a>, <a href="index.html#testing">Background: Testing</a>, <a href="index.html#debugging">Background: Debugging</a></p>
+<p>To run the staff provided tests for this task (note: for this task, you should use <code>make task_2</code> instead of <code>make task_1</code>):</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_2 TEST=tests/test_tiny</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_2 TEST=tests/test_small</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_2 TEST=tests/test_large</span>
+</span></code></pre>
+<p>If you don't have the tests, please pull the starter first!</p>
+<p>If you'd like to create additional tests, please refer to the <a href="index.html#testing-framework">testing framework section</a> for creating tests as well as the <a href="index.html#testing">testing</a> and <a href="index.html#debugging">debugging</a> sections for instructions on running tests. In order to receive full credit, your code should achieve the speedups listed in the <a href="index.html#benchmarks">benchmarks</a> section of the spec.</p>
+<h2 id="task-3-open-mpi">Task 3: Open MPI</h2>
+<p>Helpful resources: <a href="../../labs/lab09/index.html">Lab 9</a>, <a href="../../discussions/disc10/index.html">Discussion 10</a>, <a href="https://us.prairielearn.com/pl/course_instance/155978/assessment/2425987">Homework 6</a></p>
+<p>Up until this point, you've been using the provided <code>coordinator_naive.c</code> as the coordinator with a small number of tasks. However, <code>coordinator_naive.c</code> does not have any PLP capabilities and we can optimize it for a workload that includes a larger number of tasks.</p>
+<ol>
+<li>
+<p><strong>Implement</strong> an Open MPI coordinator in <code>coordinator_mpi.c</code>.</p>
+<ul>
+<li>The structure of the code will be similar to the Open MPI coordinator you wrote in lab 9, homework 6, and discussion 10.</li>
+</ul>
+</li>
+<li>
+<p><strong>Copy</strong> your existing compute functions in <code>compute_optimized.c</code> to <code>compute_optimized_mpi.c</code>, and make any changes necessary to further improve the speedup.</p>
+</li>
+</ol>
+<p>The <code>execute_task</code> function may be helpful here:</p>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>execute_task</code></td>
+</tr>
+<tr>
+<td><b>Arguments</b></td>
+<td><code>task_t *task</code></td>
+<td>A <code>task_t</code> struct representing the task to execute.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>int</code></td>
+<td>0 if successful, -1 if there are any errors.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing-and-debugging-1">Testing and Debugging</h3>
+<p>Helpful resources: <a href="index.html#testing-framework">Background: Testing Framework</a>, <a href="index.html#directory-structure">Background: Directory Structure</a>, <a href="index.html#testing">Background: Testing</a>, <a href="index.html#debugging">Background: Debugging</a></p>
+<p>To run the staff provided tests for this task (note: for this task, you should use <code>make task_3</code> instead of <code>make task_1</code> or <code>make task_2</code>):</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_3 TEST=tests/test_tiny</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_3 TEST=tests/test_small</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">make</span></span><span class="z-meta z-function-call z-arguments z-shell"> task_3 TEST=tests/test_large</span>
+</span></code></pre>
+<p>If you don't have the tests, please pull the starter first!</p>
+<p>If you'd like to create additional tests, please refer to the <a href="index.html#testing-framework">testing framework section</a> for creating tests as well as the <a href="index.html#testing">testing</a> and <a href="index.html#debugging">debugging</a> sections for instructions on running tests. In order to receive full credit, your code should achieve the speedups listed in the <a href="index.html#benchmarks">benchmarks</a> section of the spec.</p>
+<p>Unfortunately, <code>gdb</code> is not extremely helpful for parallel programs. We recommend using <code>printf</code>s throughout your program to verify that variables contain values you'd expect. We also recommend first testing your optimized compute with the naive coordinator first since it is easier to debug.</p>
+<h2 id="task-4-partner-feedback-form">Task 4: Partner/Feedback Form</h2>
+<p>Congratulations on finishing the project! We'd love to hear your feedback on what can be improved for future semesters.</p>
+<p>Please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLScMi9oDGEli4q6bG93xMOUEAW5KR5OB9hhNjosTMj7chMepeA/viewform?usp=sf_link">short form</a>, where you can offer your thoughts on the project and (if applicable) your partnership. Any feedback you provide won't affect your grade, so feel free to be honest and constructive.</p>
+<h2 id="benchmarks">Benchmarks</h2>
+<div class="alert alert-warning">
+<p>Execution time and speedup may vary depending on hive machine load. Heavy hive machine load may significantly affect your program's performance. We recommend checking <a href="https://hivemind.eecs.berkeley.edu/">Hivemind</a> to choose which hive machine to ssh into. For more tips on how to obtain more consistent performance results, see the <a href="index.html#introduction">introduction</a>.</p>
+</div>
+<p>There are two types of benchmarks:</p>
+<ul>
+<li>Optimized: uses your <code>compute_optimized.c</code> and the staff <code>coordinator_naive.c</code>
+<ul>
+<li>These benchmarks are run with a limit of 4 threads for OpenMP.</li>
+</ul>
+</li>
+<li>Open MPI: uses your <code>compute_optimized_mpi.c</code> and your <code>coordinator_mpi.c</code>
+<ul>
+<li>These benchmarks are run with a limit of 1 thread for OpenMP and configures Open MPI to use 4 processes.</li>
+</ul>
+</li>
+</ul>
+<h3 id="speedup-requirements">Speedup Requirements</h3>
+<table>
+<tbody>
+<tr>
+<td colspan="4">Speedup Requirements</td>
+</tr>
+<tr>
+<td><b>Name</b></td>
+<td><b>Folder Name</b></td>
+<td><b>Type</b></td>
+<td><b>Speedup</b></td>
+</tr>
+<tr>
+<td rowspan="2">Random</td>
+<td rowspan="2"><code>test_ag_random</code></td>
+<td>Optimized</td>
+<td>8.10x</td>
+</tr>
+<tr>
+<td>Open MPI</td>
+<td>4.70x</td>
+</tr>
+<tr>
+<td rowspan="2">Increasing</td>
+<td rowspan="2"><code>test_ag_increasing</code></td>
+<td>Optimized</td>
+<td>7.78x</td>
+</tr>
+<tr>
+<td>Open MPI</td>
+<td>3.20x</td>
+</tr>
+<tr>
+<td rowspan="2">Decreasing</td>
+<td rowspan="2"><code>test_ag_decreasing</code></td>
+<td>Optimized</td>
+<td>8.00x</td>
+</tr>
+<tr>
+<td>Open MPI</td>
+<td>3.93x</td>
+</tr>
+<tr>
+<td>Big and Small</td>
+<td><code>test_ag_big_and_small</code></td>
+<td>Open MPI</td>
+<td>2.68x</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-score-calculation">Performance Score Calculation</h3>
+<p>The score for the performance portion of the autograder is calculated using the followed equation: <code>score = log(x) / log(t)</code>, where <code>x</code> is the speedup a submission achieves on a specific benchmark, and <code>t</code> is the target speedup for that benchmark.</p>
+<h2 id="submission-and-grading">Submission and Grading</h2>
+<p>Submit your code to the Project 4 Gradescope assignment. Make sure that you have only modified <code>compute_naive.c</code>, <code>compute_optimized.c</code>, <code>compute_optimized_mpi.c</code> and <code>coordinator_mpi.c</code>.</p>
+<p>The score you see on Gradescope will be your final score for this project. By default, we will rate limit submissions to 4 submissions for any given 2 hour period. We may adjust this limit as the deadline approaches and if there is significant load on the autograder, but we will always allow at least one submission per hour. </p>
+<h2 id="appendix-helper-functions-in-io-o">Appendix: Helper Functions in <code>io.o</code></h2>
+<p>We've provided a few helper functions in <code>io.o</code>. However, we've only provided the object file that will be linked with your program at link time. We are not providing the source code for these functions since it may give away solutions for other projects.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>read_tasks</code></td>
+</tr>
+<tr>
+<td rowspan="3"><b>Arguments</b></td>
+<td><code>char *input_file</code></td>
+<td>Path to the input file (the <code>input.txt</code> file).</td>
+</tr>
+<tr>
+<td><code>int *num_tasks</code></td>
+<td>Set <code>*num_tasks</code> to the number of tasks in the input file.</td>
+</tr>
+<tr>
+<td><code>task_t ***tasks</code></td>
+<td>Set <code>*tasks</code> as an array of <code>task_t *</code>s, each pointing to a <code>task_t</code> struct representing a task.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>int</code></td>
+<td>0 if successful, -1 if there are any errors.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>get_a_matrix_path</code></td>
+</tr>
+<tr>
+<td><b>Arguments</b></td>
+<td><code>task_t *task</code></td>
+<td>Pointer to the task.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>char *</code></td>
+<td>Matrix A's path for the given task.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>get_b_matrix_path</code></td>
+</tr>
+<tr>
+<td><b>Arguments</b></td>
+<td><code>task_t *task</code></td>
+<td>Pointer to the task.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>char *</code></td>
+<td>Matrix B's path for the given task.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>get_output_matrix_path</code></td>
+</tr>
+<tr>
+<td><b>Arguments</b></td>
+<td><code>task_t *task</code></td>
+<td>Pointer to the task.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>char *</code></td>
+<td>The output matrix's path for the given task.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>read_matrix</code></td>
+</tr>
+<tr>
+<td rowspan="2"><b>Arguments</b></td>
+<td><code>char *path</code></td>
+<td>Path to read the matrix from.</td>
+</tr>
+<tr>
+<td><code>matrix_t **matrix</code></td>
+<td>Sets <code>*matrix</code> to the matrix stored at <code>path</code>.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>int</code></td>
+<td>0 if successful, -1 if there are any errors.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 12%;">
+<col span="1" style="width: 23%;">
+<col span="1" style="width: 65%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="3"> <code>write_matrix</code></td>
+</tr>
+<tr>
+<td rowspan="2"><b>Arguments</b></td>
+<td><code>char *path</code></td>
+<td>Path to read the matrix from.</td>
+</tr>
+<tr>
+<td><code>matrix_t *matrix</code></td>
+<td>The matrix to write to <code>path</code>.</td>
+</tr>
+<tr>
+<td><b>Return values</b></td>
+<td><code>int</code></td>
+<td>0 if successful, -1 if there are any errors.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix-optional-video-processing">Appendix: (Optional) Video Processing</h2>
+<h3 id="viewing-output">Viewing Output</h3>
+<p>Since the hive machines are headless (i.e. they don't have a desktop), you need to copy the GIFs locally before you can open them. </p>
+<ol>
+<li><strong>Find</strong> the path to the output GIF. This is generally <code>~/61c-proj4/tests/name_of_your_test/outX.gif</code>. For example, the output file of the staff provided <code>test_gif_kachow_blur</code> would be located at <code>~/61c-proj4/tests/test_gif_kachow_blur/out0.gif</code>.</li>
+</ol>
+<ul>
+<li>This assumes that you cloned your repo as <code>61c-proj4</code> in the project setup. If this is not the case, replace <code>61c-proj4</code> with the name of your folder.</li>
+<li><code>ls</code> and <code>cd</code> may be helpful here for navigating your files on the hive machines.</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>Open</strong> a new terminal on your local machine.</p>
+</li>
+<li>
+<p>In the new terminal window, <strong>navigate</strong> to the folder you'd like to save the GIF to.</p>
+</li>
+<li>
+<p><strong>Run</strong> the following command, where <code>cs61c-???</code> is your instructional account username, and <code>path_to_gif</code> is the path from step 1.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">scp</span></span><span class="z-meta z-function-call z-arguments z-shell"> cs61c-<span class="z-keyword z-operator z-regexp z-quantifier z-shell">?</span><span class="z-keyword z-operator z-regexp z-quantifier z-shell">?</span><span class="z-keyword z-operator z-regexp z-quantifier z-shell">?</span>@hive1:path_to_gif .</span>
+</span></code></pre>
+</li>
+</ol>
+<p>The file should now be accessible on your local machine, and you can open it with your image viewer of choice.</p>
+<h2 id="appendix-optional-convolutions">Appendix: (Optional) Convolutions</h2>
+<p>The content in this appendix is not in scope for this course.</p>
+<p>Convolutions are a mathematical operation that have wide-ranging applications in signal processing and analysis, computer vision, image and audio processing, machine learning, probability, and statistics. Common applications include <a href="https://en.wikipedia.org/wiki/Edge_detection">edge detection</a> in images, adding <a href="https://en.wikipedia.org/wiki/Bokeh">blur (bokeh)</a> in images, adding <a href="https://en.wikipedia.org/wiki/Reverberation">reverberation</a> in audio, and creating <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">convolutional neural networks</a>.</p>
+<p>This appendix will only give an overview of the 1D discrete time convolution. Discrete time means that a function is only defined at distinct, equally spaced integer indexes. Also, the explanations below are very fast and can be complicated, so it is ok to not understand convolutions for this project. For a much deeper understanding of convolutions and how they interact with signals, be sure to take <a href="https://www2.eecs.berkeley.edu/Courses/EE120/">EE120</a>.</p>
+<p>With that, let’s jump in 😈</p>
+<p>Mathematically, a convolution is a type of function multiplication that determines how much the two overlap. In real world applications though, a convolution is how a system responds to a signal. A signal can be any mathematical function, and a system can be anything that takes in this function and provides an output. This output is also in the form of a function.</p>
+<p>We can describe signals and systems like so:</p>
+<pre class="z-code"><code><span class="z-text z-plain">x(t) -&gt; H -&gt; y(t)
+</span></code></pre>
+<p>Where x(t) and y(t) are functions, and H is the system.</p>
+<p>Important qualities of a system that we’ll need for convolution are linearity and time-invariance.</p>
+<p>Linearity:
+One aspect of linearity is that if you feed a signal into a system that has been multiplied by some constant, it will respond with the original output signal multiplied by the same constant.</p>
+<pre class="z-code"><code><span class="z-text z-plain">αx(t) = x̂(t) -&gt; H -&gt; ŷ(t) = αy(t)
+</span></code></pre>
+<p>Additionally, linearity means that if you pass in a sum of signals, the system will output a sum of their corresponding outputs.</p>
+<pre class="z-code"><code><span class="z-text z-plain">x_1(t) + x_2(t) = x̂(t) -&gt; H -&gt; ŷ(t) = y_1(t) + y_2(t)
+</span></code></pre>
+<p>Putting the two together:</p>
+<pre class="z-code"><code><span class="z-text z-plain">αx_1(t) + βx_2(t) = x̂(t) -&gt; H -&gt; ŷ(t) = αy_1(t) + βy_2(t)
+</span></code></pre>
+<p>Time-Invariance:
+Time-Invariance means that if you feed a time shifted input into a system, it will respond with an equally time shifted output.</p>
+<pre class="z-code"><code><span class="z-text z-plain">$αx(t - T) = x̂(t) -&gt; H -&gt; ŷ(t) = αy(t - T)$
+</span></code></pre>
+<p>Going forward, the systems we examine will only be linear and time-invariant (LTI).</p>
+<p>In order to determine how a system will respond to any signal, an impulse can be passed into the system. The impulse function used is known as the Kronecker Delta, and it is defined like so:</p>
+<pre class="z-code"><code><span class="z-text z-plain">x(t) = 1 iff t = 0, else x(t) = 0 ∀ t | t ≠ 0
+</span></code></pre>
+<p>Going forward, this function will be denoted as: 𝛿(t).</p>
+<p>An important property of 𝛿(t) is that when it is multiplied by another function x(t), the result is a new function that is 0 everywhere except for t = 0 where it equals x(0). This is due to 𝛿(t) being 0 everywhere except for t = 0 where 𝛿(t) = 1. This can be written as:</p>
+<pre class="z-code"><code><span class="z-text z-plain">x(t)𝛿(t) = x(0)𝛿(t)
+</span></code></pre>
+<p>This property still holds when 𝛿(t) is shifted by some value T, so more generally:</p>
+<pre class="z-code"><code><span class="z-text z-plain">x(t)𝛿(t - T) = x(T)𝛿(t-T)
+</span></code></pre>
+<p>This means that we can collect a single value of a function at any integer time value t just by multiplying the function with a shifted 𝛿(t). Knowing this, we can reconstruct x(t) by adding together the functions containing a single point. That means x(t) can be represented as a sum of scaled delta functions like so:</p>
+<pre class="z-code"><code><span class="z-text z-plain">∑x(T)𝛿(t-T) from T = -∞ to ∞ = … + x(-1)𝛿(t + 1) + x(0)𝛿(t) + x(1)𝛿(t - 1) + …
+</span></code></pre>
+<p>This is a very useful property of the delta function because instead of passing x(t) itself into a system, we can pass in this sum and gain more insight about the output, but first we must investigate how a system responds to 𝛿(t).</p>
+<p>When 𝛿(x) is fed into the system, the output is known as the impulse response.</p>
+<p>𝛿(t) -&gt; H -&gt; h(t)</p>
+<p>There are a few methods for finding h(t), one of which being physically testing the system with an impulse and measuring the output. Knowing this, let’s see what happens when we pass in the scaled sum of delta functions. We know that because the system is LTI, passing in a sum of scaled inputs will result in a sum of corresponding scaled outputs. Additionally, inputs shifted in time will give the corresponding output time shifted by the same value. This means that:</p>
+<pre class="z-code"><code><span class="z-text z-plain">x(t) =  … + x(-1)𝛿(t + 1) + x(0)𝛿(t) + x(1)𝛿(t - 1) + … -&gt; H -&gt;  … + x(-1)h(t + 1) + x(0)h(t) + x(1)h(t - 1) + … = y(t)
+</span></code></pre>
+<p>The output can then be expressed as ∑x(T)h(t-T) from T = -∞ to ∞, and this is defined as the convolution of x(t) and h(t) and the operator is denoted with the symbol *. The system responded to x(t) by convolving it with the impulse response. Convolution is also a commutative operation, although the proof of this is left as an exercise for the reader. The sum also shows why one of the vectors in exercise 1.2 must be flipped to directly multiply the vectors together. x(T) begins evaluating at -∞ and is multiplied with h(t-T) which begins at +∞, so without flipping, you must have two pointers, one starting at the beginning of the first vector and the other at the end of the second vector, progressing in the opposite direction. By flipping h(t - T) and getting h(-t + T), it is also evaluated from -∞ to +∞, allowing for the two vectors to be directly multiplied to find the output at t. Since convolution is commutative, it doesn’t matter which vector is flipped.</p>
+<p>As a final point, notice that the input sum of ∑x(T)𝛿(t-T) from T = -∞ to ∞ is also convolution, one between x(t) and 𝛿(t), and it equals x(t). That means that 𝛿(t) is the identity for convolution, and x(t)*𝛿(t) = x(t) for any x(t).</p>
+<p><a href="flip-appendix.svg" target="_blank"><img src="flip-appendix.svg" style="width:100%;"></a></p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>

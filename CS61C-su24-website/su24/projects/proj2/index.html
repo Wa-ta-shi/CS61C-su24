@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Project 2 | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html">Project 2: CS61Classify</a>
+<div id="toc-wrapper">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#checkpoint">Checkpoint</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#debugging-faq">Debugging FAQ</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#office-hour-policy">Office Hour Policy</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup">Setup</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-1-absolute-value-walkthrough">Task 1: Absolute Value (Walkthrough)</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-2-relu">Task 2: ReLU</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-3-argmax">Task 3: Argmax</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-4-dot-product">Task 4: Dot Product</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-5-testing">Task 5: Testing</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-6-matrix-multiplication">Task 6: Matrix Multiplication</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-7-read-matrix">Task 7: Read Matrix</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-8-write-matrix">Task 8: Write Matrix</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-9-classify">Task 9: Classify</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#task-10-partner-feedback-form">Task 10: Partner&#x2F;Feedback Form</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submission-and-grading">Submission and Grading</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="function-definitions/index.html">Appendix: Function Definitions</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="calling-convention.1.html">Appendix: Calling Convention</a>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1>Project 2: CS61Classify</h1>
+<p class="subtitle">Deadline: Monday, July 15, 11:59:59 PM PT</p>
+<p>In this project, you will write RISC-V assembly code to classify handwritten digits with a simple machine learning algorithm.</p>
+<p>The goal of this project is to familiarize you with RISC-V, specifically calling convention, calling functions, using the heap, interacting with files, and writing some tests.</p>
+<div class="alert alert-info">
+<p>For Tasks 1-5, Lab 3 is required, and Lectures 6-8, Discussion 4-5, and Homework 3 are highly recommended.</p>
+<p>For Tasks 6-9, Lab 4 is required, and Lectures 6-8, Discussion 4-5, and Homework 3 are highly recommended.</p>
+</div>
+<h2 id="checkpoint">Checkpoint</h2>
+<p>If you receive a score of 30/100 (excluding points from the feedback form) or above by Monday, July 8th, 11:59 PM PT, we will award 0.5 extra credit points. The score is equivalent to finish tasks 1-5. This checkpoint is all-or-nothing, and you cannot apply slip days to it.</p>
+<h2 id="debugging-faq">Debugging FAQ</h2>
+<h3 id="debugging-videos">Debugging Videos</h3>
+<p>Check out <a href="https://www.youtube.com/playlist?list=PLnvUoC1Ghb7xbUcAM923j41yjTNxRbMOA">this playlist</a> for videos demonstrating how to debug memory and calling convention issues! Please make sure you've watched these videos before coming to office hours or posting a question on Ed.</p>
+<h3 id="common-errors">Common Errors</h3>
+<p>Restoring starter files and solutions to other project 2-specific errors are listed at the bottom of the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<h3 id="calling-convention-errors">Calling Convention Errors</h3>
+<p>Please read the <a href="calling-convention.1.html">calling convention guide appendix</a> for more information on calling convention.</p>
+<h2 id="office-hour-policy">Office Hour Policy</h2>
+<p>Before coming to office hours, please make sure you have done the following:</p>
+<ol>
+<li>Add descriptions for each register in your functions to indicate their purpose (&quot;this holds i&quot; is too vague, please be as specific as possible so it is easier for us to read and comprehend your code.)</li>
+<li>Read the <a href="calling-convention.1.html">calling convention guide appendix</a>.</li>
+<li>Use calling convention checker and resolve all calling convention errors caught by the checker (unless your question is specifically about how to fix these errors).</li>
+<li>Use memcheck and resolve all memory access errors (unless your question is specifically about how to fix these errors).</li>
+<li>Watch the <a href="index.html#debugging-videos">debugging videos</a>.</li>
+</ol>
+<p>Make sure to fill out the template on the OH Queue with as much description as possible. Questions that do not use the template or have very low-effort descriptions (such as &quot;it doesn't work&quot;) will be skipped/deleted.</p>
+<h2 id="setup">Setup</h2>
+<div class="alert alert-warning">
+<p>You must complete this project on your <strong>local</strong> machine. See <a href="../../labs/lab00/index.html">Lab 0</a> if you need to set up your local machine again.</p>
+</div>
+<h3 id="setup-git">Setup: Git</h3>
+<p>This assignment can be done alone or with a partner.</p>
+<div class="alert alert-warning">
+<p><strong>Warning</strong>: Once you create a group on Gradar, you will <em>not</em> be able to change (add, remove, or swap) partners for this project, so please be sure of your partner before starting the project. You must add your partner on both Gradar and to every Gradescope submission.</p>
+</div>
+<p>If there are extenuating circumstances that require a partner switch (e.g. your partner drops the class, your partner is unresponsive), please reach out to us privately.</p>
+<ol>
+<li>
+<p><strong>Visit</strong> <a href="https://gradar.cs61c.org/">Gradar</a>. <strong>Log in</strong> and <strong>register</strong> your Project 2 group (and <strong>add</strong> your partner, if you have one), then <strong>create</strong> a GitHub repo for you or your group. If you have a partner, one partner should create a group and invite the other partner to that repo. The other partner should accept the invite without creating their own group.</p>
+</li>
+<li>
+<p><strong>Clone</strong> the repository on your <strong>local machine</strong> (you don't need the hive machine at all for this project). Windows users should clone in Git Bash.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> clone git@github.com:61c-student/su24-proj2-USERNAME.git 61c-proj2</span>
+</span></code></pre>
+</li>
+</ol>
+<p>(<strong>replace</strong> <code>su24-proj2-USERNAME</code> with the name of your GitHub repo)</p>
+<ol start="3">
+<li>
+<p><strong>Navigate</strong> to your repository:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-support z-function z-cd z-shell">cd</span></span><span class="z-meta z-function-call z-arguments z-shell"> 61c-proj2</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Add</strong> the starter repository as a remote:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> remote add starter https://github.com/61c-teach/su24-proj2-starter.git</span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>Pull</strong> from the starter repo:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+</li>
+</ol>
+<p>If you run into <code>git</code> issues, please check out the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<h3 id="setup-java-and-python">Setup: Java and Python</h3>
+<p>Make sure that you followed the local computer setup directions in <a href="../../labs/lab00/index.html#exercise-2-installing-software">Exercise 2 of Lab 0</a>.</p>
+<h3 id="setup-venus">Setup: Venus</h3>
+<p>We will use the Venus web interface for debugging. The procedure is very similar to the Venus setup in <a href="../../labs/lab03/index.html#exercise-1-venus-basics">Lab 3</a>.</p>
+<ol>
+<li>
+<p>In the <code>61c-proj2</code> directory, run <code>bash test.sh download_tools</code> to download Venus for this project. (You only need to run this once.)</p>
+</li>
+<li>
+<p><strong>On your local computer</strong> (not the hive), <strong>navigate</strong> to your <code>61c-proj2</code> directory and <strong>run</strong> this command. Windows users should run outside WSL (Git Bash is recommended).</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">java</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>jar</span> tools/venus.jar .<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>dm</span></span>
+</span></code></pre>
+</li>
+<li>
+<p><strong>In your web browser, open</strong> <a href="https://venus.cs61c.org">https://venus.cs61c.org</a> (Chrome or Firefox is recommended). <strong>In the Venus web terminal, run</strong> <code>mount local vmfs</code>. In your browser, you may see a prompt saying <code>Key has been shown in the Venus mount server! Please copy and paste it into here</code>. You should be able to see a key (string of letters and numbers) in the most recent line of your local terminal output; <strong>copy and paste</strong> the key into the dialog.</p>
+</li>
+<li>
+<p>Now the project files from your local computer are loaded into the Venus web interface. <strong>In Venus</strong>, you can <strong>open</strong> the Files tab or <strong>run</strong> <code>ls vmfs</code> in the Venus terminal to see all your files in your browser.</p>
+</li>
+</ol>
+<p>If you can see your files in Venus, you can skip the rest of this section. If the above steps didn't work, you can follow the guide below to manually upload files.</p>
+<details>
+<summary>Manually Uploading Files</summary>
+<ol>
+<li>
+<p>On your local computer or on the hive, zip your <code>src</code>, <code>tests</code>, and <code>test-src</code> directories.</p>
+</li>
+<li>
+<p>Navigate to <a href="https://venus.cs61c.org/">https://venus.cs61c.org</a> Type <code>upload</code> in the Venus terminal.</p>
+</li>
+<li>
+<p>A file upload prompt should appear. Upload the zip file you created in step 1.</p>
+</li>
+</ol>
+<p>Now you can edit and debug your files on Venus.</p>
+<p>To download any files you've edited, you can run <code>zip zipname file1 file2 file3</code> in the Venus terminal. Replace <code>zipname</code> with whatever you want the downloaded zip file to be named. Replace <code>file1 file2 file3</code> with a list of files or directories you want to download (there can be more or less than 3 files or directories).</p>
+</details>
+<p>In this part, you will implement a few math operations that will be used for classification later.</p>
+<p>Before starting, please pull from the starter and update Venus.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">bash</span></span><span class="z-meta z-function-call z-arguments z-shell"> test.sh download_tools</span>
+</span></code></pre>
+<h2 id="task-1-absolute-value-walkthrough">Task 1: Absolute Value (Walkthrough)</h2>
+<p>To familiarize you with the workflow of this project, we will walk you through this task.</p>
+<h3 id="running-tests">Running Tests</h3>
+<p>In this project, tests are written in Python and compiled into RISC-V assembly.</p>
+<p>The Python source for the provided tests is located in <code>unittests.py</code>. <strong>Look</strong> over the contents of <code>unittests.py</code>. Although the tests are written for you in Tasks 1-4, it helps to be familiar with the unit testing framework to understand what the tests are doing.</p>
+<p>To run the tests, on your <strong>local machine</strong>, start by <strong>running <code>bash test.sh</code></strong> in the <code>61c-proj2</code> directory on your local machine. This gives you an overview of the commands you can run for testing. In particular, <code>bash test.sh part_a</code> compiles and runs all the tests for tasks 1-5. You can also provide the name of a specific function to compile and run all the tests for that particular function.</p>
+<p>For this task, since we are implementing the <code>abs</code> function, on your <strong>local machine</strong>, <strong>run <code>bash test.sh test_abs</code></strong>. This creates a <code>test-src</code> folder containing the Python tests compiled into RISC-V.</p>
+<p>Since we haven't implemented the <code>abs</code> function yet, some of the tests are failing. Let's try implementing <code>abs</code>.</p>
+<p>You can edit files in a text editor or directly in Venus. To edit files in Venus, switch to the Files tab. Here you can open and edit assembly files. Remember to save your files frequently with <code>control+S</code> (Windows) or <code>command+S</code> (Mac). Venus does not auto-save as you work.</p>
+<p><strong>Open</strong> <code>src/abs.s</code> (either in a text editor or Venus) and <strong>copy-paste</strong> the implementation below.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">abs:
+  # Load number from memory
+  lw t0 0(a0)
+  blt t0, zero, done
+
+  # Negate a0
+  sub t0, x0, t0
+
+  # Store number back to memory
+  sw t0 4(a0)
+
+done:
+  jr ra
+</span></code></pre>
+<p>Again on your <strong>local machine</strong>, <strong>run <code>bash test.sh test_abs</code></strong>. The tests don't pass, so something is probably wrong with our implementation.</p>
+<h3 id="using-vdb-to-debug-tests-via-venus">Using VDB to debug tests via Venus</h3>
+<p>First, <strong>open up</strong> Venus in your web browser and <strong>mount</strong> your files. (Refer back to <a href="index.html#setup-venus">the setup section of the spec</a> if you're having trouble.)</p>
+<p>Let's start by setting a breakpoint. <strong>Type</strong> <code>ebreak</code> at the start of the <code>abs</code> function. This places a breakpoint just before the <code>blt t0, zero, done</code> instruction.</p>
+<p>To start the debugger, in the <strong>Venus terminal</strong>, <strong>run <code>cd /vmfs/test-src</code></strong> and <strong>run <code>ls</code></strong>. This should list all the test files you can run. <strong>Run <code>vdb test_abs_one.s</code></strong> to start the debugger for an absolute value test.</p>
+<p>In the <strong>Venus simulator tab</strong>, <strong>Click Run</strong> to start running the program. The debugger will pause at the breakpoint we set. While paused, you can inspect the registers and memory. In particular, notice that register <code>a0</code> contains a large number here, because this test calls your function with argument <code>a0</code> as a memory address. You can look use this number in the &quot;Memory&quot; tab of Venus to see the data stored at this memory address. We would recommend changing the display settings to &quot;Hex&quot;.</p>
+<p>You can also step through code line-by-line in the debugger. <strong>Click Step</strong> to execute the next instruction, <code>blt t0, zero, done</code>. Step through the function and inspect the registers. See if you can spot the bug in our implementation.</p>
+<details>
+<summary>Click to reveal answer</summary>
+<p>In the first line, we're skipping the negation and branching to <code>done</code> if the number is less than 0. However, we actually want to skip the negation if the number is greater than and equal to 0, and perform the negation if the number is less than 0.</p>
+<p>One way to fix this is to branch to <code>done</code> if the argument is greater than or equal to 0. Other ways to fix this are possible!</p>
+</details>
+<p><strong>Change</strong> the implementation in <code>src/abs.s</code> to fix the bug. <strong>Run <code>bash test.sh test_abs</code></strong> again, and you should see that 2 out of the 3 tests are passing now.</p>
+<h3 id="using-memcheck-to-debug-tests-via-test-sh">Using memcheck to debug tests via <code>test.sh</code></h3>
+<p>In this project, you'll often run into situations where the logic of the code seems correct, but your tests are still failing. These errors are often caused by invalid memory accesses. This semester, we've introduced a new feature, memcheck, that should allow you to debug these errors easily, though please let course staff know on Ed if you run into any trouble using this feature!</p>
+<p>Memcheck introduces two different flags you can add to your <code>test.sh</code> command: <code>-mc</code> for normal memcheck, and <code>-mcv</code> for a more verbose version. Let's try using memcheck to see what's wrong with our code. </p>
+<p><strong>Run <code>bash test.sh test_abs -mc</code></strong>, and you should see something similar to the following error in addition to the error messages you saw at the end of the last section:</p>
+<pre class="z-code"><code><span class="z-text z-plain">[memcheck] Invalid memory access of size 4. Address 0x10000004 is 0 bytes after a block of size 4 in static.
+        Program Counter: 0x00000044
+        File: ../src/abs.s:23
+        Instruction: sw t0 4(a0)
+        Registers:
+                              x1(ra)=0x0000000C   x2(sp)=0x7FFFFFF0   x3(gp)=0x10000000
+          x4(tp)=0x00000000   x5(t0)=0x00000001   x6(t1)=0x00000000   x7(t2)=0x00000000
+          x8(s0)=0x00000000   x9(s1)=0x00000000  x10(a0)=0x10000000  x11(a1)=0x00000000
+         x12(a2)=0x00000000  x13(a3)=0x00000000  x14(a4)=0x00000000  x15(a5)=0x00000000
+         x16(a6)=0x00000000  x17(a7)=0x00000000  x18(s2)=0x00000000  x19(s3)=0x00000000
+         x20(s4)=0x00000000  x21(s5)=0x00000000  x22(s6)=0x00000000  x23(s7)=0x00000000
+         x24(s8)=0x00000000  x25(s9)=0x00000000 x26(s10)=0x00000000 x27(s11)=0x00000000
+         x28(t3)=0x00000000  x29(t4)=0x00000000  x30(t5)=0x00000000  x31(t6)=0x00000000
+</span></code></pre>
+<p>These errors are designed to be as similar to <code>valgrind</code> as possible. Try to use this error message to pinpoint where our illegal memory access is happening.</p>
+<details>
+<summary>Click to reveal answer</summary>
+<p>In the fourth line of the output, it shows that this is caused by the <code>sw t0 4(a0)</code> instruction. Instead of offset 4, we should be writing to offset 0 in this line.</p>
+</details>
+<p><strong>Change</strong> the implementation in <code>src/abs.s</code> to fix the bug. <strong>Run <code>bash test.sh test_abs</code></strong> again, and you should be passing all of the test cases.</p>
+<h2 id="task-2-relu">Task 2: ReLU</h2>
+<p>In this project, we will be working with integer arrays. Remember that the integers in an integer array are stored in a consecutive block of memory.</p>
+<p>To pass an integer array as an argument, we will pass a pointer to the start of the integer array, and the number of elements in the array.</p>
+<p><a href="task2-1.svg" target="_blank"><img src="task2-1.svg"></a></p>
+<p>In this diagram, register <code>a0</code> stores the first argument (the address of the start of the array). Register <code>a1</code> stores the second argument (the number of integers in the array).</p>
+<h3 id="conceptual-overview-relu">Conceptual Overview: ReLU</h3>
+<p>The ReLU function takes in an integer array and sets every negative value in the array to 0. Positive values in the array are unchanged. In other words, for each element <code>x</code> in the array, ReLU computes <code>max(x, 0)</code>.</p>
+<p>ReLU should modify the array in place. For example, if the above integer array is passed into ReLU, the result would be stored in the same place in memory:</p>
+<p><a href="task2-2.svg" target="_blank"><img src="task2-2.svg"></a></p>
+<p>Note that the negative values in the array were set to 0 in memory.</p>
+<h3 id="your-task">Your Task</h3>
+<p>Fill in the <code>relu</code> function in <code>src/relu.s</code>.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>relu</code>: Task 2.</td>
+</tr>
+<tr>
+<td rowspan="2" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the integer array.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>The number of integers in the array. You can assume that this argument matches the actual length of the integer array.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<p>If the input is malformed in the following ways, put the appropriate return code into <code>a0</code> and run <code>j exit</code> to quit the program. (For example, if the length of the array is less than 1, run <code>li a0 36</code> and <code>j exit</code>.)</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>36</td>
+<td>The length of the array is less than 1.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing-and-debugging">Testing and debugging</h3>
+<p>To test your function, in your local terminal, run <code>bash test.sh test_relu</code>.</p>
+<p>To debug your function, in your Venus terminal, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb test_relu_standard.s
+vdb test_relu_length_1.s
+vdb test_relu_invalid_n.s
+</span></code></pre>
+<p>Here are some debugging tips that should apply to the entire project:</p>
+<ul>
+<li>If you see the error &quot;You are attempting to edit the text of the program though the program is set to immutable at address 0x00000000!&quot;, this means that you are trying to write to memory address 0x00000000 (or whatever memory address you see in the error). This is probably happening because you're giving this address to a store instruction, which then tries to write to this address.</li>
+<li>If you see the error &quot;label exit used but not defined&quot; when starting the debugger, make sure that you're starting the debugger with the <code>vdb</code> commands above. Clicking &quot;assemble and simulate from editor&quot; will not work.</li>
+<li>Unfortunately the local tests don't check for out-of-bounds memory accesses. If you ever encounter a failing test on the autograder, try making sure that your code never writes to memory outside of an array.</li>
+</ul>
+<p>If your ReLU works locally but not on Gradescope, here are some edge cases we've seen that the local cases don't check. You can modify <code>unittests.py</code> to write your own tests for these cases!</p>
+<ul>
+<li>The local tests don't perform ReLU on larger numbers.</li>
+<li>Watch the <a href="index.html#debugging-videos">debugging videos</a>.</li>
+</ul>
+<h2 id="task-3-argmax">Task 3: Argmax</h2>
+<h3 id="conceptual-overview-argmax">Conceptual Overview: Argmax</h3>
+<p>The argmax function takes in an integer array and returns the <em>index</em> of the largest element in the array. If multiple elements are tied as the largest element, return the smallest index.</p>
+<p>For example, if the integer array <code>[-6, -1, 6, 1]</code> is passed into the argmax function, the output should be 2, because the largest integer (6) is located at index 2 in the array. If the integer array were instead <code>[6, 1, 6, 1]</code>, then the output should be 0, because the largest integer (6) is first found at index 0.</p>
+<h3 id="your-task-1">Your Task</h3>
+<p>Fill in the <code>argmax</code> function in <code>src/argmax.s</code>.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>argmax</code>: Task 3.</td>
+</tr>
+<tr>
+<td rowspan="2" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the integer array.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>The number of integers in the array. You can assume that this argument matches the actual length of the integer array.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The index of the largest element. If the largest element appears multiple times, return the smallest index.</td>
+</tr>
+</tbody>
+</table>
+<p>If the input is malformed in the following ways, put the appropriate return code into <code>a0</code> and run <code>j exit</code> to quit the program.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>36</td>
+<td>The length of the array is less than 1.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing-and-debugging-1">Testing and debugging</h3>
+<p>To test your function, in your local terminal, run <code>bash test.sh test_argmax</code>.</p>
+<p>To debug your function, in your Venus terminal, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb test_argmax_invalid_n.s
+vdb test_argmax_length_1.s
+vdb test_argmax_standard.s
+</span></code></pre>
+<p>If your argmax works locally but not on Gradescope, here are some edge cases we've seen that the local cases don't check. You can modify <code>unittests.py</code> to write your own tests for these cases!</p>
+<ul>
+<li>The local tests don't check that your code works if the largest element in the array is the last element of the array.</li>
+<li>The local tests don't check that your code works if the largest element appears more than once.</li>
+<li>Watch the <a href="index.html#debugging-videos">debugging videos</a>.</li>
+</ul>
+<h2 id="task-4-dot-product">Task 4: Dot Product</h2>
+<h3 id="conceptual-overview-dot-product">Conceptual Overview: Dot Product</h3>
+<p>The dot product function takes in two integer arrays, multiplies the corresponding entries of the arrays together, and returns the sum of all the products.</p>
+<p>For example, if these two integer arrays were passed into the dot product function, the function would return <code>(1*6) + (2*1) + (3*6) + (4*1) + (5*6) + (6*1) + (7*6) + (8*1) + (9*6) = 170</code>.</p>
+<p><a href="task4-1.svg" target="_blank"><img src="task4-1.svg"></a></p>
+<h3 id="conceptual-overview-array-strides">Conceptual Overview: Array Strides</h3>
+<p>Instead of iterating through every element of the array, what if we want to iterate through every other element, or every third element? To do this, we will define the stride of an array.</p>
+<p>To iterate through an array with stride <em>n</em>, start at the beginning of the array and only consider every <em>n</em>th element, skipping the elements in between.</p>
+<p>Note that the stride is given in number of elements, not number of bytes. This means that iterating with stride 1 is equivalent to iterating through every element of the array.</p>
+<p><a href="task4-2.svg" target="_blank"><img src="task4-2.svg"></a></p>
+<p>For example, in the above diagram, both arrays are using stride 2, so we skip every other element in the array. 5 elements should be considered, so we stop after multiplying 5 pairs of elements together. The function would return <code>(1*6) + (3*6) + (5*6) + (7*6) + (9*6) = 150</code>.</p>
+<p><a href="task4-3.svg" target="_blank"><img src="task4-3.svg"></a></p>
+<p>In the above diagram, the first array is using stride 2, so we skip every other element in this array. The second array is using stride 3, so we use every third element in this array. 3 elements should be considered, so we stop after multiplying 3 pairs of elements together. The function would return <code>(1*6) + (3*1) + (5*6) = 39</code>.</p>
+<h3 id="your-task-2">Your Task</h3>
+<p>Fill in the <code>dot</code> function in <code>src/dot.s</code>.</p>
+<p>The <code>dot</code> function may assume that the <code>a2</code> argument for the number of elements to use in the calculation will not cause an out-of-bounds array access. However, you will need to enforce this when calling <code>dot</code> from other functions later in this project.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>dot</code>: Task 4.</td>
+</tr>
+<tr>
+<td rowspan="5" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the first array.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the second array.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of elements to use in the calculation.</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>int</code></td>
+<td>The stride of the first array.</td>
+</tr>
+<tr>
+<td><code>a4</code></td>
+<td><code>int</code></td>
+<td>The stride of the second array.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The dot product of the two arrays, using the given number of elements and the given strides.</td>
+</tr>
+</tbody>
+</table>
+<p>If the input is malformed in the following ways, put the appropriate return code into <code>a0</code> and run <code>j exit</code> to quit the program.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>36</td>
+<td>The number of elements to use is less than 1.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>The stride of either array is less than 1.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing-and-debugging-2">Testing and debugging</h3>
+<p>To test your function, in your local terminal, run <code>bash test.sh test_dot</code>.</p>
+<p>To debug your function, in your Venus terminal, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb test_dot_length_1.s
+vdb test_dot_length_error.s
+vdb test_dot_length_error2.s
+vdb test_dot_standard.s
+vdb test_dot_stride.s
+vdb test_dot_stride_error1.s
+vdb test_dot_stride_error2.s
+</span></code></pre>
+<p>Also, check out the <a href="index.html#debugging-videos">debugging videos</a>!</p>
+<h2 id="task-5-testing">Task 5: Testing</h2>
+<p>In this task, you will be writing tests for some mathematical functions that have already been implemented for you.</p>
+<h3 id="conceptual-overview-loss-functions">Conceptual Overview: Loss Functions</h3>
+<p>A loss function takes in two integer arrays and outputs an integer array containing some measure of how different each pair of corresponding entries are. Some loss functions also output the sum of all the difference measurements. This project uses three different loss functions.</p>
+<p><a href="task5-1.svg" target="_blank"><img src="task5-1.svg"></a></p>
+<p>The absolute loss function computes and outputs the absolute difference between each pair of corresponding entries, and then outputs the sum of all the absolute differences.</p>
+<p><a href="task5-2.svg" target="_blank"><img src="task5-2.svg"></a></p>
+<p>The squared loss function computes and outputs the square of the difference between each pair of corresponding entries, and then outputs the sum of all the squared differences.</p>
+<p><a href="task5-3.svg" target="_blank"><img src="task5-3.svg"></a></p>
+<p>The zero-one loss function computes whether each pair of corresponding entries is equal, and does not output any sum.</p>
+<p><a href="task5-4.svg" target="_blank"><img src="task5-4.svg"></a></p>
+<p>These loss functions use a helper function <code>initialize-zero</code>. It takes in the length of the array as input and outputs a newly-allocated array of the given length, filled with zeros.</p>
+<h3 id="your-task-3">Your Task</h3>
+<p>Fill in the tests for the three loss functions and the <code>initialize-zero</code> helper function in <code>studenttests.py</code>.</p>
+<p>We recommend looking through <code>unittests.py</code> to understand how the Python framework for writing tests works.</p>
+<p>To ensure that your tests are run by the unit testing framework, make sure that your function names start with <code>test_</code>! For example, the function <code>def test_length_0(self)</code> will run, but the function <code>def length_0(self)</code> will not run.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4">Loss functions: Task 5.</td>
+</tr>
+<tr>
+<td rowspan="4" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the first input array.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the second input array.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of integers in the array.</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the output array, where the results will be stored.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The sum of the elements in the output array. (No return value for zero-one loss.)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>initialize_zero</code>: Task 5.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The size of the array to be created.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the newly-allocated array of zeros.</td>
+</tr>
+</tbody>
+</table>
+<p>The functions will return the following error codes if the input is malformed:</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>36</td>
+<td>The length of the array is less than 1.</td>
+</tr>
+<tr>
+<td>26</td>
+<td><code>malloc</code> returns an error.</td>
+</tr>
+</tbody>
+</table>
+<p>To test your code coverage, run <code>bash test.sh coverage</code>. To get full credit on this part, make sure that your tests achieve 100% coverage. (In other words, your tests must cause every line of the implementation to be executed.)</p>
+<h2 id="task-6-matrix-multiplication">Task 6: Matrix Multiplication</h2>
+<p>In tasks 6 to 9, you will implement a matrix multiplication function and file operations to read pictures of handwritten digits. Then you will use your math functions from the previous part to determine what digit is in the picture.</p>
+<p>If you are curious how the machine learning algorithm works, you can expand the Neural Networks section below. This is optional and not required to finish the project.</p>
+<details>
+<summary>Optional: Neural Networks</summary>
+<p>At a basic level, a neural networks tries to approximate a (non-linear) function that maps your input into a desired output. A basic neuron consists of a weighted linear combination of the input, followed by a non-linearity -- for example, a threshold. Consider the following neuron, which implements the logical <code>AND</code> operation:</p>
+<p><a href="neuron.png" target="_blank"><img src="neuron.png"></a></p>
+<p>It is easy to see that for A=0, B=0, the linear combination 0*0.6 + 0*0.6 = 0, which is less than the threshold of 1 and will result in a 0 output. With an input A=0, B=1 or A=1, B=0 the linear combination will results in 1*0.6 + 0*0.6 = 0.6, which is less than 1 and result in a 0 output. Similarly, A=1, B=1 will result in 1*0.6+1*0.6=1.2, which is greater than the threshold and will result in a 1 output! What is interesting is that the simple neuron operation can also be described as an inner product between the vector [A,B]^T and the weights vector [0.6,0.6]^T followed by as thresholding, non-linear operation.</p>
+<p>More complex functions can not be described by a simple neuron alone. We can extend the system into a network of neurons, in order to approximate the complex functions. For example, the following 2 layer network approximates the logical function <code>XOR</code>:</p>
+<p><a href="XOR.png" target="_blank"><img src="XOR.png"></a></p>
+<p>The above is a 2 layer network. The network takes 2 inputs, computes 2 intermediate values, and finally computes a single final output.</p>
+<p>It can be written as matrix multiplications with matrices <code>m_0</code> and <code>m_1</code> with thresholding operations in between as shown below:</p>
+<p><a href="mtx.png" target="_blank"><img src="mtx.png"></a></p>
+<p>Convince yourself that this implements an <code>XOR</code> for the appropriate inputs!</p>
+<p>You are probably wondering how the weights of the network were determined? This is beyond the scope of this project, and we would encourage you to take advanced classes in numerical linear algebra, signal processing, machine learning and optimization. We will only say that the weights can be trained by giving the network pairs of correct inputs and outputs and changing the weights such that the error between the outputs of the network and the correct outputs is minimized. Learning the weights is called: &quot;Training&quot;. Using the weights on inputs is called &quot;Inference&quot;. We will only perform inference, and you will be given weights that were pre-trained by your dedicated TA's.</p>
+<p>In this project we will implement a similar, but slightly more complex network which is able to classify handwritten digits. As inputs, we will use the <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> data set, which is a dataset of 60,000 28x28 images containing handwritten digits ranging from 0-9. We will treat these images as &quot;flattened&quot; input vectors of size 784 (<code>= 28 * 28</code>). In a similar way to the example before, we will perform matrix multiplications with pre-trained weight matrices <code>m_0</code> and <code>m_1</code>. Instead of thresholding we will use two different non-linearities: The <code>ReLU</code> and <code>ArgMax</code> functions. Details will be provided in descriptions of the individual tasks.</p>
+<p><a href="MNIST.png" target="_blank"><img src="MNIST.png"></a></p>
+</details>
+<h3 id="conceptual-overview-storing-matrices">Conceptual Overview: Storing Matrices</h3>
+<p>A matrix is a 2-dimensional array of integers. In this project, matrices will be stored as an integer array in row-major order. Row-major order means we store each row of the matrix consecutively in memory as a 1-dimensional integer array.</p>
+<p><a href="row_major.jpg" target="_blank"><img src="row_major.jpg"></a></p>
+<h3 id="conceptual-overview-matrix-multiplication">Conceptual Overview: Matrix Multiplication</h3>
+<p>The matrix multiplication function takes in two integer matrices A (dimension <em>n</em> × <em>m</em>) and B (dimension <em>m</em> × <em>k</em>) and outputs an integer matrix C (dimension <em>n</em> × <em>k</em>).</p>
+<p>To calculate the entry at row <em>i</em>, column <em>j</em> of C, take the dot product of the <em>i</em>th row of A and the <em>j</em>th column of B. Note that this can be done by calling the <code>dot</code> function with the proper strides.</p>
+<p><a href="task6-1.svg" target="_blank"><img src="task6-1.svg"></a></p>
+<p>For example, in the above diagram, we are computing the entry in row 1, column 1 of C by taking the dot product of the 1st row of A and the 1st row of B.</p>
+<p><a href="task6-2.svg" target="_blank"><img src="task6-2.svg"></a></p>
+<p>In the above diagram, we are computing the entry in row 2, column 2 of C. Note that we are changing the pointer to the start of the array in order to access later rows and columns.</p>
+<h3 id="your-task-4">Your Task</h3>
+<p>Fill in the <code>matmul</code> function in <code>src/matmul.s</code>.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>matmul</code>: Task 6.</td>
+</tr>
+<tr>
+<td rowspan="7" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the first matrix A (stored as an integer array in row-major order).</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>The number of rows (height) of the first matrix A.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of columns (width) of the first matrix A.</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the second matrix B (stored as an integer array in row-major order).</td>
+</tr>
+<tr>
+<td><code>a4</code></td>
+<td><code>int</code></td>
+<td>The number of rows (height) of the second matrix B.</td>
+</tr>
+<tr>
+<td><code>a5</code></td>
+<td><code>int</code></td>
+<td>The number of columns (width) of the second matrix B.</td>
+</tr>
+<tr>
+<td><code>a6</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of an integer array where the result C should be stored. You can assume this memory has been allocated (but is uninitialized) and has enough space to store C.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<p>If the input is malformed in the following ways, put the appropriate return code into <code>a0</code> and run <code>j exit</code> to quit the program.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>38</td>
+<td>The height or width of either matrix is less than 1.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>The number of columns (width) of the first matrix A is not equal to the number of rows (height) of the second matrix B.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="testing-and-debugging-3">Testing and debugging</h3>
+<p>To test your function, in your local terminal, run <code>bash test.sh test_matmul</code>.</p>
+<p>To debug your function, in your Venus terminal, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb test_matmul_length_1.s
+vdb test_matmul_negative_dim_m0_x.s
+vdb test_matmul_negative_dim_m0_y.s
+vdb test_matmul_negative_dim_m1_x.s
+vdb test_matmul_negative_dim_m1_y.s
+vdb test_matmul_nonsquare_1.s
+vdb test_matmul_nonsquare_2.s
+vdb test_matmul_square.s
+vdb test_matmul_unmatched_dims.s
+vdb test_matmul_zero_dim_m0.s
+vdb test_matmul_zero_dim_m1.s
+</span></code></pre>
+<p><strong>Note</strong>: The error cases will not error on Venus and will only error when running the tests via <code>bash test.sh</code>.</p>
+<p>Debugging advice:</p>
+<ul>
+<li>Since you'll need to call the <code>dot</code> function in <code>matmul</code>, make sure to follow calling convention! See the calling convention appendix for more details. In particular, as soon as you call <code>dot</code>, the <code>dot</code> function is allowed to change all the t0-t6 and a1-a7 registers, so when the <code>dot</code> function returns, you need to assume that those registers contain <em>garbage</em>.</li>
+<li>You can use the functions described in the <a href="calling-convention.1.html#randomizing-preserved-registers">calling convention appendix</a> to debug calling convention errors.</li>
+<li>Watch the <a href="index.html#debugging-videos">debugging videos</a>!</li>
+</ul>
+<h2 id="task-7-read-matrix">Task 7: Read Matrix</h2>
+<h3 id="conceptual-overview-matrix-files">Conceptual Overview: Matrix Files</h3>
+<p>Remember from Task 6 that matrices are stored in memory as an integer array in row-major order.</p>
+<p>Matrices are stored in files as a consecutive sequence of 4-byte integers. The first and second integers in the file indicate the number of rows and columns in the matrix, respectively. The rest of the integers store the elements in the matrix in row-major order.</p>
+<p>All the matrix files end in a <code>.bin</code> file extension and are in the <code>tests</code> folder. To view matrix files, you can run <code>xxd -e matrix_file.bin</code>, replacing <code>matrix_file.bin</code> with the matrix file you want to read.</p>
+<h3 id="reading-matrix-files">Reading matrix files</h3>
+<p>In your local terminal (not the Venus) terminal, navigate to the <code>tests</code> folder (e.g. <code>cd tests</code>), then navigate to the folder that contains the files you want to read. In this example, we'll <code>cd read-matrix-1</code> to check the first test.</p>
+<p><code>ls</code> to see the files in this directory. There should be one file, <code>input.bin</code>. Run <code>xxd -e input.bin</code> to see the contents of this file. The output should look something like this:</p>
+<pre class="z-code"><code><span class="z-text z-plain">00000000: 00000003 00000003 00000001 00000002  ................
+00000010: 00000003 00000004 00000005 00000006  ................
+00000020: 00000007 00000008 00000009           ............
+</span></code></pre>
+<p>The left-most column indexes the bytes in the file (e.g. the third row starts at the <code>0x20</code>th byte of the file). The dots on the right display the bytes in the file as ASCII, but these bytes don't correspond to printable ASCII characters so only dot placeholders appear.</p>
+<p>The actual contents of the file are listed in 4-byte blocks, 4 per row. The first row has the numbers 3 (row count), 3 (column count), 1 (first element), and 2 (second element). This is a 3x3 matrix with elements [1, 2, 3, 4, 5, 6, 7, 8, 9].</p>
+<h3 id="your-task-5">Your Task</h3>
+<p>Fill in the <code>read_matrix</code> function in <code>src/read_matrix.s</code>. This function should do the following:</p>
+<ol>
+<li>Open the file with read permissions. The filepath is provided as an argument (<code>a0</code>).</li>
+<li>Read the number of rows and columns from the file (remember: these are the first two integers in the file). Store these integers in memory at the provided pointers (<code>a1</code> for rows and <code>a2</code> for columns).</li>
+<li>Allocate space on the heap to store the matrix. (Hint: Use the number of rows and columns from the previous step to determine how much space to allocate.)</li>
+<li>Read the matrix from the file to the memory allocated in the previous step.</li>
+<li>Close the file.</li>
+<li>Return a pointer to the matrix in memory.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>read_matrix</code>: Task 7.</td>
+</tr>
+<tr>
+<td rowspan="3" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filename string.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int *</code></td>
+<td>A pointer to an integer which will contain the number of rows. You can assume this points to allocated memory.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int *</code></td>
+<td>A pointer to an integer which will contain the number of columns. You can assume this points to allocated memory.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the matrix in memory.</td>
+</tr>
+</tbody>
+</table>
+<p>If the input is malformed in the following ways, put the appropriate return code into <code>a0</code> and run <code>j exit</code> to quit the program.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>26</td>
+<td><code>malloc</code> returns an error.</td>
+</tr>
+<tr>
+<td>27</td>
+<td><code>fopen</code> returns an error.</td>
+</tr>
+<tr>
+<td>28</td>
+<td><code>fclose</code> returns an error.</td>
+</tr>
+<tr>
+<td>29</td>
+<td><code>fread</code> does not read the correct number of bytes.</td>
+</tr>
+</tbody>
+</table>
+<p>To implement this function, you will need to call some utility functions. A complete set of function definitions can be found in the appendix. The relevant function definitions for this task are provided below (expand the section to see them).</p>
+<details>
+<summary>Task 7: Relevant Function Definitions</summary>
+<ol>
+<li>Open the file with read permissions. The filepath is provided as an argument (<code>a0</code>).</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>fopen</code>: Open a file for reading or writing.</td>
+</tr>
+<tr>
+<td rowspan="2" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filename string.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>Permission bits. 0 for read-only, 1 for write-only.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>A file descriptor. This integer can be used in other file operation functions to refer to the opened file. If opening the file failed, this value is -1.</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>Read the number of rows and columns from the file (remember: these are the first two integers in the file). Store these integers in memory at the provided pointers (<code>a1</code> for rows and <code>a2</code> for columns).</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>fread</code>: Read bytes from a file to a buffer in memory. Subsequent reads will read from later parts of the file.</td>
+</tr>
+<tr>
+<td rowspan="3" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The file descriptor of the file we want to read from, previously returned by <code>fopen</code>.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int*</code></td>
+<td>A pointer to the buffer where the read bytes will be stored.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of bytes to read from the file.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The number of bytes actually read from the file. If this differs from the argument provided in <code>a2</code>, then we either hit the end of the file or there was an error.</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>Allocate space on the heap to store the matrix. (Hint: Use the number of rows and columns from the previous step to determine how much space to allocate.)</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>malloc</code>: Allocates heap memory.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The size of the memory that we want to allocate (in bytes).</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>void *</code></td>
+<td>A pointer to the allocated memory. If the allocation failed, this value is 0.</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>
+<p>Read the matrix from the file to the memory allocated in the previous step. (Use <code>fread</code> from above.)</p>
+</li>
+<li>
+<p>Close the file.</p>
+</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>fclose</code>: Close a file, saving any writes we have made to the file.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The file descriptor of the file we want to close, previously returned by <code>fopen</code>.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>0 on success, and -1 otherwise.</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>Return a pointer to the matrix in memory.</li>
+</ol>
+</details>
+<h3 id="testing-and-debugging-4">Testing and debugging</h3>
+<p>To test your function, in your local terminal, run <code>bash test.sh test_read_matrix</code>.</p>
+<p>To debug your function, in your Venus terminal, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb test_read_1.s
+vdb test_read_2.s
+vdb test_read_3.s
+vdb test_read_fail_fclose.s
+vdb test_read_fail_fopen.s
+vdb test_read_fail_fread.s
+vdb test_read_fail_malloc.s
+</span></code></pre>
+<p><strong>Note</strong>: The error cases will not error on Venus and will only error when running the tests via <code>bash test.sh</code>.</p>
+<p>As a reminder, you can use the functions described in the <a href="calling-convention.1.html#randomizing-preserved-registers">calling convention appendix</a> to debug calling convention errors. We also have <a href="index.html#debugging-videos">debugging videos</a> that may help you debug these errors.</p>
+<h2 id="task-8-write-matrix">Task 8: Write Matrix</h2>
+<p>Fill in the <code>write_matrix</code> function in <code>src/write_matrix.s</code>. This function should do the following:</p>
+<ol>
+<li>Open the file with write permissions. The filepath is provided as an argument.</li>
+<li>Write the number of rows and columns to the file. (Hint: The <code>fwrite</code> function expects a pointer to data in memory, so you should first store the data to memory, and then pass a pointer to the data to <code>fwrite</code>.)</li>
+<li>Write the data to the file.</li>
+<li>Close the file.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>write_matrix</code>: Task 8.</td>
+</tr>
+<tr>
+<td rowspan="4" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filename string.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the matrix in memory (stored as an integer array).</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of rows in the matrix.</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>int</code></td>
+<td>The number of columns in the matrix.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<p>If the input is malformed in the following ways, put the appropriate return code into <code>a0</code> and run <code>j exit</code> to quit the program.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>27</td>
+<td><code>fopen</code> returns an error.</td>
+</tr>
+<tr>
+<td>30</td>
+<td><code>fwrite</code> does not write the correct number of bytes.</td>
+</tr>
+<tr>
+<td>28</td>
+<td><code>fclose</code> returns an error.</td>
+</tr>
+</tbody>
+</table>
+<p>To implement this function, you will need to call some utility functions. A complete set of function definitions can be found in the appendix. The relevant function definitions for this task are provided below (expand the section to see them).</p>
+<details>
+<summary>Task 8: Relevant Function Definitions</summary>
+<ol>
+<li>Open the file with write permissions. The filepath is provided as an argument.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>fopen</code>: Open a file for reading or writing.</td>
+</tr>
+<tr>
+<td rowspan="2" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filename string.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>Permission bits. 0 for read-only, 1 for write-only.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>A file descriptor. This integer can be used in other file operation functions to refer to the opened file. If opening the file failed, this value is -1.</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>
+<p>Write the number of rows and columns to the file. (Hint: The <code>fwrite</code> function expects a pointer to data in memory, so you should first store the data to memory, and then pass a pointer to the data to <code>fwrite</code>.)</p>
+</li>
+<li>
+<p>Write the data to the file.</p>
+</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>fwrite</code>: Write bytes from a buffer in memory to a file. Subsequent writes append to the end of the existing file.</td>
+</tr>
+<tr>
+<td rowspan="4" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The file descriptor of the file we want to write to, previously returned by <code>fopen</code>.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>void *</code></td>
+<td>A pointer to a buffer containing what we want to write to the file.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of elements to write to the file.</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>int</code></td>
+<td>The size of each element. In total, <code>a2</code> × <code>a3</code> bytes are written.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The number of items actually written to the file. If this differs from the number of items specified (<code>a2</code>), then we either hit the end of the file or there was an error.</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>Close the file.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>fclose</code>: Close a file, saving any writes we have made to the file.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The file descriptor of the file we want to close, previously returned by <code>fopen</code>.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>0 on success, and -1 otherwise.</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h3 id="testing-and-debugging-5">Testing and debugging</h3>
+<p>To test your function, in your local terminal, run <code>bash test.sh test_write_matrix</code>.</p>
+<p>To debug your function, in your Venus terminal, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb test_write_1.s
+vdb test_write_fail_fclose.s
+vdb test_write_fail_fopen.s
+vdb test_write_fail_fwrite.s
+</span></code></pre>
+<p><strong>Note</strong>: The error cases will not error on Venus and will only error when running the tests via <code>bash test.sh</code>.</p>
+<p>As a reminder, you can use the functions described in the <a href="calling-convention.1.html#randomizing-preserved-registers">calling convention appendix</a> to debug calling convention errors. We also have <a href="index.html#debugging-videos">debugging videos</a> that may help you debug these errors.</p>
+<h2 id="task-9-classify">Task 9: Classify</h2>
+<p>Recall the <a href="index.html#">neural net</a> that we're trying to create. In this task, you will use functions from the previous tasks in order to complete the classification function, located in <code>src/classify.s</code>.</p>
+<p>Fill in the <code>classify</code> function in <code>src/classify.s</code>. This function should do the following:</p>
+<ol>
+<li>Read three matrices <code>m0</code>, <code>m1</code>, and <code>input</code> from files. Their filepaths are provided as arguments. You will need to allocate space for the pointer arguments to <code>read_matrix</code>, since that function is expecting a pointer to allocated memory.</li>
+<li>Compute <code>h = matmul(m0, input)</code>. You will probably need to <code>malloc</code> space to fit <code>h</code>.</li>
+<li>Compute <code>h = relu(h)</code>. Remember that <code>relu</code> is performed in-place.</li>
+<li>Compute <code>o = matmul(m1, h)</code> and write the resulting matrix to the <code>output</code> file. The <code>output</code> filepath is provided as an argument.</li>
+<li>Compute and return <code>argmax(o)</code>. If the print argument is set to 0, then also print out <code>argmax(o)</code> and a newline character.</li>
+<li>Free any data you allocated with <code>malloc</code>. This includes any heap blocks allocated from calling <code>read_matrix</code>.</li>
+<li>Remember to put the return value, <code>argmax(o)</code>, in the appropriate register before returning.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 19%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 57%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>classify</code>: Task 9.</td>
+</tr>
+<tr>
+<td rowspan="7" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td><code>argc</code> (the number of arguments provided)</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>char **</code></td>
+<td><code>argv</code>, a pointer to an array of argument strings (<code>char *</code>)</td>
+</tr>
+<tr>
+<td><code>a1[1]</code> = <code>*(a1 + 4)</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filepath string of the first matrix file <code>m0</code>.</td>
+</tr>
+<tr>
+<td><code>a1[2]</code> = <code>*(a1 + 8)</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filepath string of the second matrix file <code>m1</code>.</td>
+</tr>
+<tr>
+<td><code>a1[3]</code> = <code>*(a1 + 12)</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filepath string of the input matrix file <code>input</code>.</td>
+</tr>
+<tr>
+<td><code>a1[4]</code> = <code>*(a1 + 16)</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filepath string of the output file.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>If set to 0, print out the classification. Otherwise, do not print anything.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The classification (see above).</td>
+</tr>
+</tbody>
+</table>
+<p>If the input is malformed in the following ways, put the appropriate return code into <code>a0</code> and run <code>j exit</code> to quit the program.</p>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 85%;">
+</colgroup>
+<tbody>
+<tr>
+<td><b>Return code</b></td>
+<td><b>Exception</b></td>
+</tr>
+<tr>
+<td>26</td>
+<td><code>malloc</code> returns an error.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>There are an incorrect number of command line arguments. Note that there are 5 arguments to the program, because <code>a1[0]</code> is reserved for the name of the program.</td>
+</tr>
+</tbody>
+</table>
+<p>To implement this function, you will need to call some utility functions. A complete set of function definitions can be found in the appendix. The relevant function definitions for this task are provided below (expand the section to see them).</p>
+<details>
+<summary>Task 9: Relevant Function Definitions</summary>
+<ol>
+<li>Read three matrices <code>m0</code>, <code>m1</code>, and <code>input</code> from files. Their filepaths are provided as arguments. You will need to allocate space for the pointer arguments to <code>read_matrix</code>, since that function is expecting a pointer to allocated memory.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>read_matrix</code>: Task 7.</td>
+</tr>
+<tr>
+<td rowspan="3" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filename string.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int *</code></td>
+<td>A pointer to an integer which will contain the number of rows. You can assume this points to allocated memory.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int *</code></td>
+<td>A pointer to an integer which will contain the number of columns. You can assume this points to allocated memory.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the matrix in memory.</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>Compute <code>h = matmul(m0, input)</code>. You will probably need to <code>malloc</code> space to fit <code>h</code>.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>malloc</code>: Allocates heap memory.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The size of the memory that we want to allocate (in bytes).</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>void *</code></td>
+<td>A pointer to the allocated memory. If the allocation failed, this value is 0.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>matmul</code>: Task 6.</td>
+</tr>
+<tr>
+<td rowspan="7" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the first matrix A (stored as an integer array in row-major order).</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>The number of rows (height) of the first matrix A.</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of columns (width) of the first matrix A.</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the second matrix B (stored as an integer array in row-major order).</td>
+</tr>
+<tr>
+<td><code>a4</code></td>
+<td><code>int</code></td>
+<td>The number of rows (height) of the second matrix B.</td>
+</tr>
+<tr>
+<td><code>a5</code></td>
+<td><code>int</code></td>
+<td>The number of columns (width) of the second matrix B.</td>
+</tr>
+<tr>
+<td><code>a6</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of an integer array where the result C should be stored. You can assume this memory has been allocated (but is uninitialized) and has enough space to store C.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<ol start="3">
+<li>Compute <code>h = relu(h)</code>. Remember that <code>relu</code> is performed in-place.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>relu</code>: Task 2.</td>
+</tr>
+<tr>
+<td rowspan="2" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the integer array.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>The number of integers in the array. You can assume that this argument matches the actual length of the integer array.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>Compute <code>o = matmul(m1, h)</code> and write the resulting matrix to the <code>output</code> file. The <code>output</code> filepath is provided as an argument.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>write_matrix</code>: Task 8.</td>
+</tr>
+<tr>
+<td rowspan="4" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>char *</code></td>
+<td>A pointer to the filename string.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the matrix in memory (stored as an integer array).</td>
+</tr>
+<tr>
+<td><code>a2</code></td>
+<td><code>int</code></td>
+<td>The number of rows in the matrix.</td>
+</tr>
+<tr>
+<td><code>a3</code></td>
+<td><code>int</code></td>
+<td>The number of columns in the matrix.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<ol start="5">
+<li>Compute and return <code>argmax(o)</code>. If the print argument is set to 0, then also print out <code>argmax(o)</code> and a newline character.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>argmax</code>: Task 3.</td>
+</tr>
+<tr>
+<td rowspan="2" style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int *</code></td>
+<td>A pointer to the start of the integer array.</td>
+</tr>
+<tr>
+<td><code>a1</code></td>
+<td><code>int</code></td>
+<td>The number of integers in the array. You can assume that this argument matches the actual length of the integer array.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The index of the largest element. If the largest element appears multiple times, return the smallest index.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>print_int</code>: Prints an integer.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>int</code></td>
+<td>The integer to print.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>print_char</code>: Prints a character.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>char</code></td>
+<td>The character to print. You can provide the ASCII code or put the character directly in the register like <code>li t0 '\n'</code>.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<ol start="6">
+<li>Free any data you allocated with <code>malloc</code>. This includes any heap blocks allocated from calling <code>read_matrix</code>.</li>
+</ol>
+<table>
+<colgroup>
+<col span="1" style="width: 15%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 9%;">
+<col span="1" style="width: 67%;">
+</colgroup>
+<tbody>
+<tr>
+<td colspan="4"><code>free</code>: Frees heap memory.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Arguments</b></td>
+<td><code>a0</code></td>
+<td><code>void *</code></td>
+<td>A pointer to the allocated memory to be freed.</td>
+</tr>
+<tr>
+<td style="vertical-align: middle;"><b>Return values</b></td>
+<td colspan="3">None</td>
+</tr>
+</tbody>
+</table>
+<ol start="7">
+<li>Remember to put the return value, <code>argmax(o)</code>, in the appropriate register before returning.</li>
+</ol>
+</details>
+<h3 id="testing-and-debugging-6">Testing and debugging</h3>
+<p>To test your function, in your local terminal, run <code>bash test.sh test_classify</code>.</p>
+<p>To debug your function, in your Venus terminal, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb test_classify_1_silent.s ../tests/classify-1/m0.bin ../tests/classify-1/m1.bin ../tests/classify-1/input.bin ../tests/classify-1/output.bin
+vdb test_classify_2_print.s ../tests/classify-2/m0.bin ../tests/classify-2/m1.bin ../tests/classify-2/input.bin ../tests/classify-2/output.bin
+vdb test_classify_3_print.s ../tests/classify-3/m0.bin ../tests/classify-3/m1.bin ../tests/classify-3/input.bin ../tests/classify-3/output.bin
+vdb test_classify_fail_malloc.s ../tests/classify-1/m0.bin ../tests/classify-1/m1.bin ../tests/classify-1/input.bin ../tests/classify-1/output.bin
+vdb test_classify_not_enough_args.s
+</span></code></pre>
+<p><strong>Note</strong>: The error cases will not error on Venus and will only error when running the tests via <code>bash test.sh</code>.</p>
+<p>Once you have classify running, you can run <code>bash test.sh test_chain</code>. This runs your classification function twice to make sure you properly followed calling convention.</p>
+<p>As a reminder, you can use the functions described in the <a href="calling-convention.1.html#randomizing-preserved-registers">calling convention appendix</a> to debug calling convention errors. We also have <a href="index.html#debugging-videos">debugging videos</a> that may help you debug these errors.</p>
+<p>To debug the chain test, run <code>cd /vmfs/test-src</code>, then run a VDB command to start the debugger:</p>
+<pre class="z-code"><code><span class="z-text z-plain">vdb ../tests/chain-1/chain.s
+</span></code></pre>
+<h2 id="task-10-partner-feedback-form">Task 10: Partner/Feedback Form</h2>
+<p>Congratulations on finishing the project! We'd love to hear your feedback on what can be improved for future semesters.</p>
+<p>Please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSeVLAl7O7gMHYQ6a0vdLWBDUtzWUWMXH22kz406F5rNFicK9g/viewform">short form</a>, where you can offer your thoughts on the project and (if applicable) your partnership. Any feedback you provide won't affect your grade, so feel free to be honest and constructive.</p>
+<h2 id="submission-and-grading">Submission and Grading</h2>
+<p>Submit your code to the Project 2 assignment on Gradescope.</p>
+<p>To ensure the autograder runs correctly, do not add any <code>.import</code> statements to the starter code. Also, make sure there are no <code>ecall</code> instructions in your code.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  document.addEventListener("DOMContentLoaded", function() {
+    initToC();
+  });
+</script>
+</body>
+</html>

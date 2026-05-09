@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Lab 3 | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup">Setup</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#introduction-to-assembly">Introduction to Assembly</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#venus-getting-started">Venus: Getting Started</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-venus-basics">Exercise 1: Venus Basics</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#translating-from-c-to-risc-v">Translating from C to RISC-V</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-2-using-the-venus-debugger">Exercise 2: Using the Venus Debugger</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#venus-memcheck">Venus: Memcheck</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-3-using-memcheck">Exercise 3: Using Memcheck</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-4-array-practice">Exercise 4: Array Practice</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#testing">Testing</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-5-factorial">Exercise 5: Factorial</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#testing-1">Testing</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-6-reflection-and-feedback-form">Exercise 6: Reflection and Feedback Form</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#transitioning-to-more-complex-risc-v-programs">Transitioning to More Complex RISC-V Programs</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submission">Submission</a>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Lab 3: RISC-V, Venus</h1>
+<p class="subtitle">Deadline: Tuesday, July 2, 11:59:59 PM PT</p>
+<p><a href="https://docs.google.com/presentation/d/1yh0VtrKrQ31jj139k-eDSdwgnOBuFHPHXJnWq-AS2S4/edit?usp=drive_link">Lab Slides</a></p>
+<h2 id="setup">Setup</h2>
+<div class="alert alert-warning">
+<p>You must complete this lab on your local machine. See <a href="../lab00/index.html">Lab 0</a> if you need to set up your local machine again.</p>
+</div>
+<p>In your <code>labs</code> directory on your local machine, pull any changes you may have made in past labs:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull origin main</span>
+</span></code></pre>
+<p>Still in your <code>labs</code> directory on your local machine, pull the files for this lab with:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+<p>If you get an error like the following:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">fatal: &#39;starter&#39; does not appear to be a git repository
+fatal: Could not read from remote repository.
+</span></code></pre>
+<p>make sure to set the starter remote as follows:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> remote add starter https://github.com/61c-teach/su24-lab-starter.git</span>
+</span></code></pre>
+<p>and run the original command again.</p>
+<p>Still in your <code>labs</code> directory, run the following command to download the newest version of some tools we may need:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">bash</span></span><span class="z-meta z-function-call z-arguments z-shell"> tools/download_tools.sh</span>
+</span></code></pre>
+<p>If you run into any <code>git</code> errors, please check out the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<hr/>
+<h2 id="introduction-to-assembly">Introduction to Assembly</h2>
+<p>In this course so far, we have dealt mostly with C programs (with the <code>.c</code> file extension), used the <code>gcc</code> program to compile them to machine code, and then executed them directly on the hive machines. Now, we're shifting our focus to the RISC-V assembly language, which is a lower-level language much closer to machine code. We can't execute RISC-V code directly because your computer and the hives are built to run machine code from other assembly languages --- most likely x86 or ARM.</p>
+<p>For this lab and next lab, we will work with several RISC-V assembly files, each of which has a <code>.s</code> file extension. To run these, we will be using <a href="https://venus.cs61c.org/">Venus</a>, an educational RISC-V assembler and simulator. You can run Venus locally from your own terminal or on the Venus website, and the following instructions will guide you through the steps to set it up. Though you may find using the web editor easier to use for this lab, <em>please go through these instructions for local setup regardless</em>: these steps will also set up other infrastructure needed for future projects and labs.</p>
+<h2 id="venus-getting-started">Venus: Getting Started</h2>
+<p>To get started with Venus, please take a look at &quot;The Editor Tab&quot; and &quot;The Simulator Tab&quot; in the <a href="../../resources/venus-reference/index.html">Venus reference</a>. We recommend that you read this whole page at some point, but these sections should be enough to get started.</p>
+<div class="alert alert-warning">
+<p><strong>Warning</strong>: For the following exercises, please make sure your completed code is saved on a file on your local machine. Otherwise, we will have no proof that you completed the lab exercises.</p>
+</div>
+<hr/>
+<h2 id="exercise-1-venus-basics">Exercise 1: Venus Basics</h2>
+<p>You can &quot;mount&quot; a folder from your local device onto Venus's web frontend, so that edits you make within the browser Venus editor are reflected in your local file system, and vice versa. If you don't do this step, files created and edited in Venus will be lost each time you close the tab, unless you copy/paste them to a local file.</p>
+<p>This exercise will walk you through the process of connecting your file system to Venus, which should save you a lot of trouble copy/pasting files between your local drive and the Venus editor.</p>
+<ol>
+<li>In your labs folder, <strong>run</strong> <code>java -jar tools/venus.jar . -dm</code>. This will expose your lab directory to Venus on a network port.
+<ul>
+<li>You should see a big &quot;Javalin&quot; logo.</li>
+<li>If you see a message along the lines of &quot;port unable to be bound&quot;, then you can specify another port number explicitly by appending <code>--port PORT_NUM</code> to the command (for example, <code>java -jar tools/venus.jar . -dm --port 6162</code> will expose the file system on port 6162).</li>
+</ul>
+</li>
+<li><strong>Open</strong> <a href="https://venus.cs61c.org">https://venus.cs61c.org</a> in your web browser (Chrome or Firefox are recommended).</li>
+<li>In the Venus web terminal, <strong>run</strong> <code>mount local labs</code> (if you chose a different port, replace &quot;local&quot; with the full URL, such as <code>http://localhost:6162</code>). This connects Venus to your file system.
+<ul>
+<li>In your browser, you may see a prompt saying <code>Key has been shown in the Venus mount server! Please copy and paste it into here.</code>. You should be able to see a key in the most recent line of your local terminal output; just copy and paste it into the dialog.</li>
+</ul>
+</li>
+<li><strong>Go to</strong> the &quot;Files&quot; tab. You should now be able to see your <code>labs</code> directory under the <code>labs</code> folder.</li>
+<li><strong>Navigate</strong> to <code>lab03</code>, and make sure it works by hitting the <code>Edit</code> button next to <code>ex1_hello.s</code>. This should open in the <code>Editor</code> tab.
+<ul>
+<li>You should see the contents of <code>ex1_hello.s</code> in the editor. This editor behaves like most other text editors, albeit without many of the fancier features.</li>
+</ul>
+</li>
+<li>To assemble the program open in the editor, <strong>click</strong> the &quot;Simulator&quot; tab, and <strong>click</strong> &quot;Assemble &amp; Simulate from Editor&quot;.
+<ul>
+<li>In the future, if you already have a program open in the simulator, click &quot;Re-assemble from Editor&quot; instead. Note that this will overwrite everything you have in the simulator tab, such as an existing debugging session.</li>
+</ul>
+</li>
+<li>To run the program, <strong>click</strong> &quot;Run&quot;.
+<ul>
+<li>You can see other buttons like &quot;Step&quot;, &quot;Prev&quot;, and &quot;Reset&quot;. You will use these buttons later on in the lab and during your assignments.</li>
+</ul>
+</li>
+<li>Go back to the editor tab, and <strong>edit</strong> <code>ex1_hello.s</code> so that the output prints <code>2024</code>.
+<ul>
+<li>Hint: The value in <code>a1</code> is printed when <code>ecall</code> executes. What <code>ecall</code> does is out of scope for this class though.</li>
+</ul>
+</li>
+<li><strong>Save</strong> the changes you just made by hitting <kbd>Cmd</kbd> + <kbd>s</kbd> on macOS and <kbd>Ctrl</kbd> + <kbd>s</kbd> on Windows/Linux. This will update your local copy of the file.</li>
+<li><strong>Open</strong> the file on your local machine using the text editor of your choice to check and make sure it matches what you have in the web editor.
+<ul>
+<li><strong>Note:</strong> If you make any changes to a file in your local machine using a text editor, if you had the same file open in the Venus editor, you'll need to reopen it from the &quot;Files&quot; menu to get the new changes.</li>
+</ul>
+</li>
+<li><strong>Run</strong> the program again, you should now see <code>2024</code> if you modified the source file correctly.</li>
+</ol>
+<hr/>
+<h2 id="translating-from-c-to-risc-v">Translating from C to RISC-V</h2>
+<p>In this example, we are going to walk through translating a C program to a RISC-V program. The following program will print out the nth Fibonacci number. Even though this section is a bit long, please read through it!</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-meta z-preprocessor z-include z-c"><span class="z-keyword z-control z-import z-include z-c">#include</span> <span class="z-string z-quoted z-other z-lt-gt z-include z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&lt;</span>stdio.h<span class="z-punctuation z-definition z-string z-end z-c">&gt;</span></span>
+</span>
+<span class="z-storage z-type z-c">int</span> n <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">12</span><span class="z-punctuation z-terminator z-c">;</span>
+
+<span class="z-comment z-line z-double-slash z-c"><span class="z-punctuation z-definition z-comment z-c">//</span> Function to find the nth Fibonacci number
+</span><span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">main</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-storage z-type z-c">void</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+    <span class="z-storage z-type z-c">int</span> curr_fib <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-separator z-c">,</span> next_fib <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">1</span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-storage z-type z-c">int</span> new_fib<span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-keyword z-control z-c">for</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-storage z-type z-c">int</span> i <span class="z-keyword z-operator z-assignment z-c">=</span> n<span class="z-punctuation z-terminator z-c">;</span> i <span class="z-keyword z-operator z-comparison z-c">&gt;</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span> i<span class="z-keyword z-operator z-arithmetic z-c">--</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+        new_fib <span class="z-keyword z-operator z-assignment z-c">=</span> curr_fib <span class="z-keyword z-operator z-arithmetic z-c">+</span> next_fib<span class="z-punctuation z-terminator z-c">;</span>
+        curr_fib <span class="z-keyword z-operator z-assignment z-c">=</span> next_fib<span class="z-punctuation z-terminator z-c">;</span>
+        next_fib <span class="z-keyword z-operator z-assignment z-c">=</span> new_fib<span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-punctuation z-section z-block z-end z-c">}</span></span>
+    <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span><span class="z-constant z-other z-placeholder z-c">%d</span><span class="z-constant z-character z-escape z-c">\n</span><span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-separator z-c">,</span> curr_fib</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-keyword z-control z-flow z-return z-c">return</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>Let's break down how we'll translate this step-by-step. Open <code>fib.s</code> in the Venus editor. First, we need to define the global variable <code>n</code>. In RISC-V global variables are declared under the <code>.data</code> directive. This represents the data segment. It will look like this:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">.data
+n: .word 12
+</span></code></pre>
+<ul>
+<li><code>n</code> is the name of the variable</li>
+<li><code>.word</code> means that the size of the data is one word</li>
+<li><code>12</code> is the value that is assigned to <code>n</code></li>
+</ul>
+<p>Let's move on to initalizing <code>curr_fib</code> and <code>next_fib</code></p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">.text
+main:
+    add t0, x0, x0 # curr_fib = 0
+    addi t1, x0, 1 # next_fib = 1
+</span></code></pre>
+<p>Here we have added the <code>.text</code> directive. Everything under this directive is our code.</p>
+<p>Remember that <code>x0</code> always holds the value 0.</p>
+<p>We don't need to do anything to declare <code>new_fib</code> (we don't declare variables in RISC-V).</p>
+<p>Next, let's get to the loop. We'll start with setting up the loop variables. The following code will set <code>i</code> to <code>n</code></p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">la t3, n # load the address of the label n
+lw t3, 0(t3) # get the value that is stored at the adddress denoted by the label n
+</span></code></pre>
+<p>You can think of the code above as doing something along the lines of</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c">t3 <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-keyword z-operator z-c">&amp;</span>n<span class="z-punctuation z-terminator z-c">;</span>
+t3 <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-keyword z-operator z-c">*</span>t3<span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>We have a new instruction here <code>la</code>. This instruction loads the address of a label. The first line essentially sets <code>t3</code> to be a pointer to <code>n</code>. Next, we use <code>lw</code> to dereference <code>t3</code> which will set <code>t3</code> to the value stored at <code>n</code>.</p>
+<p>Now, you're probably thinking, &quot;Why can't we directly set <code>t3</code> to <code>n</code>?&quot; In the <code>.text</code> section, there is no way that we can directly access <code>n</code>. (Think about it. We can't say <code>add t3, n, x0</code>. The arguments to <code>add</code> must be registers and <code>n</code> is not a register.) The only way that we can access it is by obtaining the address of <code>n</code>. Once we obtain the address of <code>n</code>, we need to dereference it which can be done with <code>lw</code>. <code>lw</code> will reach into memory at the address that you specify and load in the value stored at that address. In this case, we specified the address of <code>n</code> and added an offset of <code>0</code>.</p>
+<p>Let's get down to the loop now. First, we'll create the outer structure below:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">fib:
+    beq t3, x0, finish # exit loop once we have completed n iterations
+    ...
+    ...
+    addi t3, t3, -1 # decrement counter
+    j fib # loop
+finish:
+</span></code></pre>
+<p>The first line (<code>fib:</code>) is a label that we will use to jump back to the beginning of the loop.</p>
+<p>The next line (<code>beq t3, x0, finish</code>) specifies our terminating condition. Here, we will jump to another label, <code>finish</code>, once <code>t3</code> (which is representing <code>i</code>) reaches <code>0</code>.</p>
+<p>The next line (<code>addi t3, t3, -1</code>) decrements <code>i</code> at the end of the loop body. It's important to do this at the end because <code>i</code> is used in the loop body. If we updated it right after <code>beq</code>, then it would not have the correct value in the loop body.</p>
+<p>The next instruction jumps back to the start of the loop.</p>
+<p>Now, let's add in the loop body.</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">fib:
+    beq t3, x0, finish # exit loop once we have completed n iterations
+    add t2, t1, t0 # new_fib = curr_fib + next_fib;
+    mv t0, t1 # curr_fib = next_fib;
+    mv t1, t2 # next_fib = new_fib;
+    addi t3, t3, -1 # decrement counter
+    j fib # loop
+finish:
+</span></code></pre>
+<p>Nothing special here. The corresponding C lines are written in the comments.</p>
+<p>Let's print out the nth Fibonacci number!</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">finish:
+    addi a0, x0, 1 # argument to ecall to execute print integer
+    addi a1, t0, 0 # argument to ecall, the value to be printed
+    ecall # print integer ecall
+</span></code></pre>
+<p>Printing is a system call. You'll learn more about these later in the semester, but a system call is essentially a way for your program to interact with the Operating System. To make a system call in RISC-V, we use a special instruction called <code>ecall</code>. To print out an integer, we need to pass two arguments to <code>ecall</code>. The first argument specifies what we want <code>ecall</code> to do (in this case, print an integer). To specify that we want to print an integer, we pass a <code>1</code>. The second argument is the integer that we want to print out.</p>
+<p>In C, we are used to functions looking like <code>ecall(1, t0)</code>. In RISC-V, we cannot pass arguments in this way. To pass an argument, we need to place it in an argument register (<code>a0</code>-<code>a7</code>). When the function executes, it will look in these registers for the arguments. (If you haven't seen this in lecture yet, you will soon). The first argument should be placed in <code>a0</code>, the second in <code>a1</code>, etc.</p>
+<p>To set up the arguments, we placed a <code>1</code> in <code>a0</code> and we placed the integer that we wanted to print in <code>a1</code>.</p>
+<p>Next, let's terminate our program! This also requires <code>ecall</code></p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">addi a0, x0, 10 # argument to ecall to terminate
+ecall # terminate ecall
+</span></code></pre>
+<p>In this case, <code>ecall</code> only needs one argument. Setting <code>a0</code> to <code>10</code> specifies that we want to terminate the program.</p>
+<p>And there you have it! Here's our full program!</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">.data
+n: .word 12
+
+.text
+main:
+    add t0, x0, x0 # curr_fib = 0
+    addi t1, x0, 1 # next_fib = 1
+    la t3, n # load the address of the label n
+    lw t3, 0(t3) # get the value that is stored at the adddress denoted by the label n
+fib:
+    beq t3, x0, finish # exit loop once we have completed n iterations
+    add t2, t1, t0 # new_fib = curr_fib + next_fib;
+    mv t0, t1 # curr_fib = next_fib;
+    mv t1, t2 # next_fib = new_fib;
+    addi t3, t3, -1 # decrement counter
+    j fib # loop
+finish:
+    addi a0, x0, 1 # argument to ecall to execute print integer
+    addi a1, t0, 0 # argument to ecall, the value to be printed
+    ecall # print integer ecall
+    addi a0, x0, 10 # argument to ecall to terminate
+    ecall # terminate ecall
+</span></code></pre>
+<h2 id="exercise-2-using-the-venus-debugger">Exercise 2: Using the Venus Debugger</h2>
+<p>There are two ways of opening a file in the Venus debugger:</p>
+<ol>
+<li>Through the editor
+<ol>
+<li><strong>Open</strong> <code>fib.s</code> into the Venus editor.</li>
+<li><strong>Click</strong> the &quot;Simulator&quot; tab and <strong>click</strong> the &quot;Assemble &amp; Simulate from Editor&quot; (or the &quot;Re-assemble from Editor&quot;) button. The current instruction is highlighted in a light blue color. Similar to <code>cgdb</code>, the current instruction is the instruction has not been executed, but is about to be executed.</li>
+</ol>
+</li>
+<li>Through the &quot;Files&quot; tab
+<ol>
+<li><strong>Click</strong> the &quot;Venus&quot; tab, then <strong>click</strong> the &quot;Files&quot; tab.</li>
+<li><strong>Navigate</strong> to the <code>fib.s</code> file, which should be located in the <code>labs</code> folder under <code>lab03</code>.</li>
+<li><strong>Click</strong> the &quot;VDB&quot; button next to the name of the file.</li>
+</ol>
+</li>
+</ol>
+<p>This exercise will ask you to write down your answers in <code>ex2_answers.txt</code>. The question numbers may be different from the step numbers, please be careful!</p>
+<ol>
+<li><strong>Open</strong> <code>fib.s</code> in the Venus debugger using one of the two ways listed above.
+<ul>
+<li>Question 1: What is the machine code of the highlighted instruction? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+<li>Question 2: What is the machine code of the instruction at address <code>0x34</code>? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li><strong>Click</strong> the &quot;step&quot; button to advance to the next instruction. The second instruction should now be highlighted.</li>
+<li><strong>Click</strong> the &quot;prev&quot; button to undo the last executed instruction. Note that undo may or may not undo operations performed by <code>ecall</code>, such as exiting the program or printing to console.</li>
+<li>On the right side of the screen, <strong>click</strong> the &quot;Registers&quot; tab to view the values of all 32 registers. This tab may be already selected if it the title is highlighted in yellow. Make sure you on looking at the integer registers, not the floating point registers.
+<ul>
+<li>Question 3: What is the value of the <code>sp</code> register? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li><strong>Continue stepping</strong> until the value in <code>t1</code> changes.
+<ul>
+<li>Question 4: What is the new value of the <code>t1</code> register? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+<li>Question 5: What is the machine code of the <em>current instruction</em>? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li><strong>Step</strong> until you are at address <code>0x10</code>. At this point, <code>t3</code>'s value has been updated.
+<ul>
+<li>Question 6: What is the value of the <code>t3</code> register? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li>If we look at the current instruction, we're loading from the <code>t3</code> register. <strong>Use</strong> the &quot;Memory&quot; tab (next to the &quot;Registers&quot; tab), and <strong>input</strong> the answer of question 6 (the value of <code>t3</code>) into the &quot;Address&quot; box. You may need to scroll down on the memory tab before it is visible. <strong>Press</strong> &quot;Go&quot; to go to that memory address
+<ul>
+<li>Question 7: What is the byte that <code>t3</code> points to? The answer should be an 8 bit (1 byte) hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li><strong>Set a breakpoint</strong> at address <code>0x28</code> by clicking the row at that address. The row should turn light red and a breakpoint symbol should appear.</li>
+<li><strong>Continue</strong> until the breakpoint by pressing &quot;Run&quot;.
+<ul>
+<li>Question 8: What is the value of the <code>t0</code> register? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li><strong>Continue</strong> 6 more times.
+<ul>
+<li>Question 9: What is the new value of the <code>t0</code> register? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li>Sometimes, reading hexadecimal values aren't very helpful. <strong>Set</strong> the display settings to &quot;Decimal&quot; by using the dropdown at the bottom of the register tab. This can also be done for the memory tab.
+<ul>
+<li>Question 10: What is the value of the <code>t0</code> register in decimal? The answer should be a decimal number without a prefix.</li>
+</ul>
+</li>
+<li><strong>Click</strong> the instruction at address <code>0x28</code> again to unset the breakpoint.</li>
+<li><strong>Click</strong> run to finish running the program, since there are no more breakpoints.
+<ul>
+<li>Question 11: What is the output of the program? The answer should be a decimal number without a prefix.</li>
+</ul>
+</li>
+</ol>
+<h2 id="venus-memcheck">Venus: Memcheck</h2>
+<p>In project 1 (and C programming in general), <code>valgrind</code> was the go-to tool for debugging memory access errors (such as <code>Segmentation fault (core dumped)</code>). For Venus, we have a feature called &quot;memcheck&quot; that accomplishes something similar. The memcheck error messages are designed to mimic <code>valgrind</code> error messages. Note: this feature was developed in Spring 2022 and we first introduced it in Fall 2022, so please let us know if you encounter any bugs!</p>
+<p>Memcheck comes in two modes:</p>
+<ul>
+<li>Normal mode (or just &quot;memcheck&quot;): This mode will show any invalid reads or writes to memory. If there is unfreed memory when the program exits, it will also print out the number of bytes of unfreed memory.</li>
+<li>Verbose mode (or &quot;memcheck verbose&quot;): In addition to normal mode, this mode also prints out every memory read/write, along with a list of blocks that were not freed when the program exits.</li>
+</ul>
+<p>You can enable these modes under the Venus tab. If both &quot;Enable Memcheck?&quot; and &quot;Enable Memcheck Verbose?&quot; are selected, memcheck will run in verbose mode.</p>
+<div class="alert alert-warning">
+<p>You must reopen the file you are debugging in VDB after enabling or disabling memcheck.</p>
+</div>
+<h2 id="exercise-3-using-memcheck">Exercise 3: Using Memcheck</h2>
+<p>Similar to the previous exercise, this exercise will ask you to write down your answers in <code>ex3_answers.txt</code>. The question numbers may be different from the step numbers, please be careful!</p>
+<ol>
+<li><strong>Open</strong> <code>ex3_memcheck.s</code> in the Venus editor and <strong>read</strong> through the entire program to get an idea of what it does.</li>
+<li><strong>Run</strong> the program. Oh no, the program errors! Let's take a look at the error message.
+<ul>
+<li>Question 1: What address did the program try to access, but caused the error? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+<li>Question 2: How many bytes was the program trying to access? The answer should be a decimal number without a prefix.</li>
+</ul>
+</li>
+<li>This seems like a memory error, so let's give memcheck a shot. <strong>Enable</strong> memcheck (normal mode) and <strong>reopen</strong> <code>ex3_memcheck.s</code> in VDB.</li>
+<li><strong>Run</strong> the program. Look, a memcheck error with more details! <strong>Read</strong> the error carefully.
+<ul>
+<li>Question 3: What address did the program try to access, but caused the error? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+<li>Question 4: How many bytes were allocated in the block related to the error? The answer should be a number without units.</li>
+<li>Question 5: Which line of the source file caused this error? The answer should be a number.</li>
+</ul>
+</li>
+<li><strong>Compare</strong> your answer to Question 2 and Question 4. Note that memcheck may change the memory address that <code>malloc</code> returns.</li>
+<li>Let's try to debug this error. <strong>Recall</strong> that <code>t1</code> contains the loop counter.
+<ul>
+<li>Question 6: What is the value of <code>t1</code> based on the memcheck error message? The answer should be a decimal number.</li>
+</ul>
+</li>
+<li><strong>Fix</strong> this error in the source code and <strong>save</strong> the file.</li>
+<li><strong>Run</strong> the program again. The process complete without any invalid access errors. However, it complains that there's some unfreed memory.
+<ul>
+<li>Question 7: How many bytes were not freed when the program exited? The answer should be a decimal number without units.</li>
+</ul>
+</li>
+<li><strong>Rerun</strong> the program with memcheck in verbose mode. Remember to reopen the file in VDB.
+<ul>
+<li>Question 8: What is the address of the block that was not freed? The answer should be a 32 bit hexadecimal number, with the <code>0x</code> prefix.</li>
+</ul>
+</li>
+<li><strong>Fix</strong> this error by calling <code>free</code>.</li>
+<li><strong>Disable</strong> memcheck for the next two exercises.</li>
+</ol>
+<details>
+<summary>Hint</summary>
+<p>Place a pointer to the beginning of the array in <code>a0</code>, then call <code>free</code> using <code>jal</code>.</p>
+</details>
+<h2 id="exercise-4-array-practice">Exercise 4: Array Practice</h2>
+<p>Consider the discrete-valued function <code>f</code> defined on integers in the set <code>{-3, -2, -1, 0, 1, 2, 3}</code>. Here's the function definition:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">f(-3) = 6
+f(-2) = 61
+f(-1) = 17
+f(0) = -38
+f(1) = 19
+f(2) = 42
+f(3) = 5
+</span></code></pre>
+<p>Implement the function in <code>ex4_discrete_fn.s</code> in RISC-V, with the condition that your code may <strong>NOT</strong> use any branch and/or jump instructions! Make sure that your code is saved locally. We have provided some hints in case you get stuck.</p>
+<p>All output values are stored in the output array which is passed to <code>f</code> through register <code>a1</code>. You can index into that array to get the output corresponding to the input.</p>
+<p><strong>Make sure that you only write to the <code>t</code> and <code>a</code> registers. If you use other registers, strange things may happen (you'll learn about why soon).</strong></p>
+<details>
+<summary>Hint 1</summary>
+<p>You can access the values of the array using <code>lw</code>.</p>
+</details>
+<details>
+<summary>Hint 2</summary>
+<p><code>lw</code> requires that the offset is an immediate value. When we compute the offset for this problem, it will be stored in a register. Since we cannot use a register as the offset, we can add the value stored in the register to the base address to compute the address of the index that we are interested in. Then we can perform a <code>lw</code> with an offset of <code>0</code>.</p>
+<p>In the following example, the index is stored in <code>t0</code> and the pointer to the array is stored in <code>t1</code>. The size of each element is 4 bytes. In RISC-V, we have to do our own pointer arithmetic, so:</p>
+<ol>
+<li>We need to multiply the index by the size of the elements of the array.</li>
+<li>Then we add this offset to the address of the array to get the address of the element that we wish to read.</li>
+<li>Read the element.</li>
+</ol>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">slli t2, t0, 2 # step 1 (see above)
+add t2, t2, t1 # step 2 (see above)
+lw t3, 0(t2)   # step 3 (see above)
+</span></code>
+</details></pre>
+<details>
+<summary>Hint 3</summary>
+<p><code>f(-3)</code> should be stored at offset 0, <code>f(-2)</code> should be stored at offset 1, and so on</p>
+</details>
+<h3 id="testing">Testing</h3>
+<p>To test your function, open <code>ex4_discrete_fn_tester.s</code> and run it through the simulator. This will be the test we use on the autograder, so make sure that the test passes locally before you submit.</p>
+<p>You can also test your code using the command line with the following command.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">java</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>jar</span> tools/venus.jar lab03/ex4_discrete_fn_tester.s</span>
+</span></code></pre>
+<h2 id="exercise-5-factorial">Exercise 5: Factorial</h2>
+<div class="alert alert-warning">
+<p>Make sure your memcheck is disabled for this exercise.</p>
+</div>
+<p>In this exercise, you will be implementing the <code>factorial</code> function in RISC-V. This function takes in a single integer parameter <code>n</code> and returns <code>n!</code>. A stub of this function can be found in the file <code>ex5_factorial.s</code>.</p>
+<p>The argument that is passed into the function is located at the label <code>n</code>. You can modify <code>n</code> to test different factorials. To implement, you will need to add instructions under the <code>factorial</code> label. There is an recursive solution, but we recommend that you implement the iterative solution. You can assume that the <code>factorial</code> function will only be called on positive values with results that won't overflow a 32-bit two's complement integer.</p>
+<p>At the start of the factorial call, the register <code>a0</code> contains the number which we want to compute the factorial of. Then, place your return value in register <code>a0</code> before returning from the function.</p>
+<p><strong>Make sure that you only write to the <code>t</code> and <code>a</code> registers. If you use other registers, strange things may happen (you'll learn about why soon).</strong></p>
+<p><strong>Also, make sure you initialize the registers you are using!</strong> Venus might show that the registers are initially 0, but in real life they can contain garbage data. Make sure you set the register values that you will be using to some defined number before using them.</p>
+<h3 id="testing-1">Testing</h3>
+<p>To test your code, you can make sure your function properly returns the correct output. Some examples are <code>0! = 1</code>, <code>3! = 6</code>, <code>7! = 5040</code> and <code>8! = 40320</code>.</p>
+<p>To test your function, open <code>ex5_factorial.s</code> and run it through the simulator. This will be how we test your function on the autograder, so make sure that the test passes locally before you submit.</p>
+<p>You can also test your code using the command line with the following command.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">java</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>jar</span> tools/venus.jar lab03/ex5_factorial.s</span>
+</span></code></pre>
+<h2 id="exercise-6-reflection-and-feedback-form">Exercise 6: Reflection and Feedback Form</h2>
+<p>We are working to improve the class every week - please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3cf_Z-3yoE2T5dBg6Fl8qTHYGsAuD4g_AyJ_jPyRZPEJwGQ/viewform?usp=sf_link">this survey</a> to tell us about your experience in discussion and lab so far!</p>
+<hr/>
+<h2 id="transitioning-to-more-complex-risc-v-programs">Transitioning to More Complex RISC-V Programs</h2>
+<p>In the future, we'll be working with more complex RISC-V programs that require multiple files of assembly code. To prepare for this, we recommend looking over the <a href="../../resources/venus-reference/index.html">Venus reference</a>.</p>
+<hr/>
+<h2 id="submission">Submission</h2>
+<p>Save, commit, and push your work, then submit to the <strong>Lab 3</strong> assignment on Gradescope.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>

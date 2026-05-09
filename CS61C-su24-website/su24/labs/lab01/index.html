@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Lab 1 | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup">Setup</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-hello">Exercise 1: Hello!</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#compiling-and-running-a-c-program">Compiling and Running a C Program</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#review-pointers">Review: Pointers</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-2-pointers-and-functions">Exercise 2: Pointers and Functions</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-3-pointers-to-stack-vs-heap">Exercise 3: Pointers to Stack vs Heap</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#review-arrays">Review: Arrays</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-4-arrays">Exercise 4: Arrays</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#review-pointer-arithmetic">Review: Pointer Arithmetic</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-5-pointer-arithmetic">Exercise 5: Pointer Arithmetic</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#review-strings">Review: Strings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-6-strings">Exercise 6: Strings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-7-copying-strings">Exercise 7: Copying Strings</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-8-structs">Exercise 8: Structs</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#optional-typedefs">Optional: typedefs</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-9-reflection-and-feedback-form">Exercise 9: Reflection and Feedback Form</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submission">Submission</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#faq">FAQ</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#what-is-a-header-file">What is a header file?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#what-is-a-null-terminator">What is a null terminator?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#what-is-an-executable">What is an executable?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#what-is-strlen">What is strlen?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#what-is-a-macro">What is a macro?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#what-is-a-segfault">What is a segfault?</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Lab 1: C</h1>
+<p class="subtitle">Deadline: Tuesday, June 25, 11:59:59 PM PT</p>
+<p>Before you come to lab 1, make sure that you are comfortable with either editing your files on the hive by using your text editor of choice. This lab is designed to familiarize you with basic C concepts and prepare you for project 1.</p>
+<p>We expect your submission to follow the spirit of the question. If your submission does not follow the spirit of the question (e.g. hard-codes the correct output while not applying any of the concepts introduced in this lab), we may manually grade your submission. If you feel like you may potentially be violating the spirit of the question, feel free to make a private question on Ed or ask your lab TA.</p>
+<p><a href="https://docs.google.com/presentation/d/1Cr85JyFSZniQUI_Fe_V6v6tPmBZiwkPxZ5Ad5mvzYNo/edit?usp=sharing">Lab Slides</a></p>
+<hr/>
+<h2 id="setup">Setup</h2>
+<div class="alert alert-warning">
+<p>You must complete this lab on the hive machines. See <a href="../lab00/index.html">Lab 0</a> for a refresher on using them.</p>
+</div>
+<p>In your <code>labs</code> directory, pull the files for this lab with:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+<p>If you get an error like the following:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">fatal: &#39;starter&#39; does not appear to be a git repository
+fatal: Could not read from remote repository.
+</span></code></pre>
+<p>make sure to set the starter remote as follows:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> remote add starter https://github.com/61c-teach/su24-lab-starter.git</span>
+</span></code></pre>
+<p>and run the original command again.</p>
+<p>If you run into any <code>git</code> errors, please check out the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<hr/>
+<h2 id="exercise-1-hello">Exercise 1: Hello!</h2>
+<h3 id="compiling-and-running-a-c-program">Compiling and Running a C Program</h3>
+<p>In this lab, we will be using the command line program <a href="https://gcc.gnu.org/">gcc</a> to compile programs in C. Use the following command to compile the code for exercise 1 (make sure that you have <code>cd</code>ed into the proper directory)</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">gcc</span></span><span class="z-meta z-function-call z-arguments z-shell"> ex1_hello.c</span>
+</span></code></pre>
+<p>This compiles <code>ex1_hello.c</code> into an <a href="index.html#faq">executable</a> file named <code>a.out</code>. If you've taken CS61B or have experience with Java, you can kinda think of <code>gcc</code> as the C equivalent of <code>javac</code>. This file can be run with the following command:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">./a.out</span></span>
+</span></code></pre>
+<p>The executable file is <code>a.out</code>, so what is the <code>./</code> for? Answer: when you want to execute an executable, you need to prepend the path to the name of the executable. The dot refers to the &quot;current directory.&quot; Double dots (<code>..</code>) would refer to the directory one level up.</p>
+<p><code>gcc</code> has various command line options which you are encouraged to explore. In this lab, however, we will only be using <code>-o</code>, which is used to specify the name of the executable file that <code>gcc</code> creates. By default, the name of the executable generated by <code>gcc</code> is <code>a.out</code>. You can use the following commands to compile <code>ex1_hello.c</code> into a program named <code>ex1_hello</code>, and then run it. This is helpful if you don't want all of your executable files to be named <code>a.out</code>.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">gcc</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>o</span> ex1_hello ex1_hello.c</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">./ex1_hello</span></span>
+</span></code></pre>
+<p>At this point, you should see the string <code>Hello World</code> printed out. If you edit the source code (such as <code>ex1_hello.c</code>), you must recompile the program using <code>gcc</code> to produce a new executable, otherwise the executable will still run the old source code.</p>
+<p><strong>Edit</strong> <code>ex1_hello.c</code> with your editor of choice and make the program print out the string &quot;Hello 61C&quot; instead of &quot;Hello World&quot;. Make sure to save your edited file, but do NOT recompile yet.</p>
+<p><strong>Run</strong> the executable with <code>./ex1_hello</code>. You should still see <code>Hello World</code>, which is the old output.</p>
+<p>Now, <strong>recompile</strong> your program with <code>gcc -o ex1_hello ex1_hello.c</code>, and then <strong>run</strong> the executable with <code>./ex1_hello</code> again. You should now see <code>Hello 61C</code>.</p>
+<h2 id="review-pointers">Review: Pointers</h2>
+<p>A pointer is a variable whose value is the memory address of another variable. Note that every variable declaration is always located in a memory, where every element has a corresponding address. Think of it like an array: every variable value is contained on a specific array index (address), and the pointer to that variable is another variable within that same array that contains the index (address) of the variable it is pointing at.</p>
+<p>Consider the following example:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">main</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+    <span class="z-storage z-type z-c">int</span> my_var <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">20</span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-storage z-type z-c">int</span><span class="z-keyword z-operator z-c">*</span> my_var_p<span class="z-punctuation z-terminator z-c">;</span>
+    my_var_p <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-keyword z-operator z-c">&amp;</span>my_var<span class="z-punctuation z-terminator z-c">;</span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>For the first line, we declared an <code>int</code> variable called <code>my_var</code> which is then assigned with a value of 20. That value of 20 will be placed somewhere in the memory.</p>
+<p>For the second line, we declared an <code>int</code> pointer variable called <code>my_var_p</code>. Note that you can also write <code>int *my_var_p</code>, where the asterisk glued to the variable name instead of the variable type.</p>
+<p>For the third line, we assigned <code>my_var_p</code> to have a value that is equal to the address of <code>my_var</code>. This is done by using the <code>&amp;</code> operator before the <code>my_var</code> variable. At this point, the value contained in the variable <code>my_var_p</code> is the address in memory of the variable <code>my_var</code>.</p>
+<p>Note that whenever you want to change the value of <code>my_var</code>, you could do it by changing <code>my_var</code> directly.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c">my_var <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">2</span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>Alternatively, you could also change the value of <code>my_var</code> by dereferencing <code>my_var_p</code></p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-keyword z-operator z-c">*</span>my_var_p <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">2</span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>In a nutshell, <code>&amp;x</code> gets the address of <code>x</code>, while <code>*x</code> gets the contents at address <code>x</code>.</p>
+<p>For this section, assume that <code>sizeof(int) == 4</code>. Here's a more complete example:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">main</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+    <span class="z-storage z-type z-c">int</span> my_var <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">20</span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-storage z-type z-c">int</span><span class="z-keyword z-operator z-c">*</span> my_var_p<span class="z-punctuation z-terminator z-c">;</span>
+    my_var_p <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-keyword z-operator z-c">&amp;</span>my_var<span class="z-punctuation z-terminator z-c">;</span>
+
+    <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>Address of my_var: <span class="z-constant z-other z-placeholder z-c">%p</span><span class="z-constant z-character z-escape z-c">\n</span><span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-separator z-c">,</span> my_var_p</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>Address of my_var: <span class="z-constant z-other z-placeholder z-c">%p</span><span class="z-constant z-character z-escape z-c">\n</span><span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-keyword z-operator z-c">&amp;</span>my_var</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>Address of my_var_p: <span class="z-constant z-other z-placeholder z-c">%p</span><span class="z-constant z-character z-escape z-c">\n</span><span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-keyword z-operator z-c">&amp;</span>my_var_p</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+
+    <span class="z-keyword z-operator z-c">*</span>my_var_p <span class="z-keyword z-operator z-assignment z-augmented z-c">+=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">2</span><span class="z-punctuation z-terminator z-c">;</span>
+
+    <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>my_var: <span class="z-constant z-other z-placeholder z-c">%d</span><span class="z-constant z-character z-escape z-c">\n</span><span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-separator z-c">,</span> my_var</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-meta z-function-call z-c"><span class="z-support z-function z-C99 z-c">printf</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>my_var: <span class="z-constant z-other z-placeholder z-c">%d</span><span class="z-constant z-character z-escape z-c">\n</span><span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-keyword z-operator z-c">*</span>my_var_p</span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>A sample execution of this code gave out the following:</p>
+<pre data-lang="txt" class="language-txt z-code"><code class="language-txt" data-lang="txt"><span class="z-text z-plain">Address of my_var: 0x7fffebafb32c
+Address of my_var: 0x7fffebafb32c
+Address pf my_var_p: 0x7fffebafb330
+my_var: 22
+my_var: 22
+</span></code></pre>
+<p>The first line prints out the value of <code>my_var_p</code>, which was assigned to the address of the variable <code>my_var</code>.</p>
+<p>The second line shows that <code>my_var_p</code> is indeed equal to <code>&amp;my_var</code>, the address of the variable <code>my_var</code>.</p>
+<p>The third line prints out the address of <code>my_var_p</code>. Note that since <code>my_var_p</code> is in fact a variable itself (the variable type is an int pointer), therefore it has to be placed somewhere in the memory as well. Thus, printing out <code>&amp;my_var_p</code> allows us to see where in the memory the <code>my_var_p</code> variable is located.</p>
+<p>After the first three print outputs, we changed the value of <code>my_var</code> indirectly using <code>*my_var_p</code>. Since <code>my_var_p</code> is a pointer to <code>my_var</code> (i.e. <code>my_var_p</code> is the address of <code>my_var</code>), performing <code>*my_var_p</code> allows us to modify the contents at the address in <code>my_var_p</code>.</p>
+<p>The fourth line shows that we have indeed modified <code>my_var</code>, since the value is now 22.</p>
+<p>The fifth line confirms that <code>*my_var_p</code> is indeed equal to <code>my_var</code>.</p>
+
+<details>
+<summary>What happens if we did the following: <code>my_var_p += 2</code>?</summary>
+<p><code>my_var_p</code> is a pointer to an int. <code>sizeof(int)</code> = 4. Therefore, pointer arithmetic will add 2 * 4 = 8
+The value in <code>my_var_p</code> updates to <code>0x7fffebafb32c</code> + 8 = <code>0x7fffebafb334</code></p>
+</details>
+<details>
+<summary>After doing <code>my_var_p += 2</code> earlier, what is the value of <code>&amp;my_var_p</code>?</summary>
+<p>The address of <code>my_var_p</code> will remain the same: <code>0x7fffebafb330</code></p>
+</details>
+<details>
+<summary>After doing <code>my_var_p += 2</code> earlier, what happens then if we try to print the value of <code>*my_var_p</code>?</summary>
+<p>Since the value of <code>my_var_p</code> has changed, it is now pointing to a different location in memory. The behavior is undefined. It will either print out a garbage data on that specific memory location, or the program crashes with a segmentation fault if you try to access a protected memory segment.</p>
+</details>
+<h2 id="exercise-2-pointers-and-functions">Exercise 2: Pointers and Functions</h2>
+<p><strong>Edit</strong> <code>ex2_pointers_and_functions.c</code> using your editor of choice and fill in the blanks. Feel free to refer back to <a href="index.html#review-pointers">the pointer review section</a> if you are stuck.</p>
+<p><strong>Compile and run</strong> the program and <strong>check</strong> that the output matches what you expect. If you need a refresher on <code>gcc</code>, please refer back to <a href="index.html#exercise-1-hello">exercise 1</a>.</p>
+<h2 id="exercise-3-pointers-to-stack-vs-heap">Exercise 3: Pointers to Stack vs Heap</h2>
+<p><strong>Edit</strong> <code>ex3_ptr_heap_stack.c</code> using your editor of choice and fill in the blanks. Feel free to refer back to <a href="index.html#review-pointers">the pointer review section</a> if you are stuck.</p>
+<p><strong>Compile and run</strong> the program and <strong>check</strong> that the output matches what you expect. You will see a compiler warning. What does it mean?</p>
+<p><strong>Read</strong> the output of <code>gcc</code>. Note that it throws an error about the address of a stack variable being returned. Similarly, the output of the program should show address of the stack variable as <code>(nil)</code>, indicating that it is not usable. This is because <code>x</code> cannot be accessed outside of the function <code>int_on_stack</code> using a pointer. In the future, make sure to allocate memory on the heap if you'd like to use it later.</p>
+<h2 id="review-arrays">Review: Arrays</h2>
+<p>An array is a fixed length data structure that can hold one or more elements of the same type. Unlike lists, arrays do not resize automatically when you add an element.</p>
+<p>In C, arrays are represented as a pointer to the first element. Each element of the array is stored in memory and they are stored in contiguous memory locations (side by side). Because arrays are represented only with a pointer to the first element, the pointer itself is not enough to deduce the length of the array. If you need to keep track of the length of an array, you must use another variable.</p>
+<p>You can perform arithmetics on pointers to access different elements of the array. Recall that a pointer is just an address, so if you add to or subtract from the address, you can get the address of later or earlier elements of an array.</p>
+<h2 id="exercise-4-arrays">Exercise 4: Arrays</h2>
+<p><strong>Edit</strong> <code>ex4_arrays.c</code> using your editor of choice and fill in the blanks. Feel free to refer back to <a href="index.html#review-arrays">the arrays section</a> if you are stuck.</p>
+<p><strong>Compile and run</strong> the program and <strong>check</strong> that the output matches what you expect.</p>
+<p><strong>Read</strong> the output of your program. Note that the relationship between the address of the start of the array and the address of index 2 (hint: they're two bytes apart).</p>
+<h2 id="review-pointer-arithmetic">Review: Pointer Arithmetic</h2>
+<p>In exercise 4, your program performed basic pointer arithmetic when you computed the address of index 2. This worked because the size of each element is 1 byte (since the size of <code>int8_t</code> is 1 byte). However, most types you'll work with take up more than 1 byte in memory.</p>
+<p>When performing pointer arithmetic, C automatically accounts for the type of the pointer and adds the correct number of bytes. For example, if you write <code>ptr + 5</code>, C will not always add 5 to <code>ptr</code>. Instead, C will add 5 times the size of the datatype that <code>ptr</code> points to. If <code>ptr</code> was an <code>int*</code> and <code>int</code>s take up 4 bytes in memory, <code>ptr + 5</code> adds 20 to the address held in <code>ptr</code>.</p>
+<h2 id="exercise-5-pointer-arithmetic">Exercise 5: Pointer Arithmetic</h2>
+<p><strong>Edit</strong> <code>ex5_pointer_arithmetic.c</code> using your editor of choice and fill in the blanks. Feel free to refer back to <a href="index.html#review-arrays">the arrays review section</a> if you are stuck. Your solution should be similar to <a href="index.html#exercise-4-arrays">exercise 4</a>.</p>
+<p><strong>Compile and run</strong> the program and <strong>check</strong> that the output matches what you expect.</p>
+<p><strong>Read</strong> the output of your program. Note that the relationship between the address of the start of the array and the address of index 2 is <strong>different</strong> from the relationship in the previous exercise.</p>
+<h2 id="review-strings">Review: Strings</h2>
+<p>In C, strings are represented as an array of <code>char</code>s. Strings are a special type of <code>char</code> arrays because they always end in a null terminator (<code>\0</code>). Recall that arrays in C do not contain any information about their length, so the null terminator allows us to determine when the string ends.</p>
+<p>When allocating memory for a string, there must be enough memory to store the characters within the string <strong>and</strong> the null terminator. Otherwise, you might run into undefined behavior. However, the array could be larger than the string it stores.</p>
+<p>C has a library of functions for manipulating strings, such as:</p>
+<ul>
+<li><code>strlen</code>: computes the length of a string by counting the number of characters before a null terminator</li>
+<li><code>strcpy</code>: copies a string from one memory location to another, one character at a time until it reaches a null terminator (the null terminator is copied as well)</li>
+</ul>
+<h2 id="exercise-6-strings">Exercise 6: Strings</h2>
+<p><strong>Edit</strong> <code>ex6_strings.c</code> using your editor of choice and fill in the blanks. Feel free to refer back to <a href="index.html#review-strings">the strings review section</a> if you are stuck.</p>
+<p><strong>Compile and run</strong> the program and <strong>check</strong> that the output matches what you expect.</p>
+<h2 id="exercise-7-copying-strings">Exercise 7: Copying Strings</h2>
+<p><strong>Edit</strong> <code>ex7_strcpy.c</code> using your editor of choice and fill in the blanks. When copying the string, use <code>strcpy</code> (<a href="https://cplusplus.com/reference/cstring/strcpy/">documentation</a>).</p>
+<p><strong>Compile and run</strong> the program. Notice that the program crashes, why?</p>
+<details>
+<summary>Why does it crash?</summary>
+<p><code>strcpy</code> is an unsafe function. We only allocate enough space in <code>message</code> to store the message <code>hello</code>, but then we try to store a longer message. When this happens, we overflow the space we allocated for <code>message</code>, and crash the program!</p>
+</details>
+<p><strong>Fix</strong> the program in <code>ex7_strcpy_fixed.c</code> using <code>strncpy</code> (<a href="https://cplusplus.com/reference/cstring/strncpy/">documentation</a>) so that it stores as many characters of <code>longer_message</code> as you can in <code>message</code> without changing the size of <code>message</code>.</p>
+<p><strong>Compile and run</strong> the program again and <strong>check</strong> that the output matches what you expect.</p>
+<h2 id="exercise-8-structs">Exercise 8: Structs</h2>
+<p><strong>Edit</strong> <code>ex8_structs.c</code> using your editor of choice and fill in the blanks.</p>
+<p><strong>Compile and run</strong> the program and <strong>check</strong> that the output matches what you expect.</p>
+<h2 id="optional-typedefs">Optional: <code>typedef</code>s</h2>
+<p>Sometimes, you may see a <code>typedef</code> when declaring a struct:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">typedef</span> <span class="z-storage z-type z-c">struct</span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+    <span class="z-storage z-type z-c">int</span> id<span class="z-punctuation z-terminator z-c">;</span>
+<span class="z-punctuation z-section z-block z-end z-c">}</span></span> <span class="z-entity z-name z-type z-typedef z-c">Student</span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>In these cases, you may use <code>Student</code> as the type instead of <code>struct Student</code>. We won't go into detail here, but feel free to check out <a href="https://stackoverflow.com/questions/1675351/typedef-struct-vs-struct-definitions">this link</a> if you're interested.</p>
+<h2 id="exercise-9-reflection-and-feedback-form">Exercise 9: Reflection and Feedback Form</h2>
+<p>We are working to improve the class every week - please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLScL_Y1mOjhIsMNusGiudhlQ85GUR2du320iUFinMFiu1zKk3w/viewform?usp=sf_link">this survey</a> to tell us about your experience in CS 61C so far!</p>
+<hr/>
+<h2 id="submission">Submission</h2>
+<p>Save, commit, and push your work, then submit to the <strong>Lab 1</strong> assignment on Gradescope.</p>
+<hr/>
+<h2 id="faq">FAQ</h2>
+<h3 id="what-is-a-header-file">What is a header file?</h3>
+<p>Header files allow you to share functions and macros across different source files. For more info, see the <a href="https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html#Header-Files">GCC header docs</a>.</p>
+<h3 id="what-is-a-null-terminator">What is a null terminator?</h3>
+<p>A null terminator is a character used to denote the end of a string in C. The null terminator is written as <code>'\0'</code>. The ASCII value of the null terminator is <code>0</code>. When you make a character array, you should terminate the array with a null terminator like this</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">char</span> my_str<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span><span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span><span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span>e<span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span>x<span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span>a<span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span>m<span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span>p<span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span>l<span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span>e<span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-separator z-c">,</span> <span class="z-string z-quoted z-single z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&#39;</span><span class="z-constant z-character z-escape z-c">\0</span><span class="z-punctuation z-definition z-string z-end z-c">&#39;</span></span><span class="z-punctuation z-section z-block z-end z-c">}</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>If you are using double quotes to create a string, the null terminator is implicitly added, so you should not add it yourself. For example:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">char</span> <span class="z-keyword z-operator z-c">*</span>my_str <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>example<span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<h3 id="what-is-an-executable">What is an executable?</h3>
+<p>An executable is a file composed of binary that can be executed on your computer. Executables are created by compiling source code.</p>
+<h3 id="what-is-strlen">What is <code>strlen</code>?</h3>
+<p>See the man pages for a full description. Type the following into your terminal</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">man</span></span><span class="z-meta z-function-call z-arguments z-shell"> strlen</span>
+</span></code></pre>
+<p>To exit the man pages, press <kbd>q</kbd>.</p>
+<h3 id="what-is-a-macro">What is a macro?</h3>
+<p>A macro is a chunk of text that has a name. Whenever this name appears in code, the preprocessor replaces the name with the text. Macros are indicated with <code>#define</code> For example:</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-meta z-preprocessor z-macro z-c"><span class="z-keyword z-control z-import z-define z-c">#define</span></span><span class="z-meta z-preprocessor z-macro z-c"> <span class="z-entity z-name z-constant z-preprocessor z-c">ARR_SIZE</span></span><span class="z-meta z-preprocessor z-macro z-c"> <span class="z-constant z-numeric z-integer z-decimal z-c">1024</span></span>
+<span class="z-meta z-preprocessor z-macro z-c"><span class="z-keyword z-control z-import z-define z-c">#define</span></span><span class="z-meta z-preprocessor z-macro z-c"> <span class="z-entity z-name z-function z-preprocessor z-c">min</span></span><span class="z-meta z-preprocessor z-macro z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-variable z-parameter z-c">X</span><span class="z-punctuation z-separator z-c">,</span> <span class="z-variable z-parameter z-c">Y</span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-preprocessor z-macro z-c">  <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>X<span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-comparison z-c">&lt;</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>Y<span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-ternary z-c">?</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>X<span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-ternary z-c">:</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>Y<span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span>
+
+<span class="z-storage z-type z-c">int</span> <span class="z-meta z-function z-c"><span class="z-entity z-name z-function z-c">main</span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function z-parameters z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-meta z-function z-c"> </span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span></span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c">
+    <span class="z-storage z-type z-c">int</span> arr1<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>ARR_SIZE<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-storage z-type z-c">int</span> arr2<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>ARR_SIZE<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-storage z-type z-c">int</span> arr3<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>ARR_SIZE<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-terminator z-c">;</span>
+
+    <span class="z-keyword z-control z-c">for</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-storage z-type z-c">int</span> i <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-constant z-numeric z-integer z-decimal z-c">0</span><span class="z-punctuation z-terminator z-c">;</span> i <span class="z-keyword z-operator z-comparison z-c">&lt;</span> ARR_SIZE<span class="z-punctuation z-terminator z-c">;</span> <span class="z-keyword z-operator z-arithmetic z-c">++</span>i<span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-begin z-c">{</span>
+        arr3<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-function-call z-c"><span class="z-variable z-function z-c">min</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">arr1<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-separator z-c">,</span> arr2<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+    <span class="z-punctuation z-section z-block z-end z-c">}</span></span>
+</span></span><span class="z-meta z-function z-c"><span class="z-meta z-block z-c"><span class="z-punctuation z-section z-block z-end z-c">}</span></span></span>
+</span></code></pre>
+<p>In this code, the preprocessor will replace <code>ARR_SIZE</code> with <code>1024</code>, and it will replace</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c">arr3<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-function-call z-c"><span class="z-variable z-function z-c">min</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c">arr1<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-separator z-c">,</span> arr2<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span></span></span><span class="z-meta z-function-call z-c"><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-end z-c">)</span></span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>with</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c">arr3<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span><span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>arr1<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-comparison z-c">&lt;</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>arr2<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-ternary z-c">?</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>arr1<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-section z-group z-end z-c">)</span></span> <span class="z-keyword z-operator z-ternary z-c">:</span> <span class="z-meta z-group z-c"><span class="z-punctuation z-section z-group z-begin z-c">(</span>arr2<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span>i<span class="z-punctuation z-section z-brackets z-end z-c">]</span></span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-section z-group z-end z-c">)</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>Macros can be much more complex than the example above. You can find more information <a href="https://gcc.gnu.org/onlinedocs/cpp/Macros.html">in the GCC docs</a></p>
+<h3 id="what-is-a-segfault">What is a segfault?</h3>
+<p>A segfault occurs when you try to access a piece of memory that &quot;does not belong to you.&quot; There are several things that can cause a segfault including</p>
+<ol>
+<li>Accessing an array out of bounds. Note that accessing an array out of bounds will not always lead to a segfault. The index at which a segfault will occur is somewhat unpredictable.</li>
+<li>Derefrencing a null pointer.</li>
+<li>Accessing a pointer that has been <code>free</code>'d (<code>free</code> is not in the scope of this lab).</li>
+<li>Attempting to write to read-only memory. For example, strings created with the following syntax are read only. This means that you cannot alter the value of the string after you have created it. In other words, it is immutable.</li>
+</ol>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">char</span> <span class="z-keyword z-operator z-c">*</span>my_str <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>Hello<span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>However, a string created using the following syntax is mutable.</p>
+<pre data-lang="c" class="language-c z-code"><code class="language-c" data-lang="c"><span class="z-source z-c"><span class="z-storage z-type z-c">char</span> my_str<span class="z-meta z-brackets z-c"><span class="z-punctuation z-section z-brackets z-begin z-c">[</span><span class="z-punctuation z-section z-brackets z-end z-c">]</span></span> <span class="z-keyword z-operator z-assignment z-c">=</span> <span class="z-string z-quoted z-double z-c"><span class="z-punctuation z-definition z-string z-begin z-c">&quot;</span>hello<span class="z-punctuation z-definition z-string z-end z-c">&quot;</span></span><span class="z-punctuation z-terminator z-c">;</span>
+</span></code></pre>
+<p>Why is the first string immutable while the second string is mutable? The first string is stored in the data portion of memory which is read-only while the second string is stored on the stack.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>

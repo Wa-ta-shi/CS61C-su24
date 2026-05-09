@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Lab 9 (Optional) | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#setup">Setup</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#open-mpi">Open MPI</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exercise-1-hello-open-mpi">Exercise 1: Hello Open MPI</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submission">Submission</a>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Lab 9 (Optional): PLP</h1>
+<p class="subtitle">Deadline: Tuesday, July 30, 11:59:59 PM PT</p>
+<p><a href="https://docs.google.com/presentation/d/1KopyBV80ZKVTPWXLkESQcdHxqCLw06Ix5g9OoQOMrXk/edit?usp=sharing">Slides</a></p>
+<h2 id="setup">Setup</h2>
+<div class="alert alert-warning">
+<p>This lab is <strong>optional</strong>. The material that Lab 9 covers is in scope for the final exam, so we recommend that you complete it still. You must complete this lab on the hive machines (not your local machine). See <a href="../lab00/index.html">Lab 0</a> if you need to set up the hive machines again.</p>
+</div>
+<p>In your <code>labs</code> directory on the hive machine, pull any changes you may have made in past labs:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull origin main</span>
+</span></code></pre>
+<p>Still in your <code>labs</code> directory on the hive machine, pull the files for this lab with:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">git</span></span><span class="z-meta z-function-call z-arguments z-shell"> pull starter main</span>
+</span></code></pre>
+<p>If you run into any <code>git</code> errors, please check out the <a href="../../resources/common-errors/index.html">common errors</a> page.</p>
+<hr/>
+<h2 id="open-mpi">Open MPI</h2>
+<p>The Open MPI project provides a way of writing programs which can be run on multiple processes. We can use its C libraries by calling their functions. Then, when we run the program, Open MPI will create a bunch of processes and run a copy of the code on each process. Here is a list of the most important functions for this class:</p>
+<ul>
+<li><code>int MPI_Init(int* argc, char*** argv)</code> should be called at the start of the program, passing in the addresses of argc and argv.</li>
+<li><code>int MPI_Finalize()</code> should be called at the end of the program.</li>
+<li><code>int MPI_Comm_size(MPI_COMM_WORLD, int *size)</code> gets the total number of processes running the program, and puts it in size.</li>
+<li><code>int MPI_Comm_rank(MPI_COMM_WORLD, int *rank)</code> gets the ID of the current process (0 ∼ total number of processes - 1) and puts it in rank.</li>
+<li><code>int MPI_Send(const void *buf, int count, MPI_Datatype datatype, int dest, 0, MPI_COMM_WORLD)</code> (<a href="https://www.open-mpi.org/doc/current/man3/MPI_Send.3.php">Man page</a>)
+<ul>
+<li><code>buf</code> is where the message to send should be stored</li>
+<li><code>count</code> is the number of elements within the message to send</li>
+<li><code>datatype</code> is the datatype of each element within the message
+<ul>
+<li><a href="https://www.mpich.org/static/docs/latest/www3/Constants.html">Here is a list of C types</a></li>
+</ul>
+</li>
+<li><code>dest</code> is the process ID of the recipient of the message</li>
+<li><code>tag</code> is the tag of the message
+<ul>
+<li>For the scope of this lab, feel free to use <code>0</code>.</li>
+</ul>
+</li>
+<li><code>comm</code> is the communication context of the message
+<ul>
+<li>For the scope of this class, use <code>MPI_COMM_WORLD</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>int MPI_Recv(void *buf, int count, MPI_Datatype datatype, int source, int tag, MPI_Comm comm, MPI_Status *status)</code> (<a href="https://www.open-mpi.org/doc/current/man3/MPI_Recv.3.php">Man page</a>)
+<ul>
+<li><code>buf</code> is used to store the received message(s)</li>
+<li><code>count</code> is the maximum number of elements to receive</li>
+<li><code>datatype</code> is the datatype of each element within the received message
+<ul>
+<li><a href="https://www.mpich.org/static/docs/latest/www3/Constants.html">Here is a list of C types</a></li>
+</ul>
+</li>
+<li><code>source</code> is the source where the message should be from
+<ul>
+<li>If you want to receive a message from any source, set the source to be <code>MPI_ANY_SOURCE</code>.</li>
+<li>The source of the message can be found in the <code>MPI_SOURCE</code> field of the outputted status struct.</li>
+</ul>
+</li>
+<li><code>tag</code> is the tag that the message must be sent with
+<ul>
+<li>If you want to receive a message with any tag, set the tag to be <code>MPI_ANY_TAG</code>.</li>
+</ul>
+</li>
+<li><code>comm</code> is the communication context that the message must be sent within
+<ul>
+<li>For the scope of this class, use <code>MPI_COMM_WORLD</code></li>
+</ul>
+</li>
+<li><code>status</code> will store a status struct with additional information
+<ul>
+<li>If you don’t need the information in the status struct (e.g. because you already know the source of the message), set the status address to <code>MPI_STATUS_IGNORE</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>For Open MPI, make sure you use <code>mpicc</code> (instead of <code>gcc</code>) to compile and <code>mpirun</code> to run your programs.</p>
+<h2 id="exercise-1-hello-open-mpi">Exercise 1: Hello Open MPI</h2>
+<ol>
+<li>In <code>ex1.c</code>, <strong>use</strong> the above functions to write code to run a program that prints <code>Hello world</code> on multiple processes. For this exercise, since there's only one type of messages, feel free to use <code>0</code> as the <code>tag</code> and <code>MPI_COMM_WORLD</code> as <code>comm</code>.</li>
+<li><strong>Compile</strong> the program with <code>mpicc -Wall ex1.c -o ex1</code></li>
+<li><strong>Run</strong> the program with <code>mpirun ./ex1 [num tasks]</code>, where <code>[num tasks]</code> is the number of tasks to run.
+<ul>
+<li>You can set the number of processes to use with <code>mpirun -np [num processes] ./ex1 [num tasks]</code></li>
+<li>If you choose to run with more processes than physical cores (4 for the hive machines), you must pass the <code>--oversubscribe</code> flag (e.g. <code>mpirun --oversubscribe -np 100 ./ex1 100</code>)</li>
+</ul>
+</li>
+<li><strong>Play around</strong> with the different number of processes and tasks and see how the output changes!</li>
+</ol>
+<p>Feel free to refer to discussion 11 for an example on writing Open MPI code! The code structure will be extremely similar.</p>
+<hr/>
+<h2 id="submission">Submission</h2>
+<p>Save, commit, and push your work, then submit to the <strong>Lab 9</strong> assignment on Gradescope.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>

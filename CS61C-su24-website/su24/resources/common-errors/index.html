@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Common Errors | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../../policies/index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#curl">curl</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#curl-35-schannel-next-initializesecuritycontext-failed-unknown-error-0x80092012-the-revocation-function-was-unable-to-check-revocation-for-the-certificate">curl: (35) schannel: next InitializeSecurityContext failed: Unknown error (0x80092012) - The revocation function was unable to check revocation for the certificate.</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#curl-60-ssl-certificate-problem-self-signed-certificate-in-certificate-chain">curl: (60) SSL certificate problem: self signed certificate in certificate chain</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#ssh">ssh</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#warning-remote-host-identification-has-changed">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#git-and-starter-code">git and Starter Code</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#fatal-need-to-specify-how-to-reconcile-divergent-branches">fatal: Need to specify how to reconcile divergent branches</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#fatal-not-possible-to-fast-forward-aborting">fatal: Not possible to fast-forward, aborting</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#fatal-starter-does-not-appear-to-be-a-git-repository">fatal: &#x27;starter&#x27; does not appear to be a git repository</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#restoring-starter-code">Restoring starter code</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#error-pathspec-starter-main-did-not-match-any-file-s-known-to-git">error: pathspec &#x27;starter&#x2F;main&#x27; did not match any file(s) known to git</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#vim">vim</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#found-a-swap-file">Found a swap file</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#gradescope">Gradescope</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#stuck-on-your-repository-is-being-downloaded-from-github">Stuck on Your repository is being downloaded from Github...</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#c">C</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#memory-errors">Memory errors</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#undefined-reference-to-main">undefined reference to &#x27;main&#x27;</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#cgdb">cgdb</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#some-file-name-c-no-such-file-or-directory">[some file name].c: No such file or directory</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#valgrind">valgrind</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#fails-without-valgrind-but-passes-with-valgrind-or-vice-versa">Fails without valgrind, but passes with valgrind (or vice versa)</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#venus">Venus</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#unable-to-access-jarfile-tools-venus-jar">Unable to access jarfile tools&#x2F;venus.jar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#mount-illegalstateexception-failed-to-send-the-request-is-the-mount-server-still-running">mount: IllegalStateException: Failed to send the request! Is the mount server still running?</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exited-with-error-code-0">Exited with error code 0</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#label-exit-used-but-not-defined">label exit used but not defined</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#java-lang-runtimeexception-port-already-in-use">java.lang.RuntimeException: Port already in use.</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#object-with-the-same-name-exists-in-this-folder">Object with the same name exists in this folder</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#logisim">Logisim</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#circuit-is-not-fully-connected-in-harness">Circuit is not fully connected in harness</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#logisim-evolution-quit-unexpectedly">Logisim-evolution quit unexpectedly</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#found-a-tri-state-driver-or-floating-output-s">Found a tri-state driver or floating output(s)</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#found-a-net-with-multiple-drivers-short-circuit">Found a net with multiple drivers (short circuit)</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#assignments">Assignments</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#project-1">Project 1</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#project-2">Project 2</a>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Common Errors</h1>
+<p>This page contains a compiled list of common errors we've seen in past semesters along with possible explanations and solutions. We understand this page is long, but please use it throughout the course before asking on Ed!</p>
+<h2 id="curl"><code>curl</code></h2>
+<h4 id="curl-35-schannel-next-initializesecuritycontext-failed-unknown-error-0x80092012-the-revocation-function-was-unable-to-check-revocation-for-the-certificate"><code>curl: (35) schannel: next InitializeSecurityContext failed: Unknown error (0x80092012) - The revocation function was unable to check revocation for the certificate.</code></h4>
+<p>Add the <code>--ssl-no-revoke</code> flag to the <code>curl</code> command (e.g. if the command was previously <code>curl https://www.google.com</code>, change it to <code>curl --ssl-no-revoke https://www.google.com</code>).</p>
+<p>If this is caused by <code>download_tools</code>, the <code>curl</code> command is located inside of <code>tools/download_tools.sh</code>.</p>
+<h4 id="curl-60-ssl-certificate-problem-self-signed-certificate-in-certificate-chain"><code>curl: (60) SSL certificate problem: self signed certificate in certificate chain</code></h4>
+<p>Add the <code>-k</code> flag to the <code>curl</code> command (e.g. if the command was previously <code>curl https://www.google.com</code>, change it to <code>curl -k https://www.google.com</code>).</p>
+<p>If this is caused by <code>download_tools</code>, the <code>curl</code> command is located inside of <code>tools/download_tools.sh</code>.</p>
+<h2 id="ssh"><code>ssh</code></h2>
+<h4 id="warning-remote-host-identification-has-changed"><code>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED</code></h4>
+<p>At the bottom of the error, it should say <code>Host key for [something] has changed...</code>. If <code>something</code> is <code>github.com</code> or any of the instructional machines, then continue with this guide. Otherwise, please make a private question on Ed.</p>
+<p>To fix this error, run <code>ssh-keygen -R [something]</code>, and replace <code>[something]</code> with what the error message contained. This generally means that the remote machine has changed its host keys. Please verify that the new host keys are correct if you do not trust the machine (GitHub host keys are available (here)[https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints]).</p>
+<h2 id="git-and-starter-code"><code>git</code> and Starter Code</h2>
+<h4 id="fatal-need-to-specify-how-to-reconcile-divergent-branches"><code>fatal: Need to specify how to reconcile divergent branches</code></h4>
+<p>This error means that the branch you're pulling from has some commits you don't have locally, and vice versa. Add the <code>--ff</code> flag to the command to let <code>git</code> know how you would like <code>git</code> to merge these branches.</p>
+<h4 id="fatal-not-possible-to-fast-forward-aborting"><code>fatal: Not possible to fast-forward, aborting</code></h4>
+<p>This error means that the branch you're pulling from has some commits you don't have locally, and vice versa. Add the <code>--ff</code> and <code>--no-rebase</code> flags to the command to let <code>git</code> know that you'd like to fast forward or merge if possible, but not rebase.</p>
+<h4 id="fatal-starter-does-not-appear-to-be-a-git-repository"><code>fatal: 'starter' does not appear to be a git repository</code></h4>
+<p>Make sure you've completed the setup section for the assignment you're completing and added the starter repo as a remote. For labs, refer to lab 0.</p>
+<h4 id="restoring-starter-code">Restoring starter code</h4>
+<p>Run <code>git checkout starter/main path_to_file</code>, where <code>path_to_file</code>, is the file you'd like to reset to the original starter code.</p>
+<h4 id="error-pathspec-starter-main-did-not-match-any-file-s-known-to-git"><code>error: pathspec 'starter/main' did not match any file(s) known to git</code></h4>
+<p>You probably haven't pulled from the starter repo before, so <code>git</code> doesn't know about it. Run <code>git fetch starter</code> to fetch information about starter files.</p>
+<h2 id="vim"><code>vim</code></h2>
+<h4 id="found-a-swap-file">Found a swap file</h4>
+<p>Swap files are created when you have another instance of <code>vim</code> open, or <code>vim</code> crashed when you had this file open.</p>
+<p>If you had unsaved work, press <kbd>R</kbd> to recover the data lost. This warning will pop up again the next time you open this file in <code>vim</code>.</p>
+<p>To delete this file:</p>
+<ul>
+<li>Some versions of <code>vim</code> will give you an option of pressing <kbd>D</kbd> to delete it.</li>
+<li>If your version of <code>vim</code> does not give you this version, run <code>rm -f path_to_swap_file</code>, where <code>path_to_swap_file</code> is the location of the swap file, which should be displayed on screen. </li>
+</ul>
+<h2 id="gradescope">Gradescope</h2>
+<h4 id="stuck-on-your-repository-is-being-downloaded-from-github">Stuck on <code>Your repository is being downloaded from Github...</code></h4>
+<p>There are probably files with unprintable filenames in your repo, which Gradescope doesn't like. Try deleting it using either your command line or on GitHub. If you're unable to delete these files, please make a private question on Ed.</p>
+<p>To delete it on the hive machines:</p>
+<p><strong>Option 1: Manually delete</strong>:</p>
+<ol>
+<li><code>cd</code> into the folder that contains the file you'd like to delete</li>
+<li>Run <code>ls</code> to list all of the files that are in the directory. You'll see a filename with some backslashes (<code>\</code>) and also probably some numbers, surrounded by single quotes</li>
+<li>Run <code>git rm filename</code>, where filename is the name of the file from step 2</li>
+</ol>
+<p><strong>Option 2: Delete all files with non-printable characters</strong>:</p>
+<ol>
+<li><code>cd</code> into the folder that contains the file(s) you'd like to delete</li>
+<li>Run <code>ls | LC_CTYPE=C grep '[^[:print:]]' | xargs -d&quot;\n&quot; git rm</code></li>
+</ol>
+<p>Make sure to commit and push before resubmitting to Gradescope!</p>
+<h2 id="c">C</h2>
+<h4 id="memory-errors">Memory errors</h4>
+<p>If you see any of the following errors, it probably means that you have an error related to accessing memory. We recommend running <code>valgrind</code> to pinpoint where the error is.</p>
+<ul>
+<li><code>Segmentation fault (core dumped)</code></li>
+<li><code>double free or corruption</code></li>
+<li><code>free(): double free detected</code></li>
+<li><code>malloc(): invalid size (unsorted)</code></li>
+<li><code>malloc(): corrupted top size</code></li>
+<li><code>malloc(): memory corruption</code></li>
+<li><code>corrupted size vs. prev_size</code></li>
+<li>There are others as well, we'll add it to this list as we find them.</li>
+</ul>
+<h4 id="undefined-reference-to-main"><code>undefined reference to 'main'</code></h4>
+<p>You are probably trying to compile a file that does not have a function named <code>main</code> into an executable. Try using the commands we have in the spec for compilation.</p>
+<h2 id="cgdb"><code>cgdb</code></h2>
+<h4 id="some-file-name-c-no-such-file-or-directory"><code>[some file name].c: No such file or directory</code></h4>
+<p>You're most likely stepping into a C library function (such as <code>strlen</code>, <code>strcpy</code>, <code>strcat</code>, <code>printf</code>, <code>fopen</code>, etc). We don't have the source code for these files, so <code>cgdb</code> complains that it can't find the source code. Instead, you should step over calls to library functions instead of stepping into them.</p>
+<h2 id="valgrind"><code>valgrind</code></h2>
+<h4 id="fails-without-valgrind-but-passes-with-valgrind-or-vice-versa">Fails without <code>valgrind</code>, but passes with <code>valgrind</code> (or vice versa)</h4>
+<p>When you run a program with valgrind, it adds protection for memory accesses to prevent and catch invalid memory reads and writes. Because of the extra protection, your program may pass the test cases when running with valgrind. However, this doesn't mean your program doesn't have any invalid memory accesses. Try to fix any errors that valgrind itself throws.</p>
+<p>The opposite may also happen (fails with valgrind, but passes without valgrind). In this case, there are also probably valgrind errors, so try to fix those first. If there are no valgrind errors, make sure you're running the program correctly and using the correct command.</p>
+<h2 id="venus">Venus</h2>
+<h4 id="unable-to-access-jarfile-tools-venus-jar"><code>Unable to access jarfile tools/venus.jar</code></h4>
+<p>Sometimes, the Venus (and Logisim) jar files get corrupted. Run the following commands:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">rm</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>f</span> tools/<span class="z-keyword z-operator z-regexp z-quantifier z-shell">*</span>.jar</span>
+<span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">bash</span></span><span class="z-meta z-function-call z-arguments z-shell"> tools/download_tools.sh</span>
+</span></code></pre>
+<h4 id="mount-illegalstateexception-failed-to-send-the-request-is-the-mount-server-still-running"><code>mount: IllegalStateException: Failed to send the request! Is the mount server still running?</code></h4>
+<p>Make sure your local Venus server is running (the <code>java -jar tools/venus.jar . -dm</code> command). When copying the command for mounting from your terminal, try using right click instead of <kbd>Ctrl</kbd> + <kbd>C</kbd>, since the latter might quit your local server.</p>
+<h4 id="exited-with-error-code-0"><code>Exited with error code 0</code></h4>
+<p>Error code 0 means your program exited without any errors, so this is normal.</p>
+<h4 id="label-exit-used-but-not-defined"><code>label exit used but not defined</code></h4>
+<p>The <code>exit</code> label is defined in <code>utils.s</code>, and it is imported only in the test files. Make sure you're running the test files through Venus/VDB, not the files you're editing. Please don't recompile after starting VDB from the &quot;Files&quot; tab, this will overwrite the file you just loaded into the debugger.</p>
+<h4 id="java-lang-runtimeexception-port-already-in-use"><code>java.lang.RuntimeException: Port already in use.</code></h4>
+<p>Venus sometimes doesn't close/exit correctly, causing it to still use port 6161. Try adding <code>--port=6162</code> to your existing command. If this still doesn't work, try incrementing <code>6162</code> by 1 a couple of times.</p>
+<h4 id="object-with-the-same-name-exists-in-this-folder"><code>Object with the same name exists in this folder</code></h4>
+<p>You're probably running into this error while running <code>mount [something]</code>. Try unmounting the directory first with <code>umount [name of the directory you're mounting to]</code>. For example, if you wanted to run <code>mount local my_project</code>, you would run <code>umount my_project</code>.</p>
+<h2 id="logisim">Logisim</h2>
+<h4 id="circuit-is-not-fully-connected-in-harness">Circuit is not fully connected in harness</h4>
+<p>There are two potential reasons for this:</p>
+<ol>
+<li>You've added pins to the circuit. If this is a circuit we've provided in the starter code, please do not add, remove, or move any pins.</li>
+<li>Try setting &quot;Use fixed box-size&quot; to &quot;Yes&quot;. You can change this setting by clicking on the name of the circuit in the left sidebar, then it should be an option under the properties tab.</li>
+</ol>
+<h4 id="logisim-evolution-quit-unexpectedly">Logisim-evolution quit unexpectedly</h4>
+<p>If you are using macOS and have macOS 14.0 through macOS 14.2.1, please add <code>--no-screen-menu-bar</code> to the Logisim command (i.e. <code>java -jar tools/logisim-evolution.jar --no-screen-menu-bar</code>).</p>
+<p>If you are not using macOS or are not on one of the above versions, please post on Ed.</p>
+<h4 id="found-a-tri-state-driver-or-floating-output-s">Found a tri-state driver or floating output(s)</h4>
+<p>Please check each circuit component and ensure that none of the outputs are set to floating!</p>
+<h4 id="found-a-net-with-multiple-drivers-short-circuit">Found a net with multiple drivers (short circuit)</h4>
+<p>Short circuits are generally caused by a tunnel/wire that is driven by two or more sources (in other words, connected to two different sources, where a source is something like a multiplexer or register). This triggers an error since the circuit does not know which input to read from, especially when the wires have different values.</p>
+<h2 id="assignments">Assignments</h2>
+<h3 id="project-1">Project 1</h3>
+<h4 id="extra-characters-in-printed-board">Extra characters in printed board</h4>
+<p>How does C know when to stop printing a string?</p>
+<h4 id="custom-test-0-failing">Custom Test 0 Failing</h4>
+<p>This test runs your custom tests against a correct staff implementation. The most common error for this test case is that your test cases are testing undefined behavior. Refer to the spec to see which inputs may cause undefined behavior.</p>
+<h4 id="custom-tests-1-5-failing">Custom Tests 1-5 Failing</h4>
+<p>These tests run your custom tests against an incorrect staff implementation. If you're failing these, it probably means that your tests are saying the implementation is correct when it is not.</p>
+<h4 id="custom-tests-error-2">Custom Tests Error 2</h4>
+<p>If you see error 2, it probably means that your tests are crashing (and most likely a segmentation fault). Make sure your tests run and pass locally.</p>
+<h3 id="project-2">Project 2</h3>
+<h4 id="test-src-doesn-t-exist"><code>test-src</code> doesn't exist</h4>
+<p>This folder is created by any of the <code>bash test.sh</code> test commands (such as <code>bash test.sh test_abs</code>). Try running one of these commands for the task you're on and this folder should be created.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>

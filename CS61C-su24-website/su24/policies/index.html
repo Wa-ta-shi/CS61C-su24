@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="language" content="english">
+<title>Policies | CS 61C Summer 2024</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="shortcut icon" type="image/png" href="../img/favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/main.css@h=c5951e6c6fad5a9be897b57166a91a9f096ce6af0a0da724899f2b57a97006a6.css" />
+<script defer type="text/javascript" src="../js/main.js@h=e9256ad8bb73d1000c4167f68a3255ff61b7276031d009594ea6f4066e941fba"></script>
+
+<script type="text/javascript" src="../js/main-sync.js@h=a5a9607bf30db01764e4c92a4d4832318d20ec7d3ec29af4ddf72b7ddcb13817"></script>
+<script>initDarkToggle();</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.17.0/tocbot.min.js" integrity="sha512-DJhUMo5TIBb3fFziiE+3OJG+j7ky+GxScxHdLADCXskEpc/AKQsbsorIYmGFJFaJvDIyP65rJNhnCTytfYAdUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<div class="container">
+<a class="navbar-brand" href="../../index.html">
+<img class="d-inline-block me-2 rounded" height="48" width="48" src="../img/icon-small.png" alt="outline of square computer chip with cs61c label" />
+<span class="align-middle">CS 61C Summer 2024</span>
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class="nav-item">
+<a class="nav-link" href="../calendar/index.html">Calendar</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../staff/index.html">Staff</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../exam/index.html">Exam</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html">Policies</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="../resources/index.html">Resources</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="index.html#" id="navbarLinksDropdownToggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+<ul class="dropdown-menu p-0" aria-labelledby="navbarLinksDropdownToggle">
+<li><a class="dropdown-item nav-link" href="../pdfs/resources/reference-card.pdf">Reference Card</a></li>
+<li><a class="dropdown-item nav-link" href="https://oh.cs61c.org/">OH Queue</a></li>
+<li><a class="dropdown-item nav-link" href="https://venus.cs61c.org/">Venus</a></li>
+<li><a class="dropdown-item nav-link" href="https://inst.eecs.berkeley.edu/~cs61c/archives.html">Past Semesters</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<main class="mb-4">
+<section class="section">
+<div class="container">
+<div class="row spec">
+<nav id="toc-wrapper" class="col-md-3 d-print-none sticky-md-top nav-wrapper" aria-label="table of contents">
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#prerequisites">Prerequisites</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#optional-reading">Optional Reading</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#course-format">Course Format</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#lecture">Lecture</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#discussion">Discussion</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#homework">Homework</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#labs">Labs</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#projects">Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#exams">Exams</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#office-hours">Office Hours</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#grading">Grading</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#late-enrollment">Late Enrollment</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#course-announcements-and-computer-resources">Course Announcements and Computer Resources</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#ed-edstem">Ed (EdStem)</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#computer-resources">Computer Resources</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#collaboration-and-academic-misconduct">Collaboration and Academic Misconduct</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#partners">Partners</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#cheating-detection">Cheating Detection</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#penalties">Penalties</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#submitting-work-from-past-semesters">Submitting Work from Past Semesters</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#lateness-and-accommodations-policy">Lateness and Accommodations Policy</a>
+<ul class="nav flex-column">
+<li class="nav-item">
+<a class="nav-link" href="index.html#lateness-policy">Lateness Policy</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#slip-days">Slip Days</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#extenuating-circumstances">Extenuating Circumstances</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#last-day-to-submit-assignments">Last Day to Submit Assignments</a>
+</li>
+</ul>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#course-climate-and-inclusion">Course Climate and Inclusion</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#campus-resources">Campus Resources</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="index.html#acknowledgment">Acknowledgment</a>
+</li>
+</ul>
+</nav>
+<div id="toc-content-wrapper" class="content col-md-9">
+<h1 class="title">Policies</h1>
+<p><a href="https://classes.berkeley.edu/content/2024-summer-compsci-61c-001-lec-001">Official Academic Guide course description</a></p>
+<p>The subjects covered in this course include C and assembly language programming, translation of high-level programs into machine language, computer organization, caches, performance measurement, parallelism, CPU design, warehouse-scale computing, and related topics.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>CS61A and CS61B (or equivalents) or experience with a C-based programming language (e.g. Java, C++).</p>
+<hr/>
+<h2 id="optional-reading">Optional Reading</h2>
+<p>There is no official textbook for this class. However, there are three optional textbooks as additional references:</p>
+<ul>
+<li><strong>P&amp;H</strong>: Second edition of Patterson and Hennessy's <em>Computer Organization and Design RISC-V Edition</em> book (&quot;P&amp;H&quot;), ISBN 0128122757.</li>
+<li><strong>K&amp;R</strong>: <em>The C Programming Language, Second Edition</em> by Kernighan and Ritchie. Other C programming books are also suitable if you are already comfortable with them, but our lectures will be based on K&amp;R.</li>
+<li><strong>WSC</strong>: <em>The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines</em>, which is freely available <a href="https://inst.eecs.berkeley.edu/%7Ecs61c/resources/WSCBarrosoHolzle.pdf">on our website</a>.</li>
+</ul>
+<p>Please contact staff on Ed if you have trouble finding or paying for these textbooks.</p>
+<hr/>
+<h2 id="course-format">Course Format</h2>
+<p>The following sub-sections contain an overall summary of the major elements of the course.</p>
+<h3 id="lecture">Lecture</h3>
+<p>We will have an 80-minute live lecture on Mondays, Tuesdays, Wednesdays and Thursdays, 2:00 PM–3:30 PM PT. Lectures will take place in Valley Life Sciences Building 2050. Recordings will be made available after the lecture, but lectures will not be livecasted to Zoom.</p>
+<h3 id="discussion">Discussion</h3>
+<p>One hour long discussion sections will be held twice a week on Mondays and Wednesdays. We intend to offer at least one remote discussion section, subject to staff availability. You can choose to attend any discussion section you want. Discussion section attendance is not graded.</p>
+<p>We may release pre-recorded discussion walkthroughs, though they are meant as a supplementary material.</p>
+<h3 id="homework">Homework</h3>
+<p>Homework is designed to let you practice the material covered in lecture. We encourage you to work on the homework problems in small groups, but each student is required to turn in a solution that they have written themselves.</p>
+<p>Homework is submitted online through PrairieLearn and graded on correctness.</p>
+<h3 id="labs">Labs</h3>
+<p>Labs are designed to give you some hands-on experience with the course material. Two-hour long lab sections will be held twice a week on Tuesdays and Thursdays. We intend to offer at least one remote lab section, subject to staff availability. Lab section attendance is not graded. We will not release recordings. The first hour of each lab section will be a review of the topics covered in the lab, while the second hour will be a &quot;lab party&quot; style work time for students to work on the lab with other students in the lab. During the second hour, students can request for help from a staff member. You can choose to attend any lab section you want, or work on labs asynchronously. We encourage you to work on the labs in small groups, but each student is required to turn in a solution that they have written themselves.</p>
+<p>Lab assignments are autograded on Gradescope.</p>
+<h3 id="projects">Projects</h3>
+<p>Projects are designed to give you heavy-duty experience with the application of course content. We'll have four projects throughout the course. You may optionally work with one partner for each project. You may not add, change, or remove partners after creating the project repo. Partnerships must be registered on <code>Gradar</code>, and adding another student to your Gradescope submission does not create an official partnership.</p>
+<div class="alert alert-warning">
+<p>If you choose to work with a partner, all work must be done <strong>synchronously</strong> in a pair-programming fashion. By creating a partnership, both you and your partner are responsible for the work in your repository and the work you submit.</p>
+</div>
+<p>Projects are submitted to Gradescope and graded on correctness. If you complete a project with a partner, you must add your partner to every Gradescope submission. Also make sure you &quot;activate&quot; the submission you want graded on Gradescope (this defaults to the last submission you made).</p>
+<h3 id="exams">Exams</h3>
+<p>There will be one midterm, scheduled for Thursday, July 11th, 7:00 PM - 9:00 PM PT.</p>
+<p>The final exam will be Wednesday, August 7th, 3:00 PM - 6:00 PM PT.</p>
+<p>Exams are in-person, no exceptions.</p>
+<p>The midterm is scheduled for Thursday, July 11th, 7:00 PM - 9:00 PM PT. There are no alternate exams. If you have a conflict, you can <a href="index.html#exam-clobber">clobber</a> your midterm with the final.</p>
+<p>The final exam is scheduled for Wednesday, August 7th, 3:00 PM - 6:00 PM PT. One in-person alternate final from 6:00 PM - 9:00 PM PT will be offered for direct exam conflicts.</p>
+<p>If you have exam accommodations, we will reach out with exact times in the next week or so.</p>
+<p>If you feel unwell before an exam, please notify staff ASAP. If you take the exam while sick, we will void your exam score. Please respect the health of other students and our staff!</p>
+<p>The exam adjustments form (required for all alternate exam accommodations), along with more detailed logistics, will be released closer to each exam.</p>
+<h4 id="exam-clobber">Exam Clobber</h4>
+<p>If you score better on the final, we will use the <a href="https://en.wikipedia.org/wiki/Standard_score">z-score</a> of your final exam score to replace your midterm score.</p>
+<h3 id="office-hours">Office Hours</h3>
+<p>TAs and instructors will host mostly in-person and extremely few online office hours throughout the semester. We use an <a href="https://oh.cs61c.org/">OH Queue</a> to process help tickets.</p>
+<p>Please do not expect TAs to debug your code. This is not a good use of their time, and part of the goal of this course is to turn <em>you</em> into a great tester and debugger. However, the TAs can help you find and fix your bugs.</p>
+<p>Therefore, before coming to office hours, you should have:</p>
+<ul>
+<li>Run valgrind and fixed all memory leaks and compiler warnings</li>
+<li>Written a test that isolates/demonstrates the issue (NOT a staff-provided test)</li>
+<li>Stepped through the test with a debugger to find the area of code with the issue</li>
+<li>Checked that the problem still occurs on the hive machines, unless the assignment supports local machines</li>
+</ul>
+<p>If you have not completed all of the items above, a TA will request that you complete them before they can help you. There are instructions for testing as part of all project specifications, and the first few labs cover Valgrind, (C)GDB, and debugging.</p>
+<p>Please mark your tickets as conceptual or debugging. For conceptual tickets, TAs will help groups of students at a time (shorter wait time) but cannot look at code. For debugging tickets, TAs will look at you or your group's code, but time per ticket may be limited if the queue is long.</p>
+<p>If you are attending an online office hours block, you can find the zoom link on the EdStem. To receive help, enter any open breakout room, make a ticket on the OH Queue, and remember to note which breakout room you're in.</p>
+<hr/>
+<h2 id="grading">Grading</h2>
+<p>In order to foster a collaborative environment, CS61C is graded on a fixed scale. The course is graded out of 300 points, with the following mappings from points to letter grades:</p>
+<div class="row">
+<div class="col-sm-12 col-md-6">
+<table class>
+<thead>
+<tr><th align="center">Course Points</th><th>Grade</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">275+</td><td>A</td></tr>
+<tr><td align="center">[265,275)</td><td>A-</td></tr>
+<tr><td align="center">[250,265)</td><td>B+</td></tr>
+<tr><td align="center">[240,250)</td><td>B</td></tr>
+<tr><td align="center">[220,240)</td><td>B-</td></tr>
+<tr><td align="center">[210,220)</td><td>C+</td></tr>
+<tr><td align="center">[190,210)</td><td>C</td></tr>
+<tr><td align="center">[180,190)</td><td>C-</td></tr>
+<tr><td align="center">[140,180)</td><td>D</td></tr>
+<tr><td align="center">[0,140)</td><td>F</td></tr>
+</tbody>
+</table>
+</div>
+<div class="col-sm-12 col-md-6">
+<table>
+<thead>
+<tr><th align="center">Assignment</th><th>Percentage of Grade</th></tr>
+</thead>
+<tbody>
+<tr><td align="center">Labs</td><td>10% (30 points)</td></tr>
+<tr><td align="center">Homework</td><td>10% (30 points)</td></tr>
+<tr><td align="center">Project 1</td><td>10% (30 points)</td></tr>
+<tr><td align="center">Project 2</td><td>10% (30 points)</td></tr>
+<tr><td align="center">Project 3</td><td>10% (30 points)</td></tr>
+<tr><td align="center">Project 4</td><td>10% (30 points)</td></tr>
+<tr><td align="center">Midterm</td><td>16% (48 points)</td></tr>
+<tr><td align="center">Final</td><td>24% (72 points)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>At the end of the semester, the A+ bin, which is reserved only for students with exceptional performance in the course, will be determined by the instructors.</p>
+<p>Each lab is worth 3 course points. The first 3 homeworks are each worth 6 points, and the remaining 4 homeworks are each worth 3 course points.</p>
+<p>The bins <strong>will not change</strong> (i.e. we will not shift the bins or round at the end of the semester). Grade bins target a 3.3 GPA, assuming 65% average on exams and 95% average on other assignments. To normalize exam difficulty variance across semesters, we will do the following: if the exam average is higher than 65%, then nothing will change; if the exam average is lower than 65%, we will adjust the denominator such that the exam has a 65% average. Scores are capped at 100% (i.e. you cannot have a score over 100% from this).</p>
+<h2 id="late-enrollment">Late Enrollment</h2>
+<p>If you enroll in the class late, please email <code>cs61c@</code> so we can work out a schedule of deadlines. However, we cannot guarantee an extension on all assignments in the interest of keeping you up to pace with the rest of the course. Our default assumption is that any student who enrolls late will be able to catch up within 2 days of enrollment.</p>
+<hr/>
+<h2 id="course-announcements-and-computer-resources">Course Announcements and Computer Resources</h2>
+<h3 id="ed-edstem">Ed (EdStem)</h3>
+<p>All important course announcements will be made on <a href="https://edstem.org">Ed</a> (the course discussion forum). We will be automatically enrolling everyone. We will not be answering private Ed questions unless directed by a staff member in office hours.</p>
+<h4 id="ed-etiquette">Ed Etiquette</h4>
+<ul>
+<li><strong>Search before posting</strong>. Your question may have already been answered by us or other students in the past. Reading other students' posts will let you refine your question, and gives us more time to answer new questions.</li>
+<li><strong>Try to avoid open-ended or vague questions such as</strong>: &quot;How does C work?&quot; or &quot;How come the solution to a discussion problem is this?&quot;. If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.</li>
+<li><strong>Post questions about assignments as public follow-ups on the corresponding assignment post</strong>. For example, post your questions about Homework 1 on the Homework 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours.</li>
+<li><strong>Only post in the &quot;answer&quot; box if you are fairly certain about your answer</strong>. Do not post follow-up questions or +1 as an answer.</li>
+<li><strong>No follow-up +1's</strong>. Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.</li>
+<li><strong>If you want a reply on a follow-up, mark it as unresolved</strong>, or we may not see it.</li>
+</ul>
+<h3 id="computer-resources">Computer Resources</h3>
+<p><strong>Note</strong>: If you are blocked from accessing our resources, you can use the <a href="https://technology.berkeley.edu/services/accounts-and-access-security/remote-access-vpn">campus VPN</a>.</p>
+<h4 id="computer-accounts">Computer Accounts</h4>
+<p>You will need a CS 61C instructional account to access computer labs and instructional servers for assignments. Accounts are available starting on the first day of instruction, and will be covered in <a href="../labs/lab00/index.html">Lab 0</a>.</p>
+<h4 id="computer-labs">Computer Labs</h4>
+<p>Registered students get 24/7 cardkey access, starting on the first day of instruction, to the computer labs in Soda Hall (Soda 271, 273, 275, 277, and 330). Please be mindful of the fact that we share these lab spaces with other CS classes, and please follow the <a href="https://inst.eecs.berkeley.edu/cgi-bin/pub.cgi?file=etiquette.help">Rules of Conduct on EECS Instructional Computers</a>.</p>
+<p>You can also remotely connect to instructional computers for class work. This will be covered in <a href="../labs/lab00/index.html">Lab 0</a>. If you're connecting from off-campus, you must be connected to the campus VPN (as described in lab 0).</p>
+<hr/>
+<h2 id="collaboration-and-academic-misconduct">Collaboration and Academic Misconduct</h2>
+<p>We believe that most students can distinguish between helping other students understand course material and cheating. Explaining a subtle point from lecture or discussing course topics is an interaction that we encourage, but you must write your solutions strictly by yourself. You can get conceptual help, but you must not share, receive, request, or submit solutions from other sources, such as other students or Stack Overflow. You also may not tamper with any course infrastructure (such as hive machines and the autograder) or exploit loopholes that violate the spirit of the assignment. The word &quot;solution&quot; is defined as anything that may constitute an answer to a project, regardless of its correctness.</p>
+<p>You must ensure that your solutions will not be visible to other students. If you use GitHub or another code hosting platform to store your solutions electronically, you must ensure your account is configured so your solutions are not publicly visible. Many platforms offer free private repositories that allow you to keep your solutions private.</p>
+<p>For questions that includes any form of randomization (e.g. different variants for each student), you may not share the question, or anything related to the specific variant you received, with anyone else. This includes the question text, any data files provided, and your solution to the variant.</p>
+<div class="alert alert-warning">
+<p><strong>Warning</strong>: Please take a moment to review the <a href="https://eecs.berkeley.edu/resources/students/academic-misconduct">Department Policy on Academic Misconduct</a>. In particular, you should be aware that receiving, copying, sharing, or viewing solutions, in whole or in part, at any time, from other students in the class or any other source (including &quot;artificial intelligence&quot;) without acknowledgement and staff approval constitutes cheating.</p>
+</div>
+<p>Here are some <strong>examples</strong> of what may be considered cheating:</p>
+<ul>
+<li>Sharing or receiving a solution from a friend</li>
+<li>Sharing or receiving a solution from a friend after the assignment is due</li>
+<li>Sharing or receiving a solution from a friend after the semester is over</li>
+<li>Submitting a solution from a friend to see what the autograder looks like</li>
+<li>Looking at a solution that is not yours for &quot;ideas&quot;</li>
+<li>Looking at a solution on an unattended laptop</li>
+<li>Using ChatGPT or GitHub Copilot's output as your solution</li>
+<li>Publicly posting your solutions for any reason, including for your resume</li>
+<li>Sharing code with another student who is not your registered partner on <code>Gradar</code></li>
+<li>Forgetting to add your intended partner on Gradar and working with them as if you were partners anyway</li>
+<li>Sharing a specific variant (including numbers and any associated files) of a randomized question</li>
+<li>Working with a partner on an assignment that allows partners asynchronously</li>
+</ul>
+<p>When in doubt, please reach out to staff first.</p>
+<p>As both current and former students, we understand that desperate times can lead to desperate measures. If you feel like you cannot succeed on your own in the course, please let us know! We are here to support you.</p>
+<h3 id="partners">Partners</h3>
+<p>For assignments that allow partners, you may collaborate with an officially registered partner, but all work must be completed synchronously. The only time where you are allowed to work on a project asynchronously with a partner is within office hours. Collaboration policies still apply outside of your partnership. For example, you can collaborate on code with your partner, but not with anyone else.</p>
+<p>Assignments that allow partners will specify how you can officially record your partner. This is typically done through <code>Gradar</code>, when you get your code repository. We do not recognize partnerships created elsewhere, including Gradescope partnerships.</p>
+<div class="alert alert-warning">
+<p><strong>Warning</strong>: You and your partner are both responsible for the work your repository contains and the work you submit. If your partner cheats, you are also liable for their actions, since all work should have been done synchronously.</p>
+</div>
+<h3 id="cheating-detection">Cheating Detection</h3>
+<p>We will be running advanced plagiarism detection programs. The tools and methods for detecting cheating have been developed over the course of many years, and attempting to obfuscate your code to avoid detection:</p>
+<ol>
+<li>won't work, and</li>
+<li>will be penalized.</li>
+</ol>
+<h3 id="penalties">Penalties</h3>
+<p>Plagiarism on any assignment will be reported to the Center for Student Conduct. The CSC treats most first-time offenses as a <a href="https://sa.berkeley.edu/student-code-of-conduct-section6">Non-Reportable Warning</a>. Additionally we will assign a grade penalty. The minimum penalty for cheating on an assignment is negative points. For example, if an assignment is worth 10 points, you will receive -10/10 points on the assignment, regardless of your original score. This means even if there is just a 50% chance that you are caught it is better to not do the work than attempt to cheat. A second instance of plagiarism on an assignment will result in an F in the course.</p>
+<h3 id="submitting-work-from-past-semesters">Submitting Work from Past Semesters</h3>
+<p>If you have completed assignments during past semesters and would like to reuse your work, you do not have to let staff know ahead of time. However:</p>
+<ul>
+<li>We cannot promise that the assignments are identical across semesters.</li>
+<li>If you would like to submit a project using work from past semesters, you <strong>cannot</strong> have a project partner this semester. If you had a project partner while working on your project originally, you may submit the portions of the projects that they completed.</li>
+<li>By submitting work from past semesters, in part or in whole, you are claiming that the work submitted is completed entirely by you (and if applicable, your former project partner). If you are unsure if the work is your (and if applicable, your former project partner's) original work, we'd recommend redoing the assignment from scratch.</li>
+</ul>
+<hr/>
+<h2 id="lateness-and-accommodations-policy">Lateness and Accommodations Policy</h2>
+<p>The expected deadlines for each assignment are posted on the class website. Our assumption is that you will complete each assignment by its due date. The course content builds on itself, and not completing an assignment will make it much more difficult to complete later assignments and do well on exams.</p>
+<h3 id="lateness-policy">Lateness Policy</h3>
+<p>For homework, labs, or projects submitted late, 1/3 of your points will be deducted for each day that it's late. The lateness penalty rounds up to the nearest day - that is, an assignment that is 1 day and 5 seconds late will receive a 2/3 late penalty.</p>
+<p>However, we recognize that life can be unexpected. We've accommodated some flexibility in our lateness policies, as below.</p>
+<h3 id="slip-days">Slip Days</h3>
+<p>Each student will start with 15 slip days. Slip days can be applied to homeworks, labs, and projects. Each slip day extends an assignment deadline by one day. For homeworks and labs, at most <strong>one</strong> slip day can be applied per assignment. For projects, at most <strong>two</strong> slip days can be applied per assignment. If you apply slip days toward a partnered assignment, only you will have the extended deadline. If your partner would also like to apply slip days, they need to submit their own request.</p>
+<p>Slip days are meant to be used for illness, submission issues and other unforeseen circumstances. Use them wisely!</p>
+<p>Slip days can be applied on <a href="https://gradar.cs61c.org">Gradar</a>. Extended deadlines will not be reflected on Gradescope or PrairieLearn.</p>
+<div class="alert alert-info">
+<p><strong>Important:</strong> We usually provide increased support for a particular assignment (in the form of increased staffing) leading up to the posted, original assignment deadline. As a result, continuing to work on an assignment after the original deadline may lead to slower response times on Ed/longer wait times in OH. Staff will actively prioritize assignments whose deadlines have not passed.</p>
+</div>
+<h3 id="extenuating-circumstances">Extenuating Circumstances</h3>
+<p>We define extenuating circumstances as circumstances outside of the student’s control that directly inhibits the student’s ability to complete assignments in a timely manner. Some examples include unforeseen physical/mental health crises, technical issues (broken laptop), family emergency, etc. If you encounter extenuating circumstances at any time in the semester, please don’t hesitate to let us know ASAP. The sooner we are made aware, the more options we have available to us to help you.</p>
+<p>If you are experiencing such circumstances and require an increase in the slip day limit (one day for homeworks and labs, two days for projects), or have run out of slip days and have extenuating circumstances that cover the usage of all allocated slip days, please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3RAJFCpmARU-jAFk608GHnRMcpqYrMmhnJoOlPxcHNGQy5Q/viewform">this form</a>. This is separate from applying slip days and is a more involved process. We will be more restrictive when granting increases in the slip day limit for extenuating circumstances. We encourage you to be proactive and reach out to staff if you have prolonged extenuating circumstances that you anticipate will result in running out of slip days.</p>
+<h3 id="last-day-to-submit-assignments">Last Day to Submit Assignments</h3>
+<p>All work must be submitted by August 11th, 11:59 PM PT. We will not accept further assignment submissions beyond this point in order to ensure that we can get grades out on time. Slip days applied beyond this date will not be considered.</p>
+<hr/>
+<h2 id="course-climate-and-inclusion">Course Climate and Inclusion</h2>
+<p>We recognize that our students come from varied backgrounds and have widely varying experiences. If you encounter extenuating circumstances, please do not hesitate to let us know. The sooner we are made aware, the more options we have available to us to help.</p>
+<p>We are committed to creating a learning environment welcoming of all students that supports a diversity of thoughts, perspectives and experiences and respects your identities and backgrounds (including race, ethnicity, nationality, gender identity, socioeconomic class, sexual orientation, language, religion, ability, and more.) To help accomplish this:</p>
+<ul>
+<li>If your name and/or pronouns differ from those that appear in your official records, please let us know.</li>
+<li>In scheduling exams, we have attempted to avoid conflicts with major religious holidays. If, however, we have inadvertently scheduled an exam or major deadline that creates a conflict with your religious observances, please let us know as soon as possible so that we can make other arrangements.</li>
+<li>If you feel like your performance in the class is being affected by your experiences outside of class (e.g., family matters, current events), please don’t hesitate to come and talk with us. We want to be resources for you.</li>
+</ul>
+<p>Professionalism and respect for diversity are not just matters between students; they also apply to how the course staff treat the students. The staff of this course will treat you in a way that respects our differences. However, despite our best efforts, we might slip up, hopefully inadvertently. We (like many people) are still in the process of learning about diverse perspectives and identities. If you are concerned about classroom environment issues created by the overall class dynamic or by the staff, please feel free to talk to us about it.</p>
+<p>If something was said in class (by anyone—staff member or fellow student) that made you feel uncomfortable, please talk to us about it. Sometimes, you may not be comfortable bringing this up directly to us. Here are some options:</p>
+<ul>
+<li>via the <a href="https://docs.google.com/forms/d/e/1FAIpQLSfa3hSUbpXV9IonURkUlBpfiI4Bt2QncGjo9JPwQdZBH_fPKw/viewform">61C incident reporting form</a></li>
+<li>via email to our instructors, head TAs, or another member of staff you're comfortable with</li>
+<li>via the <a href="https://eecs.berkeley.edu/resources/students/grievances">EECS Student Grievance Committee</a></li>
+<li>via the department's <a href="https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform">Student Climate and Incident Reporting Form</a>.</li>
+</ul>
+<hr/>
+<h2 id="campus-resources">Campus Resources</h2>
+<p>Your mental health is more important than this course. <strong>Seriously</strong>. UC Berkeley offers services to assist you with addressing mental health concerns or stressful events.</p>
+<ul>
+<li>Counseling and Psychological Services (CAPS) has multiple free, confidential services. An on campus counselor or after-hours clinician is available 24/7.
+<ul>
+<li><a href="https://uhs.berkeley.edu/counseling/lets-talk">UHS Casual Consulting</a></li>
+<li><a href="https://uhs.berkeley.edu/counseling/urgent">UHS Crisis Management Counseling</a></li>
+</ul>
+</li>
+<li><a href="https://uhs.berkeley.edu/health-topics/mental-health">UHS's mental health resources</a> offers guides, handbooks, and more.</li>
+<li>Support is also available for survivors of sexual violence or harassment. Note that course staff are <a href="https://svsh.berkeley.edu/responsible-employee">Responsible Employees</a> for such incidents. Campus also has free, confidential services available:
+<ul>
+<li><a href="https://svsh.berkeley.edu/">UC Berkeley Sexual Violence Services</a></li>
+<li><a href="https://survivorsupport.berkeley.edu/Confidential-Resources-Anonymous-Reporting-and-Privacy">PATH to Care Center: Reporting and Privacy</a></li>
+</ul>
+</li>
+<li>The National Suicide Prevention Lifeline is a 24-hour number any student or faculty/staff person can call to speak with someone about suicide: +1-800-273-TALK (+1-800-273-8255).</li>
+</ul>
+<p>If you're in need of laptops, Wi-Fi hotspots, or other required technologies, check out the <a href="https://technology.berkeley.edu/STEP">Student Technology Equity Program</a>.</p>
+<div class="alert alert-info">
+<p><strong>CS 61C Course Support:</strong> If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out <strong>accommodations within the course</strong>, or would like to be connected to more resources, fill out our <a href="index.html#extenuating-circumstances">Extenuating Circumstances form</a>.</p>
+</div>
+<hr/>
+<h2 id="acknowledgment">Acknowledgment</h2>
+<p>Portions of this policies page are derived from CS 61B's Spring 2024 policies page.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container border-top pt-4 mb-5">
+<div class="row">
+<div class="col">
+<div id="dark-toggle-wrapper" class="d-none">
+<div class="form-check form-switch">
+<input id="inputDarkToggle" class="form-check-input" type="checkbox">
+<label class="form-check-label" for="inputDarkToggle">
+Dark Mode
+<a id="buttonDarkToggleReset" class="d-none" href="javascript:void(0);">(reset)</a>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  
+
+  
+    document.addEventListener("DOMContentLoaded", function() {
+      initToC();
+    });
+  
+</script>
+</body>
+</html>
