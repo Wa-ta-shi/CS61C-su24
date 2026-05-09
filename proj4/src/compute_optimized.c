@@ -7,6 +7,7 @@
 int convolve(matrix_t *a_matrix, matrix_t *b_matrix, matrix_t **output_matrix) {
   // TODO: convolve matrix a and matrix b, and store the resulting matrix in
   // output_matrix
+  
 
   return -1;
 }
